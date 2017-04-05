@@ -79,6 +79,11 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
     vm.list = [
       //首页
       { url: "dashboard", start: 1, title: "Dashboard", icon: "icon-home", child: [] },
+      //广告资源管理
+      { url: "adsense", title: "广告资源管理", icon: "icon-home" },
+      { url: "adsensepack", title: "广告资源包", icon: "icon-home" },
+      { url: "advertising", title: "广告投放", icon: "icon-home" },
+      { url: "advertisingrecord", title: "广告发放记录", icon: "icon-home" },
       //ui效果
       {
           url: "", title: "AngularJS Features", icon: "icon-settings", child: [
@@ -138,12 +143,85 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     $urlRouterProvider.otherwise("/dashboard.html");
 
     $stateProvider
+        //广告资源管理
+        .state("adsense", {
+            url: "/adsense.html",
+            templateUrl: "/views/adsense/adsense.html",
+            data: { pageTitle: '广告资源管理' },
+            controller: "adsenseController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/adsense/adsenseController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+         //广告资源包管理
+        .state("adsensepack", {
+            url: "/adsensepack.html",
+            templateUrl: "/views/adsensepack/adsensepack.html",
+            data: { pageTitle: '广告资源包管理' },
+            controller: "adsensepackController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/adsensepack/adsensepackController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+           //广告投放管理
+        .state("advertising", {
+            url: "/advertising.html",
+            templateUrl: "/views/advertising/advertising.html",
+            data: { pageTitle: '广告投放管理' },
+            controller: "advertisingController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/advertising/advertisingController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+             //广告投放记录管理
+        .state("advertisingrecord", {
+            url: "/advertisingrecord.html",
+            templateUrl: "/views/advertisingrecord/advertisingrecord.html",
+            data: { pageTitle: '广告投放记录管理' },
+            controller: "advertisingrecordController",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load({
+                        name: 'MetronicApp',
+                        insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
+                        files: [
+                            'js/controllers/advertisingrecord/advertisingrecordController.js'
+                        ]
+                    });
+                }]
+            }
+        })
+
 
         // Dashboard
         .state('dashboard', {
             url: "/dashboard.html",
             templateUrl: "views/dashboard.html",
-            data: { pageTitle: 'Admin Dashboard Template' },
+            data: { pageTitle: '控制台' },
             controller: "DashboardController",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {

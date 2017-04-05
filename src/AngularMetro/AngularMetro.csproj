@@ -272,6 +272,10 @@
     <Content Include="assets\layouts\layout\scripts\layout.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="index.html" />
+    <Content Include="js\controllers\adsensepack\adsensepackController.js" />
+    <Content Include="js\controllers\adsense\adsenseController.js" />
+    <Content Include="js\controllers\advertisingrecord\advertisingrecordController.js" />
+    <Content Include="js\controllers\advertising\advertisingController.js" />
     <Content Include="js\controllers\BlankController.js" />
     <Content Include="js\controllers\DashboardController.js" />
     <Content Include="js\controllers\GeneralPageController.js" />
@@ -312,6 +316,10 @@
     <Content Include="tpl\footer.html" />
     <Content Include="tpl\header.html" />
     <Content Include="tpl\sidebar.html" />
+    <Content Include="views\adsensepack\adsensepack.html" />
+    <Content Include="views\adsense\adsense.html" />
+    <Content Include="views\advertisingrecord\advertisingrecord.html" />
+    <Content Include="views\advertising\advertising.html" />
     <Content Include="views\blank.html" />
     <Content Include="views\dashboard.html" />
     <Content Include="views\datatables\ajax.html" />
