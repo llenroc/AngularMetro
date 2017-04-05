@@ -311,9 +311,7 @@
   <ItemGroup>
     <Content Include="tpl\footer.html" />
     <Content Include="tpl\header.html" />
-    <Content Include="tpl\quick-sidebar.html" />
     <Content Include="tpl\sidebar.html" />
-    <Content Include="tpl\theme-panel.html" />
     <Content Include="views\blank.html" />
     <Content Include="views\dashboard.html" />
     <Content Include="views\datatables\ajax.html" />

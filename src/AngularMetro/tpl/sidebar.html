@@ -27,7 +27,63 @@
             </form>
             <!-- END RESPONSIVE QUICK SEARCH FORM -->
         </li>
-        <li class="start nav-item">
+
+        <li ng-repeat="a in vm.list" class="{{a.start==1?'start':''}} nav-item">
+            
+
+            <a ng-if="a.url"  ui-sref="{{a.url}}">
+                <i class="{{a.icon}}"></i>
+                <span class="title">{{a.title}}</span>
+            </a>
+            <a ng-if="!a.url"  href="#" class="nav-link nav-toggle">
+                <i class="{{a.icon}}"></i>
+                <span class="title">{{a.title}}</span>
+                <span class="arrow"></span>
+            </a>
+
+            <ul ng-if="a.child" class="sub-menu">
+                <li ng-repeat="b in a.child">
+
+                    <a ng-if="b.url" ui-sref="{{b.url}}">
+                        <i class="{{b.icon}}"></i>
+                        <span class="title">{{b.title}}</span>
+                    </a>
+                    <a ng-if="!b.url" href="#" class="nav-link nav-toggle">
+                        <i class="{{b.icon}}"></i>
+                        <span class="title">{{b.title}}</span>
+                        <span class="arrow"></span>
+                    </a>
+                    <ul ng-if="b.child" class="sub-menu">
+                        <li ng-repeat="c in b.child">
+
+                            <a ng-if="c.url" ui-sref="{{c.url}}">
+                                <i class="{{c.icon}}"></i>
+                                <span class="title">{{c.title}}</span>
+                            </a>
+                            <a ng-if="!c.url" href="javascript:;" class="nav-link nav-toggle">
+                                <i class="{{c.icon}}"></i>
+                                <span class="title">{{c.title}}</span>
+                                <span class="arrow"></span>
+                            </a>
+                            <ul ng-if="c.child" class="sub-menu">
+                                <li ng-repeat="d in c.child">
+                                    <a ui-sref="{{d.url}}">
+                                        <i class="{{d.icon}}"></i>
+                                        <span class="title">{{d.title}}</span>
+                                    </a>
+                                </li>
+                            </ul>
+                          
+
+                        </li>
+                    </ul>
+                 
+                </li>
+            </ul>
+        </li>
+
+
+        <!--<li class="start nav-item">
             <a ui-sref="dashboard">
                 <i class="icon-home"></i>
                 <span class="title">Dashboard</span>
@@ -42,17 +98,17 @@
             <ul class="sub-menu">
                 <li>
                     <a ui-sref="uibootstrap">
-                        <i class="icon-puzzle"></i> UI Bootstrap</span>
+                        <i class="icon-puzzle"></i><span class="title"> UI Bootstrap</span>
                     </a>
                 </li>
                 <li>
                     <a ui-sref="fileupload">
-                        <i class="icon-paper-clip"></i> File Upload</span>
+                        <i class="icon-paper-clip"></i><span class="title"> File Upload</span>
                     </a>
                 </li>
                 <li>
                     <a ui-sref="uiselect">
-                        <i class="icon-check"></i> UI Select</span>
+                        <i class="icon-check"></i><span class="title"> UI Select</span>
                     </a>
                 </li>
             </ul>
@@ -80,6 +136,7 @@
                     <a ui-sref="tree">
                         <i class="icon-share"></i> Tree View </a>
                 </li>
+
                 <li class="nav-item">
                     <a href="javascript:;" class="nav-link nav-toggle">
                         <i class="icon-briefcase"></i> Datatables
@@ -115,7 +172,7 @@
                 <i class="icon-refresh"></i>
                 <span class="title">Blank Page</span>
             </a>
-        </li>
+        </li>-->
     </ul>
     <!-- END SIDEBAR MENU -->
 </div>
