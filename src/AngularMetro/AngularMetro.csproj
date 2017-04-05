@@ -282,8 +282,8 @@
     <Content Include="js\controllers\TodoController.js" />
     <Content Include="js\controllers\UISelectController.js" />
     <Content Include="js\controllers\UserProfileController.js" />
-    <Content Include="js\directives.js" />
-    <Content Include="js\main.js" />
+    <Content Include="js\directives\directives.js" />
+    <Content Include="main.js" />
     <Content Include="js\scripts\table-ajax.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
@@ -315,6 +315,7 @@
   <ItemGroup>
     <Content Include="tpl\footer.html" />
     <Content Include="tpl\header.html" />
+    <Content Include="tpl\layout.html" />
     <Content Include="tpl\sidebar.html" />
     <Content Include="views\adsensepack\adsensepack.html" />
     <Content Include="views\adsense\adsense.html" />

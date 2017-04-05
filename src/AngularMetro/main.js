@@ -129,7 +129,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/adsense/adsenseController.js'
+                            '/js/controllers/adsense/adsenseController.js'
                         ]
                     });
                 }]
@@ -147,7 +147,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/adsensepack/adsensepackController.js'
+                            '/js/controllers/adsensepack/adsensepackController.js'
                         ]
                     });
                 }]
@@ -165,7 +165,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/advertising/advertisingController.js'
+                            '/js/controllers/advertising/advertisingController.js'
                         ]
                     });
                 }]
@@ -183,7 +183,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/advertisingrecord/advertisingrecordController.js'
+                            '/js/controllers/advertisingrecord/advertisingrecordController.js'
                         ]
                     });
                 }]
@@ -194,7 +194,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         // Dashboard
         .state('dashboard', {
             url: "/dashboard.html",
-            templateUrl: "views/dashboard.html",
+            templateUrl: "/views/dashboard.html",
             data: { pageTitle: '控制台' },
             controller: "DashboardController",
             resolve: {
@@ -209,7 +209,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             '../assets/global/plugins/jquery.sparkline.min.js',
 
                             '../assets/pages/scripts/dashboard.min.js',
-                            'js/controllers/DashboardController.js',
+                            '/js/controllers/DashboardController.js',
                         ]
                     });
                 }]
@@ -228,7 +228,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', // load the above css files before a LINK element with this ID. Dynamic CSS files must be loaded between core and theme css files
                         files: [
-                            'js/controllers/BlankController.js'
+                            '/js/controllers/BlankController.js'
                         ]
                     });
                 }]
@@ -251,7 +251,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     }, {
                         name: 'MetronicApp',
                         files: [
-                            'js/controllers/GeneralPageController.js'
+                            '/js/controllers/GeneralPageController.js'
                         ]
                     }]);
                 }]
@@ -276,7 +276,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                     }, {
                         name: 'MetronicApp',
                         files: [
-                            'js/controllers/UISelectController.js'
+                            '/js/controllers/UISelectController.js'
                         ]
                     }]);
                 }]
