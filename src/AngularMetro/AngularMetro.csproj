@@ -275,15 +275,8 @@
     <Content Include="js\controllers\adsense\adsenseController.js" />
     <Content Include="js\controllers\advertisingrecord\advertisingrecordController.js" />
     <Content Include="js\controllers\advertising\advertisingController.js" />
-    <Content Include="js\controllers\BlankController.js" />
-    <Content Include="js\controllers\DashboardController.js" />
-    <Content Include="js\controllers\GeneralPageController.js" />
-    <Content Include="js\controllers\TodoController.js" />
-    <Content Include="js\controllers\UISelectController.js" />
-    <Content Include="js\controllers\UserProfileController.js" />
     <Content Include="js\directives\directives.js" />
     <Content Include="main.js" />
-    <Content Include="js\scripts\table-ajax.js" />
     <Content Include="packages.config" />
     <Content Include="ApplicationInsights.config" />
     <Content Include="assets\global\plugins\angularjs\angular-cookies.min.js.map" />
@@ -313,30 +306,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="index.html" />
-    <Content Include="tpl\footer.html" />
-    <Content Include="tpl\header.html" />
-    <Content Include="tpl\layout.html" />
-    <Content Include="tpl\sidebar.html" />
     <Content Include="views\adsensepack\adsensepack.html" />
     <Content Include="views\adsense\adsense.html" />
     <Content Include="views\advertisingrecord\advertisingrecord.html" />
     <Content Include="views\advertising\advertising.html" />
-    <Content Include="views\blank.html" />
-    <Content Include="views\dashboard.html" />
-    <Content Include="views\datatables\ajax.html" />
-    <Content Include="views\datatables\managed.html" />
-    <Content Include="views\dropdowns.html" />
-    <Content Include="views\file_upload.html" />
-    <Content Include="views\form_tools.html" />
-    <Content Include="views\pickers.html" />
-    <Content Include="views\profile\account.html" />
-    <Content Include="views\profile\dashboard.html" />
-    <Content Include="views\profile\help.html" />
-    <Content Include="views\profile\main.html" />
-    <Content Include="views\todo.html" />
-    <Content Include="views\tree.html" />
-    <Content Include="views\ui_bootstrap.html" />
-    <Content Include="views\ui_select.html" />
+    <Content Include="views\layout\footer.html" />
+    <Content Include="views\layout\header.html" />
+    <Content Include="views\layout\layout.html" />
+    <Content Include="views\layout\sidebar.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +322,7 @@
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
     <Folder Include="assets\pages\" />
+    <Folder Include="js\factory\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
