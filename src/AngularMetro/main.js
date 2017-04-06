@@ -94,14 +94,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             url: "/adsense.html",
             templateUrl: "/views/adsense/adsense.html",
             data: { pageTitle: '广告资源管理' },
-            controller: "adsenseController",
+            controller: "views.adsense.adsense",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', 
                         files: [
-                            '/js/controllers/adsense/adsenseController.js'
+                            '/views/adsense/adsense.js'
                         ]
                     });
                 }]
@@ -112,14 +112,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             url: "/adsensepack.html",
             templateUrl: "/views/adsensepack/adsensepack.html",
             data: { pageTitle: '广告资源包管理' },
-            controller: "adsensepackController",
+            controller: "views.adsensepack.adsensepack",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/js/controllers/adsensepack/adsensepackController.js'
+                            '/views/adsensepack/adsensepack.js'
                         ]
                     });
                 }]
@@ -130,14 +130,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             url: "/advertising.html",
             templateUrl: "/views/advertising/advertising.html",
             data: { pageTitle: '广告投放管理' },
-            controller: "advertisingController",
+            controller: "views.advertising.advertising",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/js/controllers/advertising/advertisingController.js'
+                            '/views/advertising/advertising.js'
                         ]
                     });
                 }]
@@ -148,14 +148,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             url: "/advertisingrecord.html",
             templateUrl: "/views/advertisingrecord/advertisingrecord.html",
             data: { pageTitle: '广告投放记录管理' },
-            controller: "advertisingrecordController",
+            controller: "views.advertisingrecord.advertisingrecord",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', 
                         files: [
-                            '/js/controllers/advertisingrecord/advertisingrecordController.js'
+                            '/views/advertisingrecord/advertisingrecord.js'
                         ]
                     });
                 }]

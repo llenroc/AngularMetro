@@ -271,10 +271,10 @@
     <Content Include="assets\layouts\layout\scripts\layout.js" />
     <Content Include="assets\layouts\layout\scripts\layout.min.js" />
     <Content Include="favicon.ico" />
-    <Content Include="js\controllers\adsensepack\adsensepackController.js" />
-    <Content Include="js\controllers\adsense\adsenseController.js" />
-    <Content Include="js\controllers\advertisingrecord\advertisingrecordController.js" />
-    <Content Include="js\controllers\advertising\advertisingController.js" />
+    <Content Include="views\adsensepack\adsensepack.js" />
+    <Content Include="views\adsense\adsense.js" />
+    <Content Include="views\advertisingrecord\advertisingrecord.js" />
+    <Content Include="views\advertising\advertising.js" />
     <Content Include="js\directives\directives.js" />
     <Content Include="main.js" />
     <Content Include="packages.config" />

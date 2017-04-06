@@ -1,30 +1,36 @@
-﻿
-
-
-<div class="row" ng-controller="adsenseController as vm">
-    <h5 class="page-title">
-        广告资源管理
-        <small></small>
-    </h5>
-    <div class="col-md-12">
-        <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption font-green-sharp">
-                    <i class="icon-settings font-green-sharp"></i>
-                    <span class="caption-subject bold uppercase">Page Portlet</span>
-                    <span class="caption-helper hide"></span>
-                </div>
-                <div class="actions">
-                    <a class="btn btn-circle btn-icon-only btn-default" href="#">
-                        <i class="icon-cloud-upload"></i>
-                    </a>
-                    <a class="btn btn-circle btn-icon-only btn-default" href="#">
-                        <i class="icon-wrench"></i>
-                    </a>
+﻿<div ng-controller="views.adsense.adsense as vm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="page-head">
+                <div class="page-title">
+                 <span>广告资源管理</span> <small></small>
                 </div>
             </div>
-            <div class="portlet-body"> Blank page content goes here... </div>
+        </div>
+        <div class="col-xs-6 text-right">
+            <button class="btn btn-primary blue" ng-click="vm.doIt1()"><i class="fa fa-plus"></i> 添加</button>
+            <button class="btn btn-primary blue" ng-click="vm.doIt2()"><i class="fa fa-plus"></i> 删除</button>
         </div>
     </div>
+    <div class="portlet light bordered">
+        <div class="portlet-title">
+            <div class="caption font-green-sharp">
+                <i class="icon-settings font-green-sharp"></i>
+                <span class="caption-subject bold uppercase">Page Portlet</span>
+                <span class="caption-helper hide"></span>
+            </div>
+            <div class="actions">
+                <a class="btn btn-circle btn-icon-only btn-default" href="#">
+                    <i class="icon-cloud-upload"></i>
+                </a>
+                <a class="btn btn-circle btn-icon-only btn-default" href="#">
+                    <i class="icon-wrench"></i>
+                </a>
+            </div>
+        </div>
+        <div class="portlet-body"> Blank page content goes here... </div>
+    </div>
 </div>
+
+
 

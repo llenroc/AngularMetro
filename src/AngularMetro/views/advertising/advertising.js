@@ -1,5 +1,5 @@
 /* Setup blank page controller */
-angular.module('MetronicApp').controller('adsensepackController', ['$rootScope', '$scope', 'settings', function ($rootScope, $scope, settings) {
+angular.module('MetronicApp').controller('views.advertising.advertising', ['$rootScope', '$scope', 'settings', function ($rootScope, $scope, settings) {
     $scope.$on('$viewContentLoaded', function () {
         var vm = this;
         // initialize core components
