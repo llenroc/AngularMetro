@@ -86,7 +86,7 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 //路由设置
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/adsensepack.html");
+    $urlRouterProvider.otherwise("/adsense.html");
 
     $stateProvider
         //广告资源管理
@@ -97,13 +97,23 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             controller: "views.adsense.index",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                    return $ocLazyLoad.load({
-                        name: 'MetronicApp',
-                        insertBefore: '#ng_load_plugins_before', 
-                        files: [
-                            '/views/adsense/index.js'
-                        ]
-                    });
+                    return $ocLazyLoad.load(
+                        [{
+                            name: 'Modal',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/views/adsense/modal.js'
+                            ]
+                        },
+                        {
+                            name: 'MetronicApp',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/views/adsense/index.js'
+                            ]
+                        }]
+
+                        );
                 }]
             }
         })

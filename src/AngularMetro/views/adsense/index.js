@@ -1,8 +1,8 @@
 ﻿
 /* Setup blank page controller */
-angular.module('MetronicApp').controller('views.adsense.index', ['$rootScope', '$scope', 'settings','$uibModal',
+angular.module('MetronicApp').controller('views.adsense.index', ['$scope','settings','$uibModal',
 
-    function ($rootScope, $scope, settings, $uibModal) {
+    function ( $scope, settings, $uibModal) {
     $scope.$on('$viewContentLoaded', function () {
         App.initAjax();
     });
