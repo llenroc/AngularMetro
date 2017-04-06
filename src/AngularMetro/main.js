@@ -10,25 +10,21 @@ var MetronicApp = angular.module("MetronicApp", [
     "ngSanitize"
 ]);
 
-/* Configure ocLazyLoader(refer: https://github.com/ocombe/ocLazyLoad) */
+//懒加载
 MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     $ocLazyLoadProvider.config({
         // global configs go here
     });
 }]);
 
-//AngularJS v1.3.x workaround for old style controller declarition in HTML
+//控制器全局设置
 MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
     // this option might be handy for migrating old apps, but please don't use it
     // in new ones!
     $controllerProvider.allowGlobals();
 }]);
 
-/********************************************
- END: BREAKING CHANGE in AngularJS v1.3.x:
-*********************************************/
-
-/* Setup global settings */
+//全局工厂设置
 MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
     // supported languages
     var settings = {
@@ -48,7 +44,7 @@ MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
     return settings;
 }]);
 
-/* Setup App Main Controller */
+//app控制器
 MetronicApp.controller('AppController', ['$scope', '$rootScope', function ($scope, $rootScope) {
     $scope.$on('$viewContentLoaded', function () {
         //App.initComponents(); // init core components
@@ -111,7 +107,7 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
     });
 }]);
 
-/* Setup Rounting For All Pages */
+//路由设置
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/dashboard.html");
@@ -556,7 +552,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 
 }]);
 
-/* Init global settings and run the app */
+//启动
 MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
