@@ -271,7 +271,6 @@
     <Content Include="assets\layouts\layout\scripts\layout.js" />
     <Content Include="assets\layouts\layout\scripts\layout.min.js" />
     <Content Include="favicon.ico" />
-    <Content Include="index.html" />
     <Content Include="js\controllers\adsensepack\adsensepackController.js" />
     <Content Include="js\controllers\adsense\adsenseController.js" />
     <Content Include="js\controllers\advertisingrecord\advertisingrecordController.js" />
@@ -313,6 +312,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="index.html" />
     <Content Include="tpl\footer.html" />
     <Content Include="tpl\header.html" />
     <Content Include="tpl\layout.html" />
