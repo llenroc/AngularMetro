@@ -86,22 +86,22 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 //路由设置
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    $urlRouterProvider.otherwise("/adsense.html");
+    $urlRouterProvider.otherwise("/adsensepack.html");
 
     $stateProvider
         //广告资源管理
         .state("adsense", {
             url: "/adsense.html",
-            templateUrl: "/views/adsense/adsense.html",
+            templateUrl: "/views/adsense/index.html",
             data: { pageTitle: '广告资源管理' },
-            controller: "views.adsense.adsense",
+            controller: "views.adsense.index",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', 
                         files: [
-                            '/views/adsense/adsense.js'
+                            '/views/adsense/index.js'
                         ]
                     });
                 }]
@@ -110,16 +110,16 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
          //广告资源包管理
         .state("adsensepack", {
             url: "/adsensepack.html",
-            templateUrl: "/views/adsensepack/adsensepack.html",
+            templateUrl: "/views/adsensepack/index.html",
             data: { pageTitle: '广告资源包管理' },
-            controller: "views.adsensepack.adsensepack",
+            controller: "views.adsensepack.index",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/views/adsensepack/adsensepack.js'
+                            '/views/adsensepack/index.js'
                         ]
                     });
                 }]
@@ -128,16 +128,16 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
            //广告投放管理
         .state("advertising", {
             url: "/advertising.html",
-            templateUrl: "/views/advertising/advertising.html",
+            templateUrl: "/views/advertising/index.html",
             data: { pageTitle: '广告投放管理' },
-            controller: "views.advertising.advertising",
+            controller: "views.advertising.index",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/views/advertising/advertising.js'
+                            '/views/advertising/index.js'
                         ]
                     });
                 }]
@@ -146,22 +146,21 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
              //广告投放记录管理
         .state("advertisingrecord", {
             url: "/advertisingrecord.html",
-            templateUrl: "/views/advertisingrecord/advertisingrecord.html",
+            templateUrl: "/views/advertisingrecord/index.html",
             data: { pageTitle: '广告投放记录管理' },
-            controller: "views.advertisingrecord.advertisingrecord",
+            controller: "views.advertisingrecord.index",
             resolve: {
                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
                     return $ocLazyLoad.load({
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', 
                         files: [
-                            '/views/advertisingrecord/advertisingrecord.js'
+                            '/views/advertisingrecord/index.js'
                         ]
                     });
                 }]
             }
         })
-
 }]);
 
 //启动
