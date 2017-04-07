@@ -168,6 +168,23 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }]
             }
         })
+         .state("putadsense", {
+             url: "/putadsense.html/:orgId",
+             templateUrl: "/views/advertising/putadsense.html",
+             data: { pageTitle: '广告投放' },
+             controller: "views.advertising.putadsense",
+             resolve: {
+                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                     return $ocLazyLoad.load({
+                         name: 'MetronicApp',
+                         insertBefore: '#ng_load_plugins_before',
+                         files: [
+                             '/views/advertising/putadsense.js'
+                         ]
+                     });
+                 }]
+             }
+         })
              //广告投放记录管理
         .state("advertisingrecord", {
             url: "/advertisingrecord.html",

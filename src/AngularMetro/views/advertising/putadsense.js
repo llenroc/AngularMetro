@@ -1,14 +1,9 @@
-﻿
-(function () {
-    angular.module('MetronicApp').controller('views.advertisingrecord.index', ['$scope', 'settings', '$uibModal',
+﻿(function () {
+    angular.module('MetronicApp').controller('views.advertising.putadsense', ['$scope', 'settings', '$uibModal',
         function ($scope, settings, $uibModal) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
-                // set default layout mode
-                //$rootScope.settings.layout.pageContentWhite = true;
-                //$rootScope.settings.layout.pageBodySolid = false;
-                //$rootScope.settings.layout.pageSidebarClosed = false;
             });
             var vm = this;
             vm.date = {

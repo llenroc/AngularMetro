@@ -1,30 +1,101 @@
 ﻿
-<h3 class="page-title">
-    广告资源管理
-    <small></small>
-</h3>
 
-<div class="row" ng-controller="views.advertisingrecord.index as vm">
-    <div class="col-md-12">
-        <!-- BEGIN: ACCORDION DEMO -->
-        <div class="portlet light bordered">
-            <div class="portlet-title">
-                <div class="caption font-green-sharp">
-                    <i class="icon-settings font-green-sharp"></i>
-                    <span class="caption-subject bold uppercase">Page Portlet</span>
-                    <span class="caption-helper hide"></span>
-                </div>
-                <div class="actions">
-                    <a class="btn btn-circle btn-icon-only btn-default" href="#">
-                        <i class="icon-cloud-upload"></i>
-                    </a>
-                    <a class="btn btn-circle btn-icon-only btn-default" href="#">
-                        <i class="icon-wrench"></i>
-                    </a>
+<div ng-controller="views.advertisingrecord.index as vm">
+    <div class="row">
+        <div class="col-xs-6">
+            <div class="page-head">
+                <div class="page-title">
+                    <span>广告发放</span> <small></small>
                 </div>
             </div>
-            <div class="portlet-body"> Blank page content goes here... </div>
+        </div>
+
+    </div>
+    <div class="portlet light bordered">
+        <div class="row">
+            <div class="col-xs-8 text-left">
+                <div class="col-md-4">
+                    <div class="input-icon right">
+                        <p class="input-group">
+                            <input type="text" class="form-control" placeholder="开始时间"
+                                   uib-datepicker-popup readonly
+                                   ng-model="vm.filter.startTime"
+                                   is-open="vm.date.leftopen"
+                                   datepicker-options="vm.date.dateOptions"
+                                   ng-required="true"
+                                   current-text="今天"
+                                   clear-text="清除"
+                                   close-text="关闭" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="vm.date.openleft()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-icon right">
+                        <p class="input-group">
+                            <input type="text" class="form-control" placeholder="结束时间"
+                                   uib-datepicker-popup readonly ng-model="vm.filter.endTime"
+                                   is-open="vm.date.rightopen"
+                                   datepicker-options="vm.date.dateOptions"
+                                   ng-required="true"
+                                   current-text="今天"
+                                   clear-text="清除"
+                                   close-text="关闭" />
+                            <span class="input-group-btn">
+                                <button type="button" class="btn btn-default"
+                                        ng-click="vm.date.openright()">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-icon right">
+                        <i ng-click="vm.add()" class="fa fa-search"></i>
+                        <input type="text" class="form-control input-circle" placeholder="按条件搜索" ng-model="vm.table.filter">
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 text-right">
+                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
+                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-laptop"></i> 发布</button>
+                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-times"></i> 删除</button>
+            </div>
+        </div>
+        <div class="row">
+            <!-- 角色列表 -->
+            <table object-table
+                   data="vm.table.data"
+                   check-model="vm.table.checkModel"
+                   display="vm.table.pageConfig.itemsPerPage"
+                   headers="活动标题,简介,状态,创建时间"
+                   fields="title,description,isActive,creationTime">
+                <tbody>
+                    <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                        <td>
+                            <input type="checkbox" ng-model="::item.checked"
+                                   ng-click="$event.stopPropagation(); checkOne(item)" />
+                        </td>
+                        <td show-td item="item" name="title"></td>
+                        <td show-td item="item" name="description"></td>
+                        <td>{{item.isActive}}</td>
+                        <td show-td item="item" name="creationTime" format="yyyy-MM-dd  HH:mm"></td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+            <!--分页-->
+            <nav class="paging">
+                <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+            </nav>
+
         </div>
     </div>
 </div>
-
