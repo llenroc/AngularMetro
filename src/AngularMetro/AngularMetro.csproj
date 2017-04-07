@@ -100,6 +100,7 @@
     <Content Include="assets\global\css\components-rounded.min.css" />
     <Content Include="assets\global\css\components.css" />
     <Content Include="assets\global\css\components.min.css" />
+    <Content Include="assets\global\css\object-table-style.css" />
     <Content Include="assets\global\css\plugins-md.css" />
     <Content Include="assets\global\css\plugins-md.min.css" />
     <Content Include="assets\global\css\plugins.css" />
@@ -718,6 +719,7 @@
     <Content Include="assets\global\plugins\morris\spec\viz\exemplary\stacked_bar0.png" />
     <Content Include="assets\global\plugins\morris\spec\viz\test.html" />
     <Content Include="assets\global\plugins\morris\spec\viz\visual_specs.js" />
+    <Content Include="assets\global\plugins\object-table.js" />
     <Content Include="assets\global\plugins\select2\css\select2-bootstrap.min.css" />
     <Content Include="assets\global\plugins\select2\css\select2.css" />
     <Content Include="assets\global\plugins\select2\css\select2.min.css" />

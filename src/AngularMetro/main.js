@@ -7,7 +7,9 @@ var MetronicApp = angular.module("MetronicApp", [
     "ui.router",
     "ui.bootstrap",
     "oc.lazyLoad",
-    "ngSanitize"
+    "ngSanitize",
+      'objectTable',
+    'objPagination',
 ]);
 
 //懒加载
@@ -17,13 +19,22 @@ MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     });
 }]);
 
+
+
+
 //控制器全局设置
 MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
     // this option might be handy for migrating old apps, but please don't use it
     // in new ones!
     $controllerProvider.allowGlobals();
 }]);
-
+MetronicApp.factory('appSession', [
+          function () {
+              var _session = null;
+              _session = { id: 3, name: "王三",token:"abcdefg",roleId:3 };
+              return _session;
+          }
+]);
 //全局工厂设置
 MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
     // supported languages
@@ -52,10 +63,14 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function ($scop
     });
 }]);
 /* Setup Layout Part - Header */
-MetronicApp.controller('HeaderController', ['$scope', function ($scope) {
+MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($scope, appSession) {
+    if (!appSession) {
+        window.location.href = "/index.html";
+    }
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader(); // init header
     });
+    $scope.user = appSession;
 }]);
 
 /* Setup Layout Part - Sidebar */
