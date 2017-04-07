@@ -119,14 +119,12 @@
                         { id: 3, parentId: 0,  displayName: "B机构" },
                         { id: 4, parentId: 3,  displayName: "B子机构"},
                     ];
-
+                 
                     var treeData = _.map(list, function (item) {
                         return {
-                            id: item.id, type: item.type,
+                            id: item.id,
                             parent: item.parentId ? item.parentId : '#',
-                            code: item.code,
                             displayName: item.displayName,
-                            memberCount: item.memberCount,
                             text: vm.organizationTree.generateTextOnTree(item),
                             state: {
                                 opened: true
