@@ -61,38 +61,58 @@
                 </div>
             </div>
             <div class="col-xs-4 text-right">
-                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
-                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-laptop"></i> 发布</button>
-                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-times"></i> 删除</button>
+                <button class="btn btn-primary blue" ng-click="vm.allow()"><i class="fa fa-laptop"></i> 分配</button>
+                <button class="btn btn-primary blue" ng-click="vm.back()"><i class="fa fa-laptop"></i> 返回</button>
             </div>
         </div>
         <div class="row">
-            <!-- 角色列表 -->
-            <table object-table
-                   data="vm.table.data"
-                   check-model="vm.table.checkModel"
-                   display="vm.table.pageConfig.itemsPerPage"
-                   headers="活动标题,简介,状态,创建时间"
-                   fields="title,description,isActive,creationTime">
-                <tbody>
-                    <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
-                        <td>
-                            <input type="checkbox" ng-model="::item.checked"
-                                   ng-click="$event.stopPropagation(); checkOne(item)" />
-                        </td>
-                        <td show-td item="item" name="title"></td>
-                        <td show-td item="item" name="description"></td>
-                        <td>{{item.isActive}}</td>
-                        <td show-td item="item" name="creationTime" format="yyyy-MM-dd  HH:mm"></td>
+            <div class="col-lg-3">
+                <div class="portlet light">
+                    <div class="portlet-title myPortlet-title">
+                        <span class="myPortlet-title-span">
+                            组织机构
+                        </span>
+                    </div>
+                    <div class="portlet-body scrollList portlet-scroll" ng-scrollbar>
+                        <div id="OrganizationUnitEditTree"></div>
+                        <div ng-if="!vm.organizationTree.unitCount" class="text-muted">
+                            暂无组织机构
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9">
+                <!-- 角色列表 -->
+                <table object-table
+                       data="vm.table.data"
+                       check-model="vm.table.checkModel"
+                       display="vm.table.pageConfig.itemsPerPage"
+                       headers="活动标题,简介,状态,创建时间"
+                       fields="title,description,isActive,creationTime">
+                    <tbody>
+                        <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                            <td>
+                                <input type="checkbox" ng-model="::item.checked"
+                                       ng-click="$event.stopPropagation(); checkOne(item)" />
+                            </td>
+                            <td show-td item="item" name="title"></td>
+                            <td show-td item="item" name="description"></td>
+                            <td>{{item.isActive}}</td>
+                            <td show-td item="item" name="creationTime" format="yyyy-MM-dd  HH:mm"></td>
 
 
-                    </tr>
-                </tbody>
-            </table>
-            <!--分页-->
-            <nav class="paging">
-                <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
-            </nav>
+                        </tr>
+                    </tbody>
+                </table>
+                <!--分页-->
+                <nav class="paging">
+                    <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                </nav>
+            </div>
+
+
+        
 
         </div>
     </div>

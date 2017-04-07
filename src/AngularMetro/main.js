@@ -169,19 +169,27 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             }
         })
          .state("putadsense", {
-             url: "/putadsense.html/:orgId",
+             url: "/putadsense.html",
+             parms:{"resourse":null },
              templateUrl: "/views/advertising/putadsense.html",
              data: { pageTitle: '广告投放' },
              controller: "views.advertising.putadsense",
              resolve: {
                  deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-                     return $ocLazyLoad.load({
+                     return $ocLazyLoad.load([{
                          name: 'MetronicApp',
                          insertBefore: '#ng_load_plugins_before',
                          files: [
                              '/views/advertising/putadsense.js'
                          ]
-                     });
+                     }, {
+                         name: 'jstreeneed',
+                         insertBefore: '#ng_load_plugins_before',
+                         files: [
+                             '/assets/global/plugins/jstree/dist/jstree.min.js',
+                             '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                         ]
+                     }]);
                  }]
              }
          })
@@ -209,4 +217,14 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
+    $rootScope.safeApply = function (fn) {
+        var phase = this.$root.$$phase;
+        if (phase == '$apply' || phase == '$digest') {
+            if (fn && (typeof (fn) === 'function')) {
+                fn();
+            }
+        } else {
+            this.$apply(fn);
+        }
+    };
 }]);

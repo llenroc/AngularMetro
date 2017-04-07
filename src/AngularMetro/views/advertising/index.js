@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings', '$uibModal',
-        function ($scope, settings, $uibModal) {
+    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state',
+        function ($scope, settings, $state) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -60,18 +60,8 @@
                 //});
             };
             vm.init();
-            vm.add = function () {
-                var modal = $uibModal.open({
-                    templateUrl: '/views/adsense/modal.html',
-                    controller: 'views.adsense.modal as vm',
-                    backdrop: 'static',
-                    //resolve: {
-                    //    activity: function () { return activityid; },
-                    //}
-                });
-                modal.result.then(function (response) {
-                    //  vm.getactivitys();
-                })
+            vm.publish = function () {
+                $state.go("putadsense", [1, 2, 3]);
             }
         }])
 })();
