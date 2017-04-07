@@ -900,6 +900,7 @@
     <Content Include="assets\pages\scripts\login.js" />
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="js\factorys\dataFactory.js" />
     <Content Include="views\adsensepack\index.js" />
     <Content Include="views\adsense\modal.html" />
     <Content Include="views\adsense\modal.js" />
@@ -985,7 +986,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
-    <Folder Include="js\factorys\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

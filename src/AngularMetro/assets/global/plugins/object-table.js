@@ -241,13 +241,8 @@ angular.module("objectTable").controller("objectTableCtrl",
                 } else {
                     $('tbody tr').css({ color: "#4e5b80", fontSize: 12, backgroundColor: "#ffffff" });
                 }
-
-                if (e.backModel['back']) {
-                    e.backModel['back'](Object.getOwnPropertyNames(e.checkModel).length);
-                }
             },
             e.checkOne = function (item) {
-                
                 var index = 0;
                 for (var i = 0 ; i < e.data.length ; i++){
                     if(item == e.data[i]){
@@ -276,7 +271,6 @@ angular.module("objectTable").controller("objectTableCtrl",
                 }
                 
             };
-
             e.$watch('data', function (nv, ov) {
                 if (nv == ov) {
                     return;
@@ -291,7 +285,6 @@ angular.module("objectTable").controller("objectTableCtrl",
                 if (ele) ele.checked = (e.choseArr.length == e.data.length && e.choseArr.length>0);
 
             }, true);
-
         }]),
 
 
