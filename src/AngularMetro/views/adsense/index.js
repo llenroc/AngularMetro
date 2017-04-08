@@ -87,6 +87,27 @@
                     vm.init();
                 })
             }
+            vm.delete = function () {
+                var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length <= 0) {
+                    alert("请选择要删除的对象");
+                    return;
+                }
+                dataFactory.action("api/resourse/delete", "", null, { list: ids }).then(function (res) {
+                    vm.init();
+                });
+            }
+            vm.public = function () {
+                var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length <= 0) {
+                    alert("请选择要操作的对象");
+                    return;
+                }
+                dataFactory.action("api/resourse/updateState", "", null, { list: ids }).then(function (res) {
+                    vm.init();
+                });
+            }
+            
         }])
 })();
 

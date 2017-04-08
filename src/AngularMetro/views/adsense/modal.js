@@ -9,7 +9,7 @@
             vm.url = "api/resource/add";
             if (model.id&&model.id>0) {
                 vm.url = "api/resource/update";
-                dataFactory.action("api/resourse/detail", "", null, { id: model.id }).then(function (res) {
+                dataFactory.action("api/resourse/detail?id=" + model.id, "", null, {}).then(function (res) {
                     if (res.result=="1") {
                         vm.model = res.model;
                     }
