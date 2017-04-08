@@ -62,6 +62,7 @@
             </div>
             <div class="col-xs-4 text-right">
                 <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 添加</button>
+                <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-plus"></i> 编辑</button>
                 <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-laptop"></i> 发布</button>
                 <button class="btn btn-primary blue" ng-click="vm.add()"><i class="fa fa-times"></i> 删除</button>
             </div>
@@ -72,18 +73,20 @@
                  data="vm.table.data"
                  check-model="vm.table.checkModel"
                  display="vm.table.pageConfig.itemsPerPage"
-                 headers="活动标题,简介,状态,创建时间"
-                 fields="title,description,isActive,creationTime">
+                 headers="广告资源名称,广告类型,创建时间,广告概述,广告时长,状态"
+                 fields="name,type,creationTime,description,time,state">
               <tbody>
                   <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                       <td>
                           <input type="checkbox" ng-model="::item.checked"
                                  ng-click="$event.stopPropagation(); checkOne(item)" />
                       </td>
-                      <td show-td item="item" name="title"></td>
-                      <td show-td item="item" name="description"></td>
-                      <td>{{item.isActive}}</td>
+                      <td show-td item="item" name="name"></td>
+                      <td show-td item="item" name="type"></td>
                       <td show-td item="item" name="creationTime" format="yyyy-MM-dd  HH:mm"></td>
+                      <td show-td item="item" name="description"></td>
+                      <td show-td item="item" name="time"></td>
+                      <td show-td item="item" name="state"></td>
 
 
                   </tr>

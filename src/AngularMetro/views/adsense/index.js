@@ -44,9 +44,9 @@
                 var display = vm.table.pageConfig.itemsPerPage;
 
                 vm.table.pageConfig.totalItems = 20;
-              //  tite, description, isActive, creationTime
-                vm.table.data = [{ title: "标题a", description: "描述", isActive: true, creationTime: new Date() },
-                { title: "标题b", description: "描述b", isActive: false, creationTime: new Date() }];
+                //  name,type,creationTime,description,time,state
+                vm.table.data = [{ name: "标题a", description: "描述", type: 1, creationTime: new Date(), time:12,state:1 },
+                { name: "标题b", description: "描述b", type: 2, creationTime: new Date(), time: 23, state: 1 }];
                 //activityService.getActivitys({
                 //    skipCount: (page - 1) * display,
                 //    maxResultCount: display, filter: vm.table.filter
@@ -65,6 +65,7 @@
                     templateUrl: '/views/adsense/modal.html',
                     controller: 'views.adsense.modal as vm',
                     backdrop: 'static',
+                    size: 'lg',//模态框的大小尺寸
                     //resolve: {
                     //    activity: function () { return activityid; },
                     //}

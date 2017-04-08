@@ -266,9 +266,9 @@ angular.module("objectTable").controller("objectTableCtrl",
                 var ele = document.querySelector("#checkAllBox");
                 ele.checked = e.choseArr.length == e.data.length;
 
-                if (e.backModel['back']) {
-                    e.backModel['back'](Object.getOwnPropertyNames(e.checkModel).length);
-                }
+                //if (e.backModel['back']) {
+                //    e.backModel['back'](Object.getOwnPropertyNames(e.checkModel).length);
+                //}
                 
             };
             e.$watch('data', function (nv, ov) {
