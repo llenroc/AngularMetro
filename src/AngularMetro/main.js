@@ -10,6 +10,7 @@ var MetronicApp = angular.module("MetronicApp", [
     "ngSanitize",
       'objectTable',
     'objPagination',
+    'angularFileUpload',
 ]);
 
 //懒加载

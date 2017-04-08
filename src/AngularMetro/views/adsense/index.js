@@ -1,11 +1,12 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.adsense.index', ['$scope', 'settings', '$uibModal',
-        function ($scope, settings, $uibModal) {
+    angular.module('MetronicApp').controller('views.adsense.index', ['$scope', 'settings', '$uibModal',"dataFactory",
+        function ($scope, settings, $uibModal, dataFactory) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
             var vm = this;
+            vm.filter = { };
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -40,24 +41,18 @@
             }
             //获取用户数据集，并且添加配置项
             vm.init = function () {
-                var page = vm.table.pageConfig.currentPage;
-                var display = vm.table.pageConfig.itemsPerPage;
-
-                vm.table.pageConfig.totalItems = 20;
-                //  name,type,creationTime,description,time,state
-                vm.table.data = [{ name: "标题a", description: "描述", type: 1, creationTime: new Date(), time:12,state:1 },
-                { name: "标题b", description: "描述b", type: 2, creationTime: new Date(), time: 23, state: 1 }];
-                //activityService.getActivitys({
-                //    skipCount: (page - 1) * display,
-                //    maxResultCount: display, filter: vm.table.filter
-                //}).success(function (result) {
-                //    vm.table.pageConfig.totalItems = result.totalCount;
-                //    vm.table.data = result.items;
-                //    vm.table.pageConfig.onChange = function () {
-                //        vm.init();
-                //    }
-                //}).finally(function () {
-                //});
+                vm.filter.pageNum= vm.table.pageConfig.currentPage;
+                vm.filter.pageSize= vm.table.pageConfig.itemsPerPage;
+                dataFactory.action("api/resource/selectAll", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result=="1") {
+                            vm.table.pageConfig.totalItems = res.total;
+                            vm.table.data = res.list;
+                            vm.table.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                });
             };
             vm.init();
             vm.add = function () {
@@ -66,12 +61,30 @@
                     controller: 'views.adsense.modal as vm',
                     backdrop: 'static',
                     size: 'lg',//模态框的大小尺寸
-                    //resolve: {
-                    //    activity: function () { return activityid; },
-                    //}
+                    resolve: {
+                        model: function () { return {} },
+                    }
                 });
                 modal.result.then(function (response) {
-                    //  vm.getactivitys();
+                    vm.init();
+                })
+            }
+            vm.edit = function () {
+                var id = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (id.length!=1) {
+                    return;
+                }
+                var modal = $uibModal.open({
+                    templateUrl: '/views/adsense/modal.html',
+                    controller: 'views.adsense.modal as vm',
+                    backdrop: 'static',
+                    size: 'lg',//模态框的大小尺寸
+                    resolve: {
+                        model: function () { return {id:id[0]} },
+                    }
+                });
+                modal.result.then(function (response) {
+                    vm.init();
                 })
             }
         }])

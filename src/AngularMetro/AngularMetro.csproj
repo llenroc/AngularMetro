@@ -645,6 +645,7 @@
     <Content Include="assets\global\img\social\youtube.png" />
     <Content Include="assets\global\img\syncfusion-icons-white.png" />
     <Content Include="assets\global\img\syncfusion-icons.png" />
+    <Content Include="assets\global\plugins\angular-file-upload\angular-file-upload.min.js" />
     <Content Include="assets\global\plugins\angularjs\angular-cookies.min.js" />
     <Content Include="assets\global\plugins\angularjs\angular-sanitize.min.js" />
     <Content Include="assets\global\plugins\angularjs\angular-touch.min.js" />

@@ -1,8 +1,11 @@
 ﻿(function () {
     angular.module('MetronicApp').factory('dataFactory', function ($http, $q){  
         var factory = {};  
-        factory.getresults = function (url, method, headers, params) {
-            var u = "http://www.baidu.com";
+        factory.action = function (url, method, headers, params) {
+            if (method=="") {
+                method = "POST";
+            }
+            var u = "http://101.200.238.155:8080/";
             url = u + url;
             if (!headers) {
                 headers = { 'Content-Type': 'application/json' };
