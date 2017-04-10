@@ -82,14 +82,17 @@
                                  ng-click="$event.stopPropagation(); checkOne(item)" />
                       </td>
                       <td show-td item="item" name="name"></td>
-                      <td show-td item="item" name="type">
-                          <!--<span title="视频"  ng-if="item.type==1"></span>
-                          <span title="图片"  ng-if="item.type==2"></span>-->
+                      <td >
+                          <span ng-show="item.type==1">视频</span>
+                          <span ng-show="item.type==2">图片</span>
                       </td>
-                      <td show-td item="item" name="createTime" format="yyyy-MM-dd  HH:mm"></td>
+                      <td show-td item="item" name="createTime" format="yyyy-MM-dd HH:mm"></td>
                       <td show-td item="item" name="note"></td>
                       <td show-td item="item" name="time"></td>
-                      <td show-td item="item" name="state"></td>
+                      <td >
+                          <span ng-show="item.state==1">已发布</span>
+                          <span ng-show="item.state==0">未发布</span>
+                      </td>
                   </tr>
               </tbody>
           </table>

@@ -43,7 +43,9 @@
             });
 
             vm.save = function () {
-                if (vm.uploader.queue.length==0) {
+                if (vm.uploader.queue.length == 0) {
+                    vm.model.address = "http://www.baidu.com/movie.avi";
+                    vm.model.state = vm.model.state ? 1 : 0;
                     dataFactory.action(vm.url, "", null, vm.model).then(function (res) {
                         if (res.result == "1") {
                             $uibModalInstance.close();
@@ -62,6 +64,7 @@
             vm.uploader.onSuccessItem = function (fileItem, response, status, headers) {
               //  vm.model.address = response.address;
                 vm.model.address = "http://www.baidu.com/movie.avi";
+                vm.model.state = vm.model.state ? 1 : 0;
                 dataFactory.action(url, "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $uibModalInstance.close();
