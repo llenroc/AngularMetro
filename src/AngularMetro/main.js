@@ -4,13 +4,14 @@ Metronic AngularJS App Main Script
 
 /* Metronic App */
 var MetronicApp = angular.module("MetronicApp", [
-    "ui.router",
-    "ui.bootstrap",
-    "oc.lazyLoad",
-    "ngSanitize",
-      'objectTable',
-    'objPagination',
-    'angularFileUpload',
+    "ui.router",//路由
+    "ui.bootstrap",//样式
+    "oc.lazyLoad",//懒加载
+    "ngSanitize",//初始化
+      'objectTable',//table表格
+    'objPagination',//分页
+    'angularFileUpload',//文件上传
+    'ngCookies'//cookie操作
 ]);
 
 //懒加载
@@ -29,9 +30,10 @@ MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
     // in new ones!
     $controllerProvider.allowGlobals();
 }]);
-MetronicApp.factory('appSession', [
-          function () {
+MetronicApp.factory('appSession', ['$cookies','$cookieStore',
+          function ($cookies, $cookieStore) {
               var _session = null;
+            var temp=  $cookieStore.get("metroResult");
               _session = { id: 3, name: "王三",token:"abcdefg",roleId:3 };
               return _session;
           }

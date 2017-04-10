@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.putadsense', ['$scope', 'settings',"$stateParams",
-        function ($scope, settings, $stateParams) {
+    angular.module('MetronicApp').controller('views.advertising.putadsense', ['$scope', 'settings',"$stateParams",'$state',
+        function ($scope, settings, $stateParams, $state) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -47,8 +47,8 @@
 
                 vm.table.pageConfig.totalItems = 20;
                 //  tite, description, isActive, creationTime
-                vm.table.data = [{ title: "标题a", description: "描述", isActive: true, creationTime: new Date() },
-                { title: "标题b", description: "描述b", isActive: false, creationTime: new Date() }];
+                vm.table.data = [{ devicename: "标题a", devicenote: "描述" },
+                { devicename: "标题b", devicenote: "描述b" }];
                 //activityService.getActivitys({
                 //    skipCount: (page - 1) * display,
                 //    maxResultCount: display, filter: vm.table.filter
@@ -241,7 +241,7 @@
             vm.allow = function () { }
 
             vm.back = function () {
-                $scope.go("advertising");
+                $state.go("advertising");
             }
         }])
 })();

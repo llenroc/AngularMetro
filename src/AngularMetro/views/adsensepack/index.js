@@ -64,6 +64,12 @@
             if (id.length!=1) {
                 return;
             }
+            for (var i in vm.table.checkModel) {
+                if (vm.table.checkModel[i].state == 1) {
+                    alert("已发布对象不允许操作");
+                    return;
+                }
+            }
             $state.go("adsensepackmodify", id);
         }
         vm.delete = function () {

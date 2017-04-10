@@ -1,7 +1,6 @@
-var Login = function() {
+﻿var Login = function() {
 
     var handleLogin = function() {
-
         $('.login-form').validate({
             errorElement: 'span', //default input error message container
             errorClass: 'help-block', // default input error message class
@@ -53,11 +52,42 @@ var Login = function() {
         $('.login-form input').keypress(function(e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
-                    $('.login-form').submit(); //form validation success, call ajax form submit
+                    var url = "http://www.baidu.com";
+                    var data = $(".login-form").serializeArray();
+                    $.post(url, data, function (res) {
+                        if (res.result==1) {
+                            var val="wwwwwwwwwwwwwwwwwwww"+res.data;
+                            $.cookie("metroResult",val,{
+                                expires:1,//有效日期
+                                path:"/",//cookie的路 径
+                                secure:true //true,cookie的传输会要求一个安全协议,否则反之
+                            });
+                            window.location.href = "/views/layout/layout.html";
+                        }
+                    });
+                    window.location.href = "/views/layout/layout.html";
                 }
                 return false;
             }
         });
+        $("#btn").click(function () {
+            if ($('.login-form').validate().form()) {
+                var url = "http://www.baidu.com";
+                var data = $(".login-form").serializeArray();
+                $.post(url, data, function (res) {
+                    if (res.result == 1) {
+                        var val = "wwwwwwwwwwwwwwwwwwww" + res.data;
+                        $.cookie("metroResult", val, {
+                            expires: 1,//有效日期
+                            path: "/",//cookie的路 径
+                            secure: true //true,cookie的传输会要求一个安全协议,否则反之
+                        });
+                        window.location.href = "/views/layout/layout.html";
+                    }
+                });
+                window.location.href = "/views/layout/layout.html";
+            }
+        })
     }
 
 

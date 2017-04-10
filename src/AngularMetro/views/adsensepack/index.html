@@ -74,17 +74,20 @@
                    check-model="vm.table.checkModel"
                    display="vm.table.pageConfig.itemsPerPage"
                    headers="广告资源包名称,创建时间,描述,状态"
-                   fields="name,createTime,description,state">
+                   fields="name,createTime,note,state">
                 <tbody>
                     <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                         <td>
-                            <input type="checkbox" ng-model="::item.checked"  ng-if="::item.state==1"
+                            <input type="checkbox" ng-model="::item.checked" ng-show="::item.state!=1"
                                    ng-click="$event.stopPropagation(); checkOne(item)" />
                         </td>
                         <td show-td item="item" name="name"></td>
                         <td show-td item="item" name="createTime" format="yyyy-MM-dd  HH:mm"></td>
-                        <td show-td item="item" name="description"></td>
-                        <td>{{item.state}}</td>
+                        <td show-td item="item" name="note"></td>
+                        <td>
+                            <span ng-show="item.state==1">已发布</span>
+                            <span ng-show="item.state==0">未发布</span>
+                        </td>
                     </tr>
                 </tbody>
             </table>
