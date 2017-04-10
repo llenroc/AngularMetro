@@ -59,6 +59,11 @@
                     if (res.result == "1") {
                         vm.table.pageConfig.totalItems = res.total;
                         vm.table.data = res.list;
+                        angular.forEach(vm.table.data,function (row, index) {
+                            if ($.inArray(row.id, vm.pack.resourceIds)!=-1) {
+                                row.checked = true;
+                            }
+                        });
                         vm.table.pageConfig.onChange = function () {
                             vm.init();
                         }
