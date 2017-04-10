@@ -6,13 +6,13 @@
 
             });
             var vm = this;
+            vm.type = [{ id: 1, name: '视频' }, {id:2,name:'图片'}]
             vm.url = "api/resource/add";
             if (model.id&&model.id>0) {
                 vm.url = "api/resource/update";
-          
-                dataFactory.action("api/resourse/detail?id=" + model.id, "", null, { id: model.id }).then(function (res) {
+                dataFactory.action("api/resource/detail", "", null, { id: model.id }).then(function (res) {
                     if (res.result == "1") {
-                        vm.model = res.model;
+                        vm.model = res.data;
                     }
                 })
 

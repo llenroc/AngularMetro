@@ -7,9 +7,12 @@
             App.initAjax();
         });
         var vm = this;
+        vm.packId = $stateParams.id;
+
         vm.filter = {};
         vm.pack = {};
-        vm.packId = $stateParams.id;
+        vm.temparr = [];
+        vm.checktable = [];
         if (vm.packId) {
             dataFactory.action("api/package/detail", "", null, vm.packId)
               .then(function (res) {
@@ -76,11 +79,11 @@
         }
             //保存
         vm.save = function () {
-            var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-            if (ids.length <=0) {
+            if (vm.checktable.length <= 0) {
                 alert("请选择资源");
                 return;
             }
+            vm.pack.resources = vm.checktable;
             dataFactory.action("api/package/add", "", null, vm.pack).then(function (res) {
                 if (res.result=="1") {
                     $state.go("adsensepack");
@@ -101,8 +104,45 @@
                 //}
             });
             modal.result.then(function (response) {
-                vm.init();
+                if (response) {
+                    var y=0;
+                    for (var i in response) {
+                        response[i].order = y++;
+                        vm.temparr.push(response[i]);
+                    }
+                    vm.checktable = vm.temparr;
+                }
+             
             })
+        }
+
+        vm.sort = function (row, num) {
+            var p = row.order - 1;
+            var n = row.order + 1;
+            var prev = vm.temparr[p];
+            var next = vm.temparr[n];
+            var temp ;
+            if (num==1) {//向上
+                if (prev==undefined) {
+                    return;
+                }
+                temp = prev.order;
+                prev.order = row.order;
+                row.order = temp;
+            } else {
+                if (next==undefined) {
+                    return;
+                }
+                temp = next.order;
+                next.order = row.order;
+                row.order = temp;
+            }
+            vm.temparr.sort(function (x, y) {
+                return x.order - y.order
+            });
+        }
+        vm.remove = function (row) {
+            vm.checktable.splice($.inArray(row,vm.checktable),1);
         }
     }]);
 })();

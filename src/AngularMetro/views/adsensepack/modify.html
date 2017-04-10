@@ -25,7 +25,7 @@
                             <div class="col-md-9">
                                 <div class="md-checkbox-inline">
                                     <div class="md-checkbox">
-                                        <input type="checkbox" id="check" class="md-check"  ng-model="vm.pack.state">
+                                        <input type="checkbox" id="check" class="md-check" ng-model="vm.pack.state">
                                         <label for="check">
                                             <span></span>
                                             <span class="check"></span>
@@ -52,17 +52,40 @@
 
                 </div>
             </div>
-
+            <hr />
             <div class="row">
                 <div class="col-xs-8 text-left">
-                    <span >广告资源列表</span>
+                    <span>广告资源列表</span>
                 </div>
                 <div class="col-xs-4 text-right">
                     <button class="btn btn-primary blue" ng-click="vm.addadsense()"><i class="fa fa-plus"></i> 添加广告</button>
-                  
                 </div>
             </div>
-
+            <div ng-if="vm.checktable.length>0" class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>广告名称</th>
+                            <th>广告类型</th>
+                            <th>广告概述</th>
+                            <th>广告时长</th>
+                            <th>广告排序</th>
+                            <th>删除</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="row in vm.checktable | orderBy:row.order:false">
+                            <td>{{row.name}}</td>
+                            <td>{{row.type==1?'视频':'图片'}}</td>
+                            <td>{{row.note}}</td>
+                            <td>{{row.time}}</td>
+                            <td><i ng-click="vm.sort(row,1)" class="fa fa-toggle-up" ></i> &nbsp;
+                             <i ng-click="vm.sort(row,-1)" class="fa fa-toggle-down" aria-hidden="true"></i></td>
+                            <td><i ng-click="vm.remove(row)" class="fa fa-times" aria-hidden="true"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             <div class="modal-footer">
                 <button ng-disabled="vm.saving" type="button" class="btn btn-default" ng-click="vm.cancel()">返回</button>
                 <button type="submit" button-busy="vm.saving" busy-text="保存"

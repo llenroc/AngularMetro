@@ -92,8 +92,8 @@
                 if (ids.length <= 0) {
                     alert("请选择要删除的对象");
                     return;
-                }
-                dataFactory.action("api/resourse/delete", "", null, { list: ids }).then(function (res) {
+                }                   //api/resource/delete
+                dataFactory.action("api/resource/delete", "", null, { list: ids }).then(function (res) {
                     vm.init();
                 });
             }
@@ -103,11 +103,10 @@
                     alert("请选择要操作的对象");
                     return;
                 }
-                dataFactory.action("api/resourse/updateState", "", null, { list: ids,state:1 }).then(function (res) {
+                dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
                     vm.init();
                 });
             }
-            
         }])
 })();
 
