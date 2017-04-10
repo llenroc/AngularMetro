@@ -11,7 +11,6 @@ var MetronicApp = angular.module("MetronicApp", [
       'objectTable',//table表格
     'objPagination',//分页
     'angularFileUpload',//文件上传
-    'ngCookies'//cookie操作
 ]);
 
 //懒加载
@@ -30,11 +29,14 @@ MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
     // in new ones!
     $controllerProvider.allowGlobals();
 }]);
-MetronicApp.factory('appSession', ['$cookies','$cookieStore',
-          function ($cookies, $cookieStore) {
+MetronicApp.factory('appSession', [
+          function () {
               var _session = null;
-            var temp=  $cookieStore.get("metroResult");
-              _session = { id: 3, name: "王三",token:"abcdefg",roleId:3 };
+              var cookie = $.cookie("metroResult");
+              if (cookie!=""||cookie!=undefined) {
+                  var temp = $.parseJSON(cookie);
+                  _session = temp;
+              }
               return _session;
           }
 ]);
@@ -73,7 +75,11 @@ MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($s
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader(); // init header
     });
-    $scope.user = appSession;
+    vm = this;
+    vm.user = appSession;
+    vm.out = function () {
+        $.cookie("metroResult", null);
+    }
 }]);
 
 /* Setup Layout Part - Sidebar */

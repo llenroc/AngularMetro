@@ -675,6 +675,7 @@
     <Content Include="assets\global\plugins\jquery-validation\js\additional-methods.min.js" />
     <Content Include="assets\global\plugins\jquery-validation\js\jquery.validate.min.js" />
     <Content Include="assets\global\plugins\jquery.blockui.min.js" />
+    <Content Include="assets\global\plugins\jquery.cookie.js" />
     <Content Include="assets\global\plugins\jquery.min.js" />
     <Content Include="assets\global\plugins\jquery.sparkline.min.js" />
     <Content Include="assets\global\plugins\js.cookie.min.js" />
