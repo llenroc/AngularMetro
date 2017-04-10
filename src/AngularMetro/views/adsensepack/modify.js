@@ -74,6 +74,36 @@
         vm.cancel = function () {
             $state.go("adsensepack");
         }
+            //保存
+        vm.save = function () {
+            var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+            if (ids.length <=0) {
+                alert("请选择资源");
+                return;
+            }
+            dataFactory.action("api/package/add", "", null, vm.pack).then(function (res) {
+                if (res.result=="1") {
+                    $state.go("adsensepack");
+                } else {
+                    alert(res.errorMsg);
+                }
+            })
+        }
+            //添加广告
+        vm.addadsense = function () {
+            var modal = $uibModal.open({
+                templateUrl: '/views/adsensepack/modal.html',
+                controller: 'views.adsensepack.modal as vm',
+                backdrop: 'static',
+                size: 'lg',//模态框的大小尺寸
+                //resolve: {
+                //    model: function () { return { id: id[0] } },
+                //}
+            });
+            modal.result.then(function (response) {
+                vm.init();
+            })
+        }
     }]);
 })();
 

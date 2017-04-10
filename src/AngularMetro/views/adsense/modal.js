@@ -9,8 +9,9 @@
             vm.url = "api/resource/add";
             if (model.id&&model.id>0) {
                 vm.url = "api/resource/update";
-                dataFactory.action("api/resourse/detail?id=" + model.id, "", null, {}).then(function (res) {
-                    if (res.result=="1") {
+          
+                dataFactory.action("api/resourse/detail?id=" + model.id, "", null, { id: model.id }).then(function (res) {
+                    if (res.result == "1") {
                         vm.model = res.model;
                     }
                 })
@@ -44,8 +45,8 @@
 
             vm.save = function () {
                 if (vm.uploader.queue.length == 0) {
-                    vm.model.address = "http://www.baidu.com/movie.avi";
-                    vm.model.state = vm.model.state ? 1 : 0;
+                      vm.model.address = "http://www.baidu.com/movie.avi";
+                vm.model.state = vm.model.state ? 1 : 0;
                     dataFactory.action(vm.url, "", null, vm.model).then(function (res) {
                         if (res.result == "1") {
                             $uibModalInstance.close();

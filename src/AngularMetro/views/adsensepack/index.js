@@ -63,7 +63,11 @@
             $state.go("adsensepackmodify");
         }
         vm.edit = function () {
-
+            var id = Object.getOwnPropertyNames(vm.table.checkModel);
+            if (id.length!=1) {
+                return;
+            }
+            $state.go("adsensepackmodify", id);
         }
     }]);
 })();
