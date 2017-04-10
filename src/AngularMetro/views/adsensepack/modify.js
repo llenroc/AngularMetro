@@ -14,10 +14,10 @@
         vm.temparr = [];
         vm.checktable = [];
         if (vm.packId) {
-            dataFactory.action("api/package/detail", "", null, vm.packId)
+            dataFactory.action("api/package/detail", "", null, { id: vm.packId })
               .then(function (res) {
                   if (res.result == "1") {
-                      vm.pack = res.model;
+                      vm.pack = res.data;
                   }
               });
         }
@@ -83,7 +83,9 @@
                 alert("请选择资源");
                 return;
             }
-            vm.pack.resources = vm.checktable;
+            vm.pack.resourceIds = _.map(vm.checktable, function (item) {
+                return item.id
+            });
             dataFactory.action("api/package/add", "", null, vm.pack).then(function (res) {
                 if (res.result=="1") {
                     $state.go("adsensepack");

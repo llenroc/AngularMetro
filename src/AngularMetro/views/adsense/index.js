@@ -71,8 +71,15 @@
             }
             vm.edit = function () {
                 var id = Object.getOwnPropertyNames(vm.table.checkModel);
-                if (id.length!=1) {
+                if (id.length != 1) {
+                    alert("请选择一个操作项");
                     return;
+                }
+                for (var i in vm.table.checkModel) {
+                    if (vm.table.checkModel[i].state == 1) {
+                        alert("已发布对象不允许操作");
+                        return;
+                    }
                 }
                 var modal = $uibModal.open({
                     templateUrl: '/views/adsense/modal.html',
@@ -92,7 +99,14 @@
                 if (ids.length <= 0) {
                     alert("请选择要删除的对象");
                     return;
-                }                   //api/resource/delete
+                }
+                for (var i in vm.table.checkModel) {
+                    if (vm.table.checkModel[i].state == 1) {
+                        alert("已发布对象不允许操作");
+                        return;
+                    }
+                }
+                //api/resource/delete
                 dataFactory.action("api/resource/delete", "", null, { list: ids }).then(function (res) {
                     vm.init();
                 });
@@ -102,6 +116,12 @@
                 if (ids.length <= 0) {
                     alert("请选择要操作的对象");
                     return;
+                }
+                for (var i in vm.table.checkModel) {
+                    if (vm.table.checkModel[i].state == 1) {
+                        alert("已发布对象不允许操作");
+                        return;
+                    }
                 }
                 dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
                     vm.init();
