@@ -103,7 +103,7 @@
                     alert("请选择要操作的对象");
                     return;
                 }
-                dataFactory.action("api/resourse/updateState", "", null, { list: ids }).then(function (res) {
+                dataFactory.action("api/resourse/updateState", "", null, { list: ids,state:1 }).then(function (res) {
                     vm.init();
                 });
             }

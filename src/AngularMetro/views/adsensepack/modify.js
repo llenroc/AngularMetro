@@ -1,10 +1,13 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.adsensepack.index', ['$scope', 'settings', '$state', function ($scope, settings, $state) {
+    angular.module('MetronicApp').controller('views.adsensepack.modify',
+        ['$scope', 'settings', '$uibModal','$state','$stateParams',
+        function ($scope, settings, $uibModal, $state, $stateParams) {
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initAjax();
         });
         var vm = this;
+        vm.packId = $stateParams.id;
         vm.date = {
             leftopen: false,
             rightopen: false,
@@ -59,12 +62,7 @@
             //});
         };
         vm.init();
-        vm.add = function () {
-            $state.go("adsensepackmodify");
-        }
-        vm.edit = function () {
-
-        }
+     
     }]);
 })();
 

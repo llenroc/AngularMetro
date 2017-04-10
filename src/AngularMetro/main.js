@@ -151,6 +151,24 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }]
             }
         })
+         .state("adsensepackmodify", {
+             url: "/modify.html",
+             parms: { "id": null },
+             templateUrl: "/views/adsensepack/modify.html",
+             data: { pageTitle: '广告资源包操作' },
+             controller: "views.adsensepack.modify",
+             resolve: {
+                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                     return $ocLazyLoad.load({
+                         name: 'MetronicApp',
+                         insertBefore: '#ng_load_plugins_before',
+                         files: [
+                             '/views/adsensepack/modify.js'
+                         ]
+                     });
+                 }]
+             }
+         })
            //广告投放管理
         .state("advertising", {
             url: "/advertising.html",

@@ -917,6 +917,8 @@
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="js\factorys\dataFactory.js" />
+    <Content Include="views\adsensepack\modify.html" />
+    <Content Include="views\adsensepack\modify.js" />
     <Content Include="views\adsensepack\index.js" />
     <Content Include="views\adsense\modal.html" />
     <Content Include="views\adsense\modal.js" />
