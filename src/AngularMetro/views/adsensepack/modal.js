@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.adsensepack.modal',
-    ['$scope', 'settings', '$uibModalInstance','dataFactory','model',
-        function ($scope, settings, $uibModalInstance, dataFactory, model) {
+    ['$scope', 'settings', '$uibModalInstance','dataFactory','model','$rootScope',
+        function ($scope, settings, $uibModalInstance, dataFactory, model, $rootScope) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -61,7 +61,7 @@
             vm.save = function () {
                 var id = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (id.length <= 0) {
-                    alert("请选择要添加的广告");
+                    $rootScope.notify.show("请选择要添加的广告", "warning");
                     return;
                 }
                 $uibModalInstance.close(vm.table.checkModel);

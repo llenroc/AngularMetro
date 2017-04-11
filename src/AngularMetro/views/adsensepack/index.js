@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.adsensepack.index', ['$scope', 'settings', '$state', 'dataFactory',
-        function ($scope, settings, $state, dataFactory) {
+    angular.module('MetronicApp').controller('views.adsensepack.index', ['$scope', 'settings', '$state', 'dataFactory','$rootScope',
+        function ($scope, settings, $state, dataFactory, $rootScope) {
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initAjax();
@@ -62,12 +62,12 @@
         vm.edit = function () {
             var id = Object.getOwnPropertyNames(vm.table.checkModel);
             if (id.length != 1) {
-                alert("请选择单个要操作的对象");
+                $rootScope.notify.show("请选择单个要操作的对象", "warning");
                 return;
             }
             for (var i in vm.table.checkModel) {
                 if (vm.table.checkModel[i].state == 1) {
-                    alert("已发布对象不允许操作");
+                    $rootScope.notify.show("已发布对象不允许操作", "warning");
                     return;
                 }
             }
@@ -76,33 +76,35 @@
         vm.delete = function () {
             var ids = Object.getOwnPropertyNames(vm.table.checkModel);
             if (ids.length <= 0) {
-                alert("请选择要删除的对象");
+                $rootScope.notify.show("请选择要删除的对象", "warning");
                 return;
             }
             for (var i in vm.table.checkModel) {
                 if (vm.table.checkModel[i].state == 1) {
-                    alert("已发布对象不允许操作");
+                    $rootScope.notify.show("已发布对象不允许操作", "warning");
                     return;
                 }
             }
             //api/resource/delete
             dataFactory.action("api/package/delete", "", null, { list: ids }).then(function (res) {
+                $rootScope.notify.show("删除成功", "success");
                 vm.init();
             });
         }
         vm.public = function () {
             var ids = Object.getOwnPropertyNames(vm.table.checkModel);
             if (ids.length <= 0) {
-                alert("请选择要操作的对象");
+                $rootScope.notify.show("请选择单个要操作的对象", "warning");
                 return;
             }
             for (var i in vm.table.checkModel) {
                 if (vm.table.checkModel[i].state == 1) {
-                    alert("已发布对象不允许操作");
+                    $rootScope.notify.show("已发布对象不允许操作", "warning");
                     return;
                 }
             }
             dataFactory.action("api/package/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
+                $rootScope.notify.show("发布成功", "success");
                 vm.init();
             });
         }

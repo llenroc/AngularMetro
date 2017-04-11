@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory',
-        function ($scope, settings, $state, dataFactory) {
+    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory','$rootScope',
+        function ($scope, settings, $state, dataFactory, $rootScope) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -59,7 +59,7 @@
             vm.put = function () {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (ids.length <= 0) {
-                    alert("请选择要操作的对象");
+                    $rootScope.notify.show("请选择要操作的对象", "warning");
                     return;
                 }
                 var arr = [];

@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.putadsense', ['$scope', 'settings',"$stateParams",'$state',
-        function ($scope, settings, $stateParams, $state) {
+    angular.module('MetronicApp').controller('views.advertising.putadsense', ['$scope', 'settings',"$stateParams",'$state','$rootScope',
+        function ($scope, settings, $stateParams, $state, $rootScope) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -238,7 +238,9 @@
                 }
             };
             vm.organizationTree.init();
-            vm.allow = function () { }
+            vm.allow = function () {
+                $rootScope.notify.show("分发成功", "success");
+            }
 
             vm.back = function () {
                 $state.go("advertising");

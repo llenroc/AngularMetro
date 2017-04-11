@@ -25,25 +25,33 @@
 
     abp.notify = abp.notify || {};
     abp.notify.title;
-    abp.notify.type='info';
+    abp.notify.type = 'info';
+    abp.notify.clear = function () {
+        abp.notify.title = null;
+        abp.notify.type = null;
+    }
     abp.notify.success = function (message) {
         abp.notify.title=message;
         abp.notify.type = 'success';
+        setTimeout(function () { abp.notify.clear(); }, 3000);
     };
 
     abp.notify.info = function (message) {
         abp.notify.title = message;
         abp.notify.type = 'info';
+        setTimeout(abp.notify.clear(), 3000);
     };
 
     abp.notify.warn = function (message) {
         abp.notify.title = message;
         abp.notify.type = 'warning';
+        setTimeout(abp.notify.clear(), 3000);
     };
 
     abp.notify.error = function (message) {
         abp.notify.title = message;
         abp.notify.type = 'error';
+        setTimeout(abp.notify.clear(), 3000);
     };
 
     /* MESSAGE **************************************************/

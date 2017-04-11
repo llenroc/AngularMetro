@@ -20,7 +20,51 @@ MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
     });
 }]);
 
+/**
+ * 提示框
+ */
+MetronicApp.directive('alertBar', [function () {
+    return {
+        restrict: 'EA',
+        template: '<div class="alert alert-{{type}}" ng-show="message">'+
+    '<button type="button" class="close"  ng-click="hideAlert()"><span class="glyphicon glyphicon-remove"></span></button>'+
+    '{{message}}'+
+    '</div>',
+        scope: {
+            message: "=",
+            type: "="
+        },
+        link: function (scope, element, attrs) {
+            scope.hideAlert = function () {
+                scope.message = null;
+                scope.type = null;
+            };
 
+        }
+    };
+}]);
+/**
+ * 提示框数据
+ */
+MetronicApp.factory('notify', ['$timeout', function ($timeout) {
+    return {
+        message: null,
+        type: null,
+        show: function (msg, type) {
+            this.message = msg;
+            this.type = type;
+            //提示框显示最多3秒消失
+            var _self = this;
+            $timeout(function () {
+                _self.clear();
+            }, 3000);
+        },
+        clear: function () {
+            this.message = null;
+            this.type = null;
+        }
+    };
+}]);
 
 //控制器全局设置
 MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
@@ -241,9 +285,11 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 }]);
 
 //启动
-MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
+MetronicApp.run(["$rootScope", "settings", "$state", 'notify', function ($rootScope, settings, $state, notify) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
+    //提示信息服务
+    $rootScope.notify = notify;
     $rootScope.safeApply = function (fn) {
         var phase = this.$root.$$phase;
         if (phase == '$apply' || phase == '$digest') {
