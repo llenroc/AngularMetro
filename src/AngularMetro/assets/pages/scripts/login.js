@@ -85,7 +85,7 @@
                         window.location.href = "/views/layout/layout.html";
                     }
                 });
-                $.cookie("metroResult", null);
+               // $.cookie("metroResult", null);
                 var user = { id: 1, name: "王中王", roleId: "管理员",token:"wadawdawdawd" };
                 $.cookie("metroResult", JSON.stringify(user), {
                     path: "/",//cookie的路 径

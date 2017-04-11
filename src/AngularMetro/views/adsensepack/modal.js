@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.adsensepack.modal',
-    ['$scope', 'settings', '$uibModalInstance','dataFactory',
-        function ($scope, settings, $uibModalInstance, dataFactory) {
+    ['$scope', 'settings', '$uibModalInstance','dataFactory','model',
+        function ($scope, settings, $uibModalInstance, dataFactory, model) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -8,6 +8,7 @@
             var vm = this;
             vm.url = "api/resource/add";
             vm.filter = {};
+            
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -44,7 +45,8 @@
             vm.init = function () {
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                dataFactory.action("api/resource/selectAll", "", null, vm.filter)
+                vm.filter.passIds = model;
+                dataFactory.action("api/resource/selectPublish", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {
                             vm.table.pageConfig.totalItems = res.total;

@@ -14,7 +14,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-3 control-label">资源包名称</label>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" placeholder="请输入名称" required ng-model="vm.pack.name">
+                                <input type="text" class="form-control"  ng-class="{'edited':vm.pack.name}" placeholder="请输入名称" required ng-model="vm.pack.name">
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
                         <div class="form-group form-md-line-input">
                             <label class="col-md-2 control-label">广告备注</label>
                             <div class="col-md-10">
-                                <textarea ng-model="vm.pack.note" class="form-control" rows="2" placeholder="请输入简介"></textarea>
+                                <textarea ng-model="vm.pack.note" ng-class="{'edited':vm.pack.note}" class="form-control" rows="2" placeholder="请输入简介"></textarea>
                                 <div class="form-control-focus"> </div>
                             </div>
                         </div>

@@ -161,7 +161,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         })
          .state("adsensepackmodify", {
              url: "/modify.html",
-             parms: { "id": null },
+             params: { "id": null },
              templateUrl: "/views/adsensepack/modify.html",
              data: { pageTitle: '广告资源包操作' },
              controller: "views.adsensepack.modify",
@@ -198,7 +198,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         })
          .state("putadsense", {
              url: "/putadsense.html",
-             parms:{"resourse":null },
+             params:{"resourse":null },
              templateUrl: "/views/advertising/putadsense.html",
              data: { pageTitle: '广告投放' },
              controller: "views.advertising.putadsense",

@@ -61,7 +61,8 @@
         }
         vm.edit = function () {
             var id = Object.getOwnPropertyNames(vm.table.checkModel);
-            if (id.length!=1) {
+            if (id.length != 1) {
+                alert("请选择单个要操作的对象");
                 return;
             }
             for (var i in vm.table.checkModel) {
@@ -70,7 +71,7 @@
                     return;
                 }
             }
-            $state.go("adsensepackmodify", id);
+            $state.go("adsensepackmodify", { id: id[0] });
         }
         vm.delete = function () {
             var ids = Object.getOwnPropertyNames(vm.table.checkModel);
