@@ -22,7 +22,6 @@ MetronicApp.config(['$ocLazyLoadProvider', function ($ocLazyLoadProvider) {
 
 
 
-
 //控制器全局设置
 MetronicApp.config(['$controllerProvider', function ($controllerProvider) {
     // this option might be handy for migrating old apps, but please don't use it

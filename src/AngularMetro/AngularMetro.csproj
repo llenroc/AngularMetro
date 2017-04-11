@@ -735,6 +735,7 @@
     <Content Include="assets\global\plugins\morris\spec\viz\exemplary\stacked_bar0.png" />
     <Content Include="assets\global\plugins\morris\spec\viz\test.html" />
     <Content Include="assets\global\plugins\morris\spec\viz\visual_specs.js" />
+    <Content Include="assets\global\plugins\ng-sweet-alert.js" />
     <Content Include="assets\global\plugins\object-table.js" />
     <Content Include="assets\global\plugins\select2\css\select2-bootstrap.min.css" />
     <Content Include="assets\global\plugins\select2\css\select2.css" />
@@ -917,6 +918,7 @@
     <Content Include="assets\pages\scripts\login.js" />
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="js\abp.js" />
     <Content Include="js\factorys\dataFactory.js" />
     <Content Include="views\adsensepack\modal.html" />
     <Content Include="views\adsensepack\modal.js" />

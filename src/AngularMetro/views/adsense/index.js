@@ -72,7 +72,8 @@
             vm.edit = function () {
                 var id = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (id.length != 1) {
-                    alert("请选择一个操作项");
+                    //  abp.notify.warn("请选择一个操作对象");
+                    alert("请选择一个操作对象");
                     return;
                 }
                 for (var i in vm.table.checkModel) {
