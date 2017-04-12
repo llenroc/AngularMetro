@@ -737,6 +737,12 @@
     <Content Include="assets\global\plugins\morris\spec\viz\visual_specs.js" />
     <Content Include="assets\global\plugins\ng-sweet-alert.js" />
     <Content Include="assets\global\plugins\object-table.js" />
+    <Content Include="assets\global\plugins\plupload\moxie.js" />
+    <Content Include="assets\global\plugins\plupload\moxie.min.js" />
+    <Content Include="views\adsense\Moxie.swf" />
+    <Content Include="assets\global\plugins\plupload\plupload.full.min.js" />
+    <Content Include="assets\global\plugins\plupload\plupload.min.js" />
+    <Content Include="assets\global\plugins\plupload\qiniu.js" />
     <Content Include="assets\global\plugins\select2\css\select2-bootstrap.min.css" />
     <Content Include="assets\global\plugins\select2\css\select2.css" />
     <Content Include="assets\global\plugins\select2\css\select2.min.css" />
