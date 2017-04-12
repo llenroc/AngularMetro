@@ -35,13 +35,21 @@
                 </div>
             </div>
             <div class="row">
+             
+
+            </div>
+            <div  class="row">
                 <div class="col-xs-6">
+                 
                     <div class="form-group form-md-line-input">
                         <label class="col-md-3 control-label">选择资源</label>
-                        <div id="con" class="col-md-9">
-                            <!--<input type="file" name="pickfiles" id="pickfiles" class="form-control" placeholder="请选择资源文件">-->
-                            <input type="button" name="pickfiles" id="pickfiles" class="form-control" value="选择文件">
-                            <div class="form-control-focus"> </div>
+                        <div  class="col-md-9">
+                            <div ng-file-select="vm.onFileSelect($files)" data-multiple="false" title="select file" onclick="this.value = null" class="btn btn-upload">点击上传文件</div>
+                            <ol>
+                                <li ng-repeat="(k,v) in vm.selectFiles">
+                                    {{v.file.name}} - {{v.progress.p}}% <a href="#" ng-click="vm.abort(k)">X</a>
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </div>

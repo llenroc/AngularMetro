@@ -169,9 +169,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'QiNiu',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/assets/global/plugins/plupload/plupload.full.min.js',
-                                '/assets/global/plugins/plupload/moxie.min.js',
-                                '/assets/global/plugins/plupload/qiniu.js',
+                                '/assets/global/plugins/plupload/angular-local-storage.js',
+                                '/assets/global/plugins/plupload/qupload.js',
                             ]
                         }, {
                             name: 'Modal',
