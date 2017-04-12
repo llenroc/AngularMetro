@@ -739,7 +739,6 @@
     <Content Include="assets\global\plugins\object-table.js" />
     <Content Include="assets\global\plugins\plupload\angular-local-storage.js" />
     <Content Include="assets\global\plugins\plupload\qupload.js" />
-    <Content Include="views\adsense\Moxie.swf" />
     <Content Include="assets\global\plugins\select2\css\select2-bootstrap.min.css" />
     <Content Include="assets\global\plugins\select2\css\select2.css" />
     <Content Include="assets\global\plugins\select2\css\select2.min.css" />

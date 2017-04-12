@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 /**!
  * AngularJS qiniu cloud storage large file upload service with support resumble,progress
  * @author  icattlecoder  <icattlecoder@gmail.com>
@@ -8,9 +8,9 @@
 (function () {
     var angularQFileUpload = angular.module('angularQFileUpload', ['LocalStorageModule']);
 
-    angularQFileUpload.service('$qupload', ['$http', '$q', 'localStorageService',
+    angularQFileUpload.service('$qupload', ['$http', '$q', 'localStorageService','$rootScope',
 
-		function ($http, $q, localStorageService) {
+		function ($http, $q, localStorageService, $rootScope) {
 
 		    function utf16to8(str) {
 		        var out, i, len, c;
@@ -108,6 +108,14 @@
 		        var file = config.file;
 		        if (!file) {
 		            return;
+		        }
+                //验证图片格式
+		        var point = file.name.lastIndexOf(".");
+
+		        var type = file.name.substr(point).toLowerCase();
+		        if (type != ".jpg" && type != ".png" && type != ".bmp" && type != ".avi" && type != ".mp4" && type != "rmvb") {
+		            $rootScope.notify.show("上传文件格式错误", "warning");
+		            return null;
 		        }
 
 		        var fileHashKey = fileHashKeyFunc(file);
