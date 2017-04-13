@@ -13,7 +13,7 @@
                         <p class="input-group">
                             <input type="text" class="form-control" placeholder="开始时间"
                                    uib-datepicker-popup readonly
-                                   ng-model="vm.filter.startTime"
+                                   ng-model="vm.model.startTime"
                                    is-open="vm.date.leftopen"
                                    datepicker-options="vm.date.dateOptions"
                                    ng-required="true"
@@ -33,7 +33,7 @@
                     <div class="input-icon right">
                         <p class="input-group">
                             <input type="text" class="form-control" placeholder="结束时间"
-                                   uib-datepicker-popup readonly ng-model="vm.filter.endTime"
+                                   uib-datepicker-popup readonly ng-model="vm.model.endTime"
                                    is-open="vm.date.rightopen"
                                    datepicker-options="vm.date.dateOptions"
                                    ng-required="true"
@@ -51,15 +51,14 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group form-md-line-input">
-                        <label class="col-md-3 control-label">是否发布</label>
                         <div class="col-md-9">
                             <div class="md-checkbox-inline">
                                 <div class="md-checkbox">
-                                    <input type="checkbox" name="state" id="check" class="md-check" ng-model="vm.model.state">
+                                    <input type="checkbox" name="state" id="check" class="md-check" ng-model="vm.model.atonce">
                                     <label for="check">
                                         <span></span>
                                         <span class="check"></span>
-                                        <span class="box"></span> 发布
+                                        <span class="box"></span> 立即下发
                                     </label>
                                 </div>
 

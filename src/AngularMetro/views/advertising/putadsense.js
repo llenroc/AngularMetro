@@ -265,6 +265,10 @@
 
             vm.allow = function () {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length<=0) {
+                    $rootScope.notify.show("请选择要分发的设备", "warning");
+                    return;
+                }
                 var modal = $uibModal.open({
                     templateUrl: '/views/advertising/modal.html',
                     controller: 'views.advertising.modal as vm',
