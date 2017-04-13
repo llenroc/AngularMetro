@@ -931,6 +931,8 @@
     <Content Include="views\adsense\modal.js" />
     <Content Include="views\adsense\index.js" />
     <Content Include="views\advertisingrecord\index.js" />
+    <Content Include="views\advertising\modal.html" />
+    <Content Include="views\advertising\modal.js" />
     <Content Include="views\advertising\putadsense.html" />
     <Content Include="views\advertising\putadsense.js" />
     <Content Include="views\advertising\index.js" />

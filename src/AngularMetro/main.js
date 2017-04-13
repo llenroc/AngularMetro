@@ -258,7 +258,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                          name: 'MetronicApp',
                          insertBefore: '#ng_load_plugins_before',
                          files: [
-                             '/views/advertising/putadsense.js'
+
+                             '/views/advertising/putadsense.js',
+                             '/views/advertising/modal.js'
                          ]
                      }, {
                          name: 'jstreeneed',

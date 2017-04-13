@@ -58,15 +58,11 @@
             //发布
             vm.put = function () {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-                if (ids.length <= 0) {
-                    $rootScope.notify.show("请选择要操作的对象", "warning");
+                if (ids.length !=1) {
+                    $rootScope.notify.show("一次只能分配一个资源包", "warning");
                     return;
                 }
-                var arr = [];
-                for (var i in vm.table.checkModel) {
-                    arr.push(vm.table.checkModel[i]);
-                }
-                $state.go("putadsense", arr);
+                $state.go("putadsense", { resourse: ids[0] });
             }
         }])
 })();
