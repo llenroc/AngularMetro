@@ -160,6 +160,7 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
     $urlRouterProvider.otherwise("/adsense.html");
+    var abp = abp;
     $stateProvider
         //广告资源管理
         .state("adsense", {
