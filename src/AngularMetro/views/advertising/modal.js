@@ -8,13 +8,13 @@
             var vm = this;
             vm.model = model;
             vm.save = function () {
-                if (!vm.model.aconce) {
+                if (!vm.model.atonce) {
                     if (!vm.model.startTime || !vm.model.endTime) {
                         $rootScope.notify.show("请选择分发时间段", "error");
                         return;
                     }
                 }
-                dataFactory.action("api/advisiting/insert", "", null, vm.model).then(function (res) {
+                dataFactory.action("api/distribution/add", "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $rootScope.notify.show("分发成功", "success");
                         $uibModalInstance.close();

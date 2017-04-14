@@ -275,7 +275,7 @@
                     backdrop: 'static',
                  //   size: 'lg',//模态框的大小尺寸
                     resolve: {
-                        model: function () { return { packid:vm.resourse,deviceId:ids } },
+                        model: function () { return { packageId: vm.resourse, deviceIds: ids } },
                     }
                 });
                 modal.result.then(function (response) {
