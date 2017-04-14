@@ -133,13 +133,19 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
         Layout.initSidebar($state); // init sidebar
     });
     vm.list = [
-    
       //广告资源管理
       { url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
       { url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
       { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
       { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
-     
+      {
+          url: "", title: "分账管理", icon: "fa fa-chain-broken", child: [
+              { url: "payment", title: "收款账户管理", icon: "fa fa-jpy" },
+              { url: "cycle", title: "分账周期管理", icon: "fa fa-cc-visa" },
+              { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
+          ]
+      },
+
     ];
 
 }]);
@@ -291,6 +297,70 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                 }]
             }
         })
+
+        $stateProvider.state("payment", {
+            url: "/payment.html",
+            templateUrl: "/views/payment/index.html",
+            data: { pageTitle: '收款账户管理' },
+            controller: "views.payment.index",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [{
+                            name: 'MetronicApp',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/views/payment/index.js'
+                            ]
+                        }]
+
+                        );
+                }]
+            }
+        })
+        .state("scale", {
+            url: "/scale.html",
+            templateUrl: "/views/scale/index.html",
+            data: { pageTitle: '收款比例管理' },
+            controller: "views.scale.index",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [{
+                            name: 'MetronicApp',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/views/scale/index.js'
+                            ]
+                        }]
+
+                        );
+                }]
+            }
+        })
+        .state("cycle", {
+            url: "/cycle.html",
+            templateUrl: "/views/cycle/index.html",
+            data: { pageTitle: '收款周期管理' },
+            controller: "views.cycle.index",
+            resolve: {
+                deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                    return $ocLazyLoad.load(
+                        [{
+                            name: 'MetronicApp',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/views/cycle/index.js'
+                            ]
+                        }]
+
+                        );
+                }]
+            }
+        })
+
+
+
 }]);
 
 //启动
