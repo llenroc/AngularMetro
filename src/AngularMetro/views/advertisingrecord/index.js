@@ -1,16 +1,14 @@
 ﻿
 (function () {
-    angular.module('MetronicApp').controller('views.advertisingrecord.index', ['$scope', 'settings', '$uibModal',
-        function ($scope, settings, $uibModal) {
+    angular.module('MetronicApp').controller('views.advertisingrecord.index', ['$scope', 'settings', "dataFactory", '$rootScope',
+        function ($scope, settings, dataFactory,$rootScope) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
-                // set default layout mode
-                //$rootScope.settings.layout.pageContentWhite = true;
-                //$rootScope.settings.layout.pageBodySolid = false;
-                //$rootScope.settings.layout.pageSidebarClosed = false;
+           
             });
             var vm = this;
+            vm.filter = {};
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -36,7 +34,6 @@
             vm.table = {
                 data: [],               //数据集
                 checkModel: {},         //选择的集合
-                filter: "",//条件搜索
                 pageConfig: {           //分页配置
                     currentPage: 1,//当前页
                     itemsPerPage: 10,//页容量
@@ -45,38 +42,43 @@
             }
             //获取用户数据集，并且添加配置项
             vm.init = function () {
-                var page = vm.table.pageConfig.currentPage;
-                var display = vm.table.pageConfig.itemsPerPage;
-
-                vm.table.pageConfig.totalItems = 20;
-                //  tite, description, isActive, creationTime
-                vm.table.data = [{ title: "标题a", description: "描述", isActive: true, creationTime: new Date() },
-                { title: "标题b", description: "描述b", isActive: false, creationTime: new Date() }];
-                //activityService.getActivitys({
-                //    skipCount: (page - 1) * display,
-                //    maxResultCount: display, filter: vm.table.filter
-                //}).success(function (result) {
-                //    vm.table.pageConfig.totalItems = result.totalCount;
-                //    vm.table.data = result.items;
-                //    vm.table.pageConfig.onChange = function () {
-                //        vm.init();
-                //    }
-                //}).finally(function () {
-                //});
+                vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                dataFactory.action("api/distribution/selectRecords", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result == "1") {
+                            vm.table.pageConfig.totalItems = res.total;
+                            vm.table.data = res.list;
+                            vm.table.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                    });
             };
             vm.init();
-            vm.add = function () {
-                var modal = $uibModal.open({
-                    templateUrl: '/views/adsense/modal.html',
-                    controller: 'views.adsense.modal as vm',
-                    backdrop: 'static',
-                    //resolve: {
-                    //    activity: function () { return activityid; },
-                    //}
+            //下线
+            vm.offline = function () {
+                var id = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (id.length <=0) {
+                    $rootScope.notify.show("请选择一个操作对象", "warning");
+                    return;
+                }
+                dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
+                    $rootScope.notify.show("下线成功", "success");
+                    vm.init();
                 });
-                modal.result.then(function (response) {
-                    //  vm.getactivitys();
-                })
+            }
+            //重新发放
+            vm.distribute = function () {
+                var id = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (id.length <= 0) {
+                    $rootScope.notify.show("请选择一个操作对象", "warning");
+                    return;
+                }
+                dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
+                    $rootScope.notify.show("发放成功", "success");
+                    vm.init();
+                });
             }
         }])
 })();
