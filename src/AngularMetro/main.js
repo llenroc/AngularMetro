@@ -312,6 +312,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             files: [
                                 '/views/payment/index.js'
                             ]
+                        }, {
+                            name: 'jstreeneed',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/assets/global/plugins/jstree/dist/jstree.min.js',
+                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                            ]
                         }]
 
                         );
@@ -332,6 +339,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             files: [
                                 '/views/scale/index.js'
                             ]
+                        }, {
+                            name: 'jstreeneed',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/assets/global/plugins/jstree/dist/jstree.min.js',
+                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                            ]
                         }]
 
                         );
@@ -351,6 +365,13 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             insertBefore: '#ng_load_plugins_before',
                             files: [
                                 '/views/cycle/index.js'
+                            ]
+                        }, {
+                            name: 'jstreeneed',
+                            insertBefore: '#ng_load_plugins_before',
+                            files: [
+                                '/assets/global/plugins/jstree/dist/jstree.min.js',
+                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
                             ]
                         }]
 
