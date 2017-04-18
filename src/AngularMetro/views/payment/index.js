@@ -8,7 +8,7 @@
             });
             var vm = this;
 
-
+            vm.model = { name: "xxxx商贸有限责任公司", wechat: "xxxxxxxxx", pay: "xxxxxxx" };
 
             ///机构树
             vm.organizationTree = {
@@ -41,7 +41,7 @@
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
                         }
-                        vm.init();
+                       // vm.init();
                         $("a.list-group-item:first-child").css("background-color", "transparent");
                     }
                 },
@@ -186,6 +186,5 @@
                 }
             };
             vm.organizationTree.init();
-            vm.init();
         }])
 })();
