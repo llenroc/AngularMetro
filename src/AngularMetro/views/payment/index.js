@@ -7,8 +7,11 @@
                 App.initAjax();
             });
             var vm = this;
-
+            vm.option = false;
             vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
+            vm.show = function () {
+                vm.option = !vm.option;
+            }
 
             ///机构树
             vm.organizationTree = {

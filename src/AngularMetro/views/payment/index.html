@@ -1,13 +1,13 @@
 ﻿<div ng-controller="views.payment.index as vm">
-    <div class="row">
-        <div class="col-xs-6">
-            <div class="page-head">
-                <div class="page-title">
-                    <span>收款账户管理</span> <small></small>
-                </div>
-            </div>
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <i class="fa fa-hand-o-right"></i>
+
+                    <a href="#">收款账户管理</a>
+                </li>
+            </ul>
         </div>
-    </div>
     <div class="portlet light bordered">
         <div class="row">
             <div class="col-lg-3">
@@ -64,13 +64,57 @@
                                     </div>
                                 </div>
                             </div>
-                          
+
                         </div>
-                   
+
                     </div>
                     <div class="portlet-body">
                         <div class="row">
-                        
+                            <div class="page-bar col-xs-8">
+                                <ul class="page-breadcrumb">
+                                    <li>
+                                        <a href="#">电影派</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <span>北京</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">解绑微信分账</a>
+                                <a href="#">解绑支付宝分账</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="tiles" id="template" ng-if="vm.option">
+                                <div class="tile bg-red-sunglo">
+                                    <div class="tile-body">
+                                        <img src="/assets/global/img/erweima.jpg" width="90" height="90" />
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name">扫码完成绑定</div>
+                                        <!--<div class="number"> 12 </div>-->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <span>勾选绑定账号，扫码绑定分账账号</span>
+                            </div>
+                            <div class="col-xs-4">
+                                <div ng-click="vm.show()" class="fa-item col-md-6">
+                                    <i class="fa fa-weixin"></i> 微信
+                                </div>
+                                <div ng-click="vm.show()" class="fa-item col-md-6">
+                                    <i class="fa fa-paypal"></i> 支付宝
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="checkbox" />已配置 &nbsp; 
+                                <input type="checkbox" />未配置
+                              &nbsp;  28/30
+                            </div>
 
                         </div>
                         <!-- 角色列表 -->
@@ -107,4 +151,5 @@
 
         </div>
     </div>
+  
 </div>

@@ -109,6 +109,7 @@
     <Content Include="assets\global\img\ajax-loading.gif" />
     <Content Include="assets\global\img\ajax-modal-loading.gif" />
     <Content Include="assets\global\img\datatable-row-openclose.png" />
+    <Content Include="assets\global\img\erweima.jpg" />
     <Content Include="assets\global\img\input-spinner.gif" />
     <Content Include="assets\global\img\loading-spinner-blue.gif" />
     <Content Include="assets\global\img\loading-spinner-default.gif" />
@@ -491,12 +492,15 @@
     <Content Include="views\advertising\index.html" />
     <Content Include="views\cycle\index.html" />
     <Content Include="views\cycle\index.js" />
+    <Content Include="views\fashionable\index.html" />
+    <Content Include="views\fashionable\index.js" />
     <Content Include="views\layout\footer.html" />
     <Content Include="views\layout\header.html" />
     <Content Include="views\layout\layout.html" />
     <Content Include="views\layout\sidebar.html" />
     <Content Include="views\payment\index.html" />
     <Content Include="views\payment\index.js" />
+    <Content Include="views\payment\payment.css" />
     <Content Include="views\scale\index.html" />
     <Content Include="views\scale\index.js" />
     <Content Include="Web.config" />

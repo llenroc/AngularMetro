@@ -139,7 +139,9 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
       { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
       { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
       {
-          url: "", title: "分账管理", icon: "fa fa-chain-broken", child: [
+          url: "", title: "分帐系统", icon: "fa fa-chain-broken", child: [
+              { url: "fashionable", title: "分账管理", icon: "fa fa-industry" },
+
               { url: "payment", title: "收款账户管理", icon: "fa fa-jpy" },
               { url: "cycle", title: "分账周期管理", icon: "fa fa-cc-visa" },
               { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
@@ -298,7 +300,28 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
             }
         })
 
-        $stateProvider.state("payment", {
+    $stateProvider
+         .state("fashionable", {
+             url: "/fashionable.html",
+             templateUrl: "/views/fashionable/index.html",
+             data: { pageTitle: '收款账户管理' },
+             controller: "views.fashionable.index",
+             resolve: {
+                 deps: ['$ocLazyLoad', function ($ocLazyLoad) {
+                     return $ocLazyLoad.load(
+                         [{
+                             name: 'MetronicApp',
+                             insertBefore: '#ng_load_plugins_before',
+                             files: [
+                                 '/views/fashionable/index.js',
+                             ]
+                         }]
+
+                         );
+                 }]
+             }
+         })
+        .state("payment", {
             url: "/payment.html",
             templateUrl: "/views/payment/index.html",
             data: { pageTitle: '收款账户管理' },
@@ -310,14 +333,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/payment/index.js'
-                            ]
-                        }, {
-                            name: 'jstreeneed',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                '/assets/global/plugins/jstree/dist/jstree.min.js',
-                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                                '/views/payment/index.js',
+                                '/views/payment/payment.css'
                             ]
                         }]
 
@@ -339,13 +356,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             files: [
                                 '/views/scale/index.js'
                             ]
-                        }, {
-                            name: 'jstreeneed',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                '/assets/global/plugins/jstree/dist/jstree.min.js',
-                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
-                            ]
                         }]
 
                         );
@@ -365,13 +375,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             insertBefore: '#ng_load_plugins_before',
                             files: [
                                 '/views/cycle/index.js'
-                            ]
-                        }, {
-                            name: 'jstreeneed',
-                            insertBefore: '#ng_load_plugins_before',
-                            files: [
-                                '/assets/global/plugins/jstree/dist/jstree.min.js',
-                                '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
                             ]
                         }]
 
