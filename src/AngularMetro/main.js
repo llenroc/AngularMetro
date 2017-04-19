@@ -320,7 +320,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 '/assets/global/plugins/jstree/dist/jstree.min.js',
                                 '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
                                 '/assets/global/plugins/angular-popups.js',
-                                '/assets/global/css/angularbubble.css'
+                                '/assets/global/css/angularbubble.css',
+                                '/assets/global/css/ui-bubble.css'
                             ]
                         }]
 

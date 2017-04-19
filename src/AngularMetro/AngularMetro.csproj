@@ -106,6 +106,7 @@
     <Content Include="assets\global\css\plugins-md.min.css" />
     <Content Include="assets\global\css\plugins.css" />
     <Content Include="assets\global\css\plugins.min.css" />
+    <Content Include="assets\global\css\ui-bubble.css" />
     <Content Include="assets\global\img\accordion-plusminus.png" />
     <Content Include="assets\global\img\ajax-loading.gif" />
     <Content Include="assets\global\img\ajax-modal-loading.gif" />
