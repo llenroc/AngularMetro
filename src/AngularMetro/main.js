@@ -11,6 +11,7 @@ var MetronicApp = angular.module("MetronicApp", [
       'objectTable',//table表格
     'objPagination',//分页
     'angularFileUpload',//文件上传
+    'angular-popups',//弹窗
 ]);
 
 //懒加载
@@ -318,6 +319,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             files: [
                                 '/assets/global/plugins/jstree/dist/jstree.min.js',
                                 '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                                '/assets/global/plugins/angular-popups.js',
+                                '/assets/global/css/angularbubble.css'
                             ]
                         }]
 
