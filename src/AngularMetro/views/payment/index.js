@@ -8,7 +8,7 @@
             });
             var vm = this;
 
-            vm.model = { name: "xxxx商贸有限责任公司", wechat: "xxxxxxxxx", pay: "xxxxxxx" };
+            vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
 
             ///机构树
             vm.organizationTree = {
