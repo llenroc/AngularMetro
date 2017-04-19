@@ -52,12 +52,17 @@
         $('.login-form input').keypress(function(e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
-                    var url = "http://www.baidu.com";
-                    var data = $(".login-form").serializeArray();
+                    var url = "http://api.efanyun.com/api/login";
+                    var username = $("#username").val();
+                    var password = $("#password").val();
+                    var data = new FormData();
+                    data.append("user_name", username);
+                    data.append("pw", md5(password));
                     $.post(url, data, function (res) {
-                        if (res.result==1) {
-                            var val="wwwwwwwwwwwwwwwwwwww"+res.data;
-                            $.cookie("metroResult",val,{
+                        if (res.code == 200) {
+                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                            var temp = JSON.stringify(val);
+                            $.cookie("metroResult", temp, {
                                 expires:1,//有效日期
                                 path:"/",//cookie的路 径
                                 secure:true //true,cookie的传输会要求一个安全协议,否则反之
@@ -65,19 +70,24 @@
                             window.location.href = "/views/layout/layout.html";
                         }
                     });
-                    window.location.href = "/views/layout/layout.html";
+                  //  window.location.href = "/views/layout/layout.html";
                 }
                 return false;
             }
         });
         $("#btn").click(function () {
             if ($('.login-form').validate().form()) {
-                var url = "http://www.baidu.com";
-                var data = $(".login-form").serializeArray();
+                var url = "http://api.efanyun.com/api/login";
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var data = new FormData();
+                data.append("user_name", username);
+                data.append("pw", md5(password));
                 $.post(url, data, function (res) {
-                    if (res.result == 1) {
-                        var val = "wwwwwwwwwwwwwwwwwwww" + res.data;
-                        $.cookie("metroResult", val, {
+                    if (res.code == 200) {
+                        var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                        var temp = JSON.stringify(val);
+                        $.cookie("metroResult", temp, {
                             expires: 1,//有效日期
                             path: "/",//cookie的路 径
                             secure: true //true,cookie的传输会要求一个安全协议,否则反之
@@ -85,13 +95,6 @@
                         window.location.href = "/views/layout/layout.html";
                     }
                 });
-               // $.cookie("metroResult", null);
-                var user = { id: 1, name: "王中王", roleId: "管理员",token:"wadawdawdawd" };
-                $.cookie("metroResult", JSON.stringify(user), {
-                    path: "/",//cookie的路 径
-                    expires: 1
-                });
-                window.location.href = "/views/layout/layout.html";
             }
         })
     }
