@@ -55,9 +55,8 @@
                     var url = "http://api.efanyun.com/api/login";
                     var username = $("#username").val();
                     var password = $("#password").val();
-                    var data = new FormData();
-                    data.append("user_name", username);
-                    data.append("pw", md5(password));
+                    var md5pw = md5(password);
+                    var data = { "user_name": username, "pw": md5pw };
                     $.post(url, data, function (res) {
                         if (res.code == 200) {
                             var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
@@ -80,9 +79,8 @@
                 var url = "http://api.efanyun.com/api/login";
                 var username = $("#username").val();
                 var password = $("#password").val();
-                var data = new FormData();
-                data.append("user_name", username);
-                data.append("pw", md5(password));
+                var md5pw=md5(password);
+                var data = { "user_name":username,"pw" :md5pw};
                 $.post(url, data, function (res) {
                     if (res.code == 200) {
                         var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
