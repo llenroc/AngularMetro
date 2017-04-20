@@ -68,10 +68,10 @@
 
 
                 generateTextOnTree: function (ou) {
-                    var displayName = ou.displayName;
+                    var displayName = ou.name;
                     displayName = displayName.length > 10 ? (displayName.substring(0, 10) + "...") : displayName;
-                    var itemClass = ou.memberCount > 0 ? ' ou-text-has-members' : ' ou-text-no-members';
-                    return '<span title="' + ou.code + '" class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '  <i class="fa fa-caret-down text-muted"></i></span>';
+                    var itemClass = ' ou-text-no-members';
+                    return '<span  class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '  <i class="fa fa-caret-down text-muted"></i></span>';
                 },
                 incrementMemberCount: function (ouId, incrementAmount) {
                     var treeNode = vm.organizationTree.$tree.jstree('get_node', ouId);
@@ -81,25 +81,30 @@
                         vm.organizationTree.generateTextOnTree(treeNode.original));
                 },
                 getTreeDataFromServer: function (callback, type) {
-                    var list = [
-                        { id: 1, parentId: 0, displayName: "A机构" },
-                        { id: 2, parentId: 1, displayName: "A子机构" },
-                        { id: 3, parentId: 0, displayName: "B机构" },
-                        { id: 4, parentId: 3, displayName: "B子机构" },
-                    ];
-
-                    var treeData = _.map(list, function (item) {
-                        return {
-                            id: item.id,
-                            parent: item.parentId ? item.parentId : '#',
-                            displayName: item.displayName,
-                            text: vm.organizationTree.generateTextOnTree(item),
-                            state: {
-                                opened: true
-                            }
-                        };
+                    var list = [];
+                    dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
+                        list = res.respBody;
+                        var treeData = _.map(list, function (item) {
+                            return {
+                                id: item.id,
+                                parent: item.parent_id ? item.parent_id : '#',
+                                displayName: item.name,
+                                text: vm.organizationTree.generateTextOnTree(item),
+                                state: {
+                                    opened: item.parent_id ? true : false
+                                }
+                            };
+                        });
+                        callback(treeData);
                     });
-                    callback(treeData);
+                    //var list = [
+                    //    { id: 1, parentId: 0, displayName: "A机构" },
+                    //    { id: 2, parentId: 1, displayName: "A子机构" },
+                    //    { id: 3, parentId: 0, displayName: "B机构" },
+                    //    { id: 4, parentId: 3, displayName: "B子机构" },
+                    //];
+
+                  
 
                 },
                 init: function (type) {
