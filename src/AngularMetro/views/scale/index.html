@@ -1,100 +1,155 @@
-﻿<div class="page-bar">
-    <ul class="page-breadcrumb">
-        <li>
-            <i class="fa fa-hand-o-right"></i>
-            <a href="#">账户比例管理</a>
-        </li>
-    </ul>
-</div>
-<div ng-controller="views.scale.index as vm">
-  
+﻿<div ng-controller="views.scale.index as vm">
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-hand-o-right"></i>
+
+                <a href="#">收款账户管理</a>
+            </li>
+        </ul>
+    </div>
     <div class="portlet light bordered">
         <div class="row">
-            <div class="col-xs-8 text-left">
-                <div class="col-md-4">
-                    <div class="input-icon right">
-                        <p class="input-group">
-                            <input type="text" class="form-control" placeholder="开始时间"
-                                   uib-datepicker-popup readonly
-                                   ng-model="vm.filter.startTime"
-                                   is-open="vm.date.leftopen"
-                                   datepicker-options="vm.date.dateOptions"
-                                   ng-required="true"
-                                   current-text="今天"
-                                   clear-text="清除"
-                                   close-text="关闭" />
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default"
-                                        ng-click="vm.date.openleft()">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                </button>
-                            </span>
-                        </p>
+            <div class="col-lg-3">
+                <div class="portlet light">
+                    <div class="portlet-title myPortlet-title">
+                        <span class="myPortlet-title-span">
+                            组织机构
+                        </span>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-icon right">
-                        <p class="input-group">
-                            <input type="text" class="form-control" placeholder="结束时间"
-                                   uib-datepicker-popup readonly ng-model="vm.filter.endTime"
-                                   is-open="vm.date.rightopen"
-                                   datepicker-options="vm.date.dateOptions"
-                                   ng-required="true"
-                                   current-text="今天"
-                                   clear-text="清除"
-                                   close-text="关闭" />
-                            <span class="input-group-btn">
-                                <button type="button" class="btn btn-default"
-                                        ng-click="vm.date.openright()">
-                                    <i class="glyphicon glyphicon-calendar"></i>
-                                </button>
-                            </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="input-icon right">
-                        <i ng-click="vm.init()" class="fa fa-search"></i>
-                        <input type="text" class="form-control input-circle" placeholder="按条件搜索" ng-model="vm.table.filter">
+                    <div class="portlet-body scrollList portlet-scroll" ng-scrollbar>
+                        <div id="OrganizationUnitEditTree"></div>
+                        <div ng-if="!vm.organizationTree.unitCount" class="text-muted">
+                            暂无组织机构
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="col-xs-4 text-right">
-                <button class="btn btn-primary blue" ng-click="vm.put()"><i class="fa fa-plus"></i> 发放</button>
+            <div class="col-lg-9">
+                <div class="portlet light">
+                    <div class="portlet-title">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-3 control-label">公司名称</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control"
+                                               ng-class="{'edited':vm.model.name}" readonly required ng-model="vm.model.name">
+                                        <div class="form-control-focus"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-3 control-label">微信</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control"
+                                               ng-class="{'edited':vm.model.wechat}" readonly ng-model="vm.model.wechat">
+                                        <div class="form-control-focus"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <div class="form-group form-md-line-input">
+                                    <label class="col-md-3 control-label">支付宝</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control"
+                                               ng-class="{'edited':vm.model.pay}" readonly required ng-model="vm.model.pay">
+                                        <div class="form-control-focus"> </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="page-bar col-xs-8">
+                                <ul class="page-breadcrumb">
+                                    <li>
+                                        <a href="#">电影派</a>
+                                        <i class="fa fa-angle-right"></i>
+                                    </li>
+                                    <li>
+                                        <span>北京</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-xs-4">
+                                <a href="#">解绑微信分账</a>
+                                <a href="#">解绑支付宝分账</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="tiles" id="template" ng-if="vm.option">
+                                <div class="tile bg-red-sunglo">
+                                    <div class="tile-body">
+                                        <img src="/assets/global/img/erweima.jpg" width="90" height="90" />
+                                    </div>
+                                    <div class="tile-object">
+                                        <div class="name">扫码完成绑定</div>
+                                        <!--<div class="number"> 12 </div>-->
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-xs-4">
+                                <span>勾选绑定账号，扫码绑定分账账号</span>
+                            </div>
+                            <div class="col-xs-4">
+                                <div ng-click="vm.show()" class="fa-item col-md-6">
+                                    <i class="fa fa-weixin"></i> 微信
+                                </div>
+                                <div ng-click="vm.show()" class="fa-item col-md-6">
+                                    <i class="fa fa-paypal"></i> 支付宝
+                                </div>
+                            </div>
+                            <div class="col-xs-4">
+                                <input type="checkbox" />已配置 &nbsp;
+                                <input type="checkbox" />未配置
+                                &nbsp;  28/30
+                            </div>
+
+                        </div>
+                        <!-- 角色列表 -->
+                        <table object-table
+                               data="vm.table.data"
+                               check-model="vm.table.checkModel"
+                               display="vm.table.pageConfig.itemsPerPage"
+                               headers="对象,收款账号(微信),收款账号(支付宝),分帐帐号(微信),分帐帐号(支付宝)"
+                               fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                            <tbody>
+                                <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                                    <td>
+                                        <input type="checkbox" ng-model="::item.checked"
+                                               ng-click="$event.stopPropagation(); checkOne(item)" />
+                                    </td>
+                                    <td show-td item="item" name="devicename"></td>
+                                    <td show-td item="item" name="devicenote"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--分页-->
+                        <nav class="paging">
+                            <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                        </nav>
+
+                    </div>
+                </div>
+
+
+
+
             </div>
-        </div>
-        <div class="row">
-            <!-- 角色列表 -->
-            <table object-table
-                   data="vm.table.data"
-                   check-model="vm.table.checkModel"
-                   display="vm.table.pageConfig.itemsPerPage"
-                   headers="广告资源包名称,创建时间,描述,状态"
-                   fields="name,createTime,note,state">
-                <tbody>
-                    <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
-                        <td>
-                            <input type="checkbox" ng-model="::item.checked"
-                                   ng-click="$event.stopPropagation(); checkOne(item)" />
-                        </td>
-                        <td show-td item="item" name="name"></td>
-                        <td show-td item="item" name="createTime" format="yyyy-MM-dd  HH:mm"></td>
-                        <td show-td item="item" name="note"></td>
-                        <td>
-                            <span ng-show="item.state==1">已发布</span>
-                            <span ng-show="item.state==0">未发布</span>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <!--分页-->
-            <nav class="paging">
-                <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
-            </nav>
+
+
         </div>
     </div>
+
 </div>
-
-
-
-

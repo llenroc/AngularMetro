@@ -9,6 +9,17 @@
             var vm = this;
          
             vm.filter = {};
+            //页面属性
+            vm.table = {
+                data: [],               //数据集
+                checkModel: {},         //选择的集合
+                filter: "",//条件搜索
+                pageConfig: {           //分页配置
+                    currentPage: 1,//当前页
+                    itemsPerPage: 10,//页容量
+                    totalItems: 0//总数据
+                }
+            }
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -84,6 +95,7 @@
                     var list = [];
                     dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
                         list = res.respBody;
+                        list.push({ id: 1, name: "易饭科技",parent_id:0 });
                         var treeData = _.map(list, function (item) {
                             return {
                                 id: item.id,
