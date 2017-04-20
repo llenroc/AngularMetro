@@ -76,9 +76,12 @@ MetronicApp.factory('appSession', [
           function () {
               var _session = null;
               var cookie = $.cookie("metroResult");
-              if (cookie!=""||cookie!=undefined) {
+              if (cookie!= ""&&cookie!=undefined) {
                   var temp = $.parseJSON(cookie);
                   _session = temp;
+              }
+              else {
+                  window.location.href = "/index.html";
               }
               return _session;
           }

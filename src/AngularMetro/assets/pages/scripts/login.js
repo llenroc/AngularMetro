@@ -52,45 +52,67 @@
         $('.login-form input').keypress(function(e) {
             if (e.which == 13) {
                 if ($('.login-form').validate().form()) {
-                    var url = "http://api.efanyun.com/api/login";
+                    var url = "http://101.200.238.155:8080/api/efan/login";
                     var username = $("#username").val();
                     var password = $("#password").val();
                     var md5pw = md5(password);
                     var data = { "user_name": username, "pw": md5pw };
-                    $.post(url, data, function (res) {
-                        if (res.code == 200) {
-                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
-                            var temp = JSON.stringify(val);
-                            $.cookie("metroResult", temp, {
-                                expires:1,//有效日期
-                                path:"/",//cookie的路 径
-                                secure:true //true,cookie的传输会要求一个安全协议,否则反之
-                            });
-                            window.location.href = "/views/layout/layout.html";
+                    $.ajax({
+                        type: "Post",
+                        url: url,
+                        data: data,
+                        async: false,
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.code == 200) {
+                                var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                                var temp = JSON.stringify(val);
+                                $.cookie("metroResult", temp, {
+                                    expires: 1,//有效日期
+                                    path: "/",//cookie的路 径
+                                    secure: false //true,cookie的传输会要求一个安全协议,否则反之
+                                });
+                                window.location.href = "/views/layout/layout.html";
+                            }
                         }
                     });
-                  //  window.location.href = "/views/layout/layout.html";
                 }
                 return false;
             }
         });
         $("#btn").click(function () {
+            //var val = { username: '王中王', orgid: 1, orgName: 'abc' };
+            //var temp = JSON.stringify(val);
+            //$.cookie("metroResult", temp, {
+            //    expires: 1,//有效日期
+            //    path: "/",//cookie的路 径
+            //    secure: false //true,cookie的传输会要求一个安全协议,否则反之
+            //});
+
             if ($('.login-form').validate().form()) {
-                var url = "http://api.efanyun.com/api/login";
+                var url = "http://101.200.238.155:8080/api/efan/login";
                 var username = $("#username").val();
                 var password = $("#password").val();
                 var md5pw=md5(password);
-                var data = { "user_name":username,"pw" :md5pw};
-                $.post(url, data, function (res) {
-                    if (res.code == 200) {
-                        var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
-                        var temp = JSON.stringify(val);
-                        $.cookie("metroResult", temp, {
-                            expires: 1,//有效日期
-                            path: "/",//cookie的路 径
-                            secure: true //true,cookie的传输会要求一个安全协议,否则反之
-                        });
-                        window.location.href = "/views/layout/layout.html";
+                var data = { "userName": username, "pw": md5pw };
+
+                $.ajax({
+                    type: "Post",
+                    url: url,
+                    data: data,
+                    async: false,
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.code == 200) {
+                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                            var temp = JSON.stringify(val);
+                            $.cookie("metroResult", temp, {
+                                expires: 1,//有效日期
+                                path: "/",//cookie的路 径
+                                secure: false //true,cookie的传输会要求一个安全协议,否则反之
+                            });
+                            window.location.href = "/views/layout/layout.html";
+                        }
                     }
                 });
             }
@@ -101,7 +123,11 @@
 
     return {
         //main function to initiate the module
-        init: function() {
+        init: function () {
+            var cookie = $.cookie("metroResult");
+            if (cookie != "" && cookie != undefined) {
+                window.location.href = "/views/layout/layout.html";
+            }
             handleLogin();
         }
     };
