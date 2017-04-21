@@ -9,6 +9,12 @@
             var vm = this;
          
             vm.filter = {};
+            vm.action = {
+                current: 1,
+                action: function (num) {
+                    vm.action.current = num;
+                }
+            }
             //页面属性
             vm.table = {
                 data: [],               //数据集

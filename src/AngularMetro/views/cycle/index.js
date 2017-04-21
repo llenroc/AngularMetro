@@ -8,11 +8,19 @@
             });
             var vm = this;
             vm.option = false;
-            vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
-            vm.show = function () {
-                vm.option = !vm.option;
-            }
+         
             vm.filter = {};
+            //页面属性
+            vm.table = {
+                data: [],               //数据集
+                checkModel: {},         //选择的集合
+                filter: "",//条件搜索
+                pageConfig: {           //分页配置
+                    currentPage: 1,//当前页
+                    itemsPerPage: 10,//页容量
+                    totalItems: 0//总数据
+                }
+            }
             vm.count = { settingTotal: 0, alreadyCount: 0 };
             ///机构树
             vm.organizationTree = {

@@ -84,29 +84,97 @@
                         </div>
                     </div>
                     <div class="portlet-body">
-                
-                        <!-- 角色列表 -->
-                        <table object-table
-                               data="vm.table.data"
-                               check-model="vm.table.checkModel"
-                               display="vm.table.pageConfig.itemsPerPage"
-                               headers="一级,二级,三级,累计销售金额(元),当日销售金额"
-                               fields="object,allowwechat，allowpay,fenwechat,fenpay">
-                            <tbody>
-                                <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
-                                    <td>
-                                        <input type="checkbox" ng-model="::item.checked"
-                                               ng-click="$event.stopPropagation(); checkOne(item)" />
-                                    </td>
-                                    <td show-td item="item" name="devicename"></td>
-                                    <td show-td item="item" name="devicenote"></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <!--分页-->
-                        <nav class="paging">
-                            <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
-                        </nav>
+                        <div class="tabbable-line">
+                            <ul class="nav nav-tabs ">
+                                <li ng-class="{ 'active' : vm.action.current == 1 }">
+                                    <a href="#" ng-click="vm.action.action(1)" data-toggle="tab" aria-expanded="true"> 账户 </a>
+                                </li>
+                                <li ng-class="{ 'active' : vm.action.current ==2 }">
+                                    <a href="#" ng-click="vm.action.action(2)" data-toggle="tab" aria-expanded="false"> 商品 </a>
+                                </li>
+                                <li ng-class="{ 'active' : vm.action.current == 3 }">
+                                    <a href="#" ng-click="vm.action.action(3)" data-toggle="tab" aria-expanded="false"> 订单 </a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+                                <div class="tab-pane active" ng-if="vm.action.current==1">
+                                    <!-- 账户 -->
+                                    <table object-table
+                                           data="vm.table.data"
+                                           check-model="vm.table.checkModel"
+                                           display="vm.table.pageConfig.itemsPerPage"
+                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
+                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                        <tbody>
+                                            <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                                                <td>
+                                                    <input type="checkbox" ng-model="::item.checked"
+                                                           ng-click="$event.stopPropagation(); checkOne(item)" />
+                                                </td>
+                                                <td show-td item="item" name="devicename"></td>
+                                                <td show-td item="item" name="devicenote"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--分页-->
+                                    <nav class="paging">
+                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                    </nav>
+                                </div>
+                                <div class="tab-pane" ng-if="vm.action.current==1">
+                                    <!-- 账户 -->
+                                    <table object-table
+                                           data="vm.table.data"
+                                           check-model="vm.table.checkModel"
+                                           display="vm.table.pageConfig.itemsPerPage"
+                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
+                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                        <tbody>
+                                            <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                                                <td>
+                                                    <input type="checkbox" ng-model="::item.checked"
+                                                           ng-click="$event.stopPropagation(); checkOne(item)" />
+                                                </td>
+                                                <td show-td item="item" name="devicename"></td>
+                                                <td show-td item="item" name="devicenote"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--分页-->
+                                    <nav class="paging">
+                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                    </nav>
+                                </div>
+                                <div class="tab-pane" ng-if="vm.action.current==1">
+                                    <!-- 账户 -->
+                                    <table object-table
+                                           data="vm.table.data"
+                                           check-model="vm.table.checkModel"
+                                           display="vm.table.pageConfig.itemsPerPage"
+                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
+                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                        <tbody>
+                                            <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
+                                                <td>
+                                                    <input type="checkbox" ng-model="::item.checked"
+                                                           ng-click="$event.stopPropagation(); checkOne(item)" />
+                                                </td>
+                                                <td show-td item="item" name="devicename"></td>
+                                                <td show-td item="item" name="devicenote"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <!--分页-->
+                                    <nav class="paging">
+                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                     
 
                     </div>
                 </div>

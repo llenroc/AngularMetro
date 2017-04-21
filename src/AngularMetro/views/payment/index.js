@@ -7,10 +7,20 @@
                 App.initAjax();
             });
             var vm = this;
-            vm.option = false;
+            vm.option = { wechat:false,pay:false };
             vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
-            vm.show = function () {
-                vm.option = !vm.option;
+
+            vm.bind = {};
+
+            vm.show = function (type) {
+                if (type==1) {
+                    vm.option.wechat = !vm.option.wechat;
+                    vm.option.pay = false;
+                } else {
+                    vm.option.pay = !vm.option.pay;
+                    vm.option.wechat = false;
+                }
+              
             }
             vm.filter = {};
             vm.count = { settingTotal: 0, alreadyCount:0};

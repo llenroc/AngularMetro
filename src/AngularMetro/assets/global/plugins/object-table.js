@@ -464,7 +464,7 @@ angular.module('objPagination', []).directive('objPagination', [function () {
             };
 
             // 定义分页的长度必须为奇数 (default:9)
-            scope.conf.pagesLength = parseInt(scope.conf.pagesLength) ? parseInt(scope.conf.pagesLength) : 9;
+                scope.conf.pagesLength = parseInt(scope.conf.pagesLength) ? parseInt(scope.conf.pagesLength) : 9;
             if (scope.conf.pagesLength % 2 === 0) {
                 // 如果不是奇数的时候处理一下
                 scope.conf.pagesLength = scope.conf.pagesLength - 1;
