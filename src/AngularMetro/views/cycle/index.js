@@ -12,7 +12,8 @@
             vm.show = function () {
                 vm.option = !vm.option;
             }
-
+            vm.filter = {};
+            vm.count = { settingTotal: 0, alreadyCount: 0 };
             ///机构树
             vm.organizationTree = {
                 $tree: null,
@@ -44,7 +45,7 @@
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
                         }
-                        // vm.init();
+                         vm.init();
                         $("a.list-group-item:first-child").css("background-color", "transparent");
                     }
                 },
@@ -81,14 +82,6 @@
                         });
                         callback(treeData);
                     });
-                    //var list = [
-                    //    { id: 1, parentId: 0, displayName: "A机构" },
-                    //    { id: 2, parentId: 1, displayName: "A子机构" },
-                    //    { id: 3, parentId: 0, displayName: "B机构" },
-                    //    { id: 4, parentId: 3, displayName: "B子机构" },
-                    //];
-
-
 
                 },
                 init: function (type) {
@@ -193,6 +186,33 @@
                         vm.organizationTree.$tree.jstree('refresh');
                     }, 1);
                 }
+            };
+
+
+            vm.init = function () {
+                vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                if (vm.filter.check) {
+                    vm.filter.isSetting = 1;
+                } else if (vm.filter.uncheck) {
+                    vm.filter.isSetting = 0;
+                } else {
+                    vm.filter.isSetting = null;
+                }
+
+                dataFactory.action("api/orgsetting/selectOrgPeriodSetting", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result == "1") {
+                            vm.table.pageConfig.totalItems = res.total;
+                            vm.table.data = res.list;
+                            vm.count.settingTotal = res.settingTotal;
+                            vm.count.alreadyCount = res.alreadyCount;
+                            vm.table.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                    });
             };
             vm.organizationTree.init();
         }])

@@ -13,6 +13,7 @@
                 vm.option = !vm.option;
             }
             vm.filter = {};
+            vm.count = { settingTotal: 0, alreadyCount:0};
             //页面属性
             vm.table = {
                 data: [],               //数据集
@@ -211,9 +212,11 @@
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
                 vm.filter.orgId = vm.organizationTree.selectedOu.id;
                 if (vm.filter.check) {
-                    vm.filter.isSetting = vm.filter.check;
+                    vm.filter.isSetting = 1;
                 } else if (vm.filter.uncheck) {
-                    vm.filter.isSetting = vm.filter.uncheck;
+                    vm.filter.isSetting = 0;
+                } else {
+                    vm.filter.isSetting = null;
                 }
 
                 dataFactory.action("api/orgsetting/selectOrgAccountSetting", "", null, vm.filter)
@@ -221,6 +224,8 @@
                         if (res.result == "1") {
                             vm.table.pageConfig.totalItems = res.total;
                             vm.table.data = res.list;
+                            vm.count.settingTotal = res.settingTotal;
+                            vm.count.alreadyCount = res.alreadyCount;
                             vm.table.pageConfig.onChange = function () {
                                 vm.init();
                             }
@@ -229,6 +234,12 @@
             };
          //   vm.init();
           
+            //解绑微信
+            vm.unbindwechat = function () { }
+            //解绑支付宝
+            vm.unbindpay = function () { }
+
+
             vm.organizationTree.init();
         }])
 })();

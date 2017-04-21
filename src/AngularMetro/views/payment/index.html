@@ -1,13 +1,13 @@
 ﻿<div ng-controller="views.payment.index as vm">
-        <div class="page-bar">
-            <ul class="page-breadcrumb">
-                <li>
-                    <i class="fa fa-hand-o-right"></i>
+    <div class="page-bar">
+        <ul class="page-breadcrumb">
+            <li>
+                <i class="fa fa-hand-o-right"></i>
 
-                    <a href="#">收款账户管理</a>
-                </li>
-            </ul>
-        </div>
+                <a href="#">收款账户管理</a>
+            </li>
+        </ul>
+    </div>
     <div class="portlet light bordered">
         <div class="row">
             <div class="col-lg-3">
@@ -70,21 +70,32 @@
                     </div>
                     <div class="portlet-body">
                         <div class="row">
-                            <div class="page-bar col-xs-8">
-                                <ul class="page-breadcrumb">
-                                    <li>
-                                        <a href="#">电影派</a>
-                                        <i class="fa fa-angle-right"></i>
-                                    </li>
-                                    <li>
-                                        <span>北京</span>
-                                    </li>
-                                </ul>
+                            <div class="page-bar">
+                                <div class="col-xs-6">
+                                    <ul class="page-breadcrumb" >
+                                        <li>
+                                            <a href="#">电影派</a>
+                                            <i class="fa fa-angle-right"></i>
+                                        </li>
+                                        <li>
+                                            <span>北京</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-6">
+                                    <ul class="page-breadcrumb" style="float:right">
+                                        <li>
+                                            <a href="#" ng-click="vm.unbindwechat()" >解绑微信分账</a>
+                                        </li>
+                                        <li>
+                                            <a href="#" ng-click="vm.unbindpay()">解绑支付宝分账</a>
+                                        </li>
+                                    </ul>
+                                </div>
+
+
                             </div>
-                            <div class="col-xs-4">
-                                <a href="#">解绑微信分账</a>
-                                <a href="#">解绑支付宝分账</a>
-                            </div>
+
                         </div>
                         <div class="row">
                             <div class="tiles" id="template" ng-if="vm.option">
@@ -111,9 +122,9 @@
                                 </div>
                             </div>
                             <div class="col-xs-4">
-                                <input type="checkbox" value="1" ng-model="vm.filter.check"/>已配置 &nbsp; 
-                                <input type="checkbox" value="0" ng-model="vm.filter.uncheck"/>未配置
-                              &nbsp;  28/30
+                                <input type="checkbox" value="1" ng-click="vm.init()" ng-model="vm.filter.check" />已配置 &nbsp;
+                                <input type="checkbox" value="0" ng-click="vm.init()" ng-model="vm.filter.uncheck" />未配置
+                                &nbsp;  {{vm.count.alreadyCount}}/{{vm.count.settingTotal}}
                             </div>
 
                         </div>
@@ -130,8 +141,11 @@
                                         <input type="checkbox" ng-model="::item.checked"
                                                ng-click="$event.stopPropagation(); checkOne(item)" />
                                     </td>
-                                    <td show-td item="item" name="devicename"></td>
                                     <td show-td item="item" name="orgName"></td>
+                                    <td>xxxxxxxxx</td>
+                                    <td>xxxxxxxxx</td>
+                                    <td show-td item="item" name="wxAccount"></td>
+                                    <td show-td item="item" name="aliAccount"></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -151,5 +165,5 @@
 
         </div>
     </div>
-  
+
 </div>
