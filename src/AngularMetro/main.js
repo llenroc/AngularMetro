@@ -337,7 +337,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             insertBefore: '#ng_load_plugins_before',
                             files: [
                                 '/views/payment/index.js',
-                                '/views/payment/payment.css'
+                                '/views/payment/payment.css',
+                                '/views/payment/modal.js'
                             ]
                         }]
 
@@ -377,7 +378,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/cycle/index.js'
+                                '/views/cycle/index.js',
+                                '/views/cycle/modal.js'
                             ]
                         }]
 

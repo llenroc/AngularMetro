@@ -7,7 +7,6 @@
                 App.initAjax();
             });
             var vm = this;
-            vm.option = false;
          
             vm.filter = {};
             //页面属性
@@ -22,6 +21,30 @@
                 }
             }
             vm.count = { settingTotal: 0, alreadyCount: 0 };
+
+            vm.daily = function (type) {
+                var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length <= 0) {
+                    $rootScope.notify.show("请选择要编辑的对象", "warning");
+                    return;
+                }
+                var modal = $uibModal.open({
+                    templateUrl: '/views/cycle/modal.html',
+                    controller: 'views.cycle.modal as vm',
+                    //  backdrop: 'static',
+                    size: 'sm',//模态框的大小尺寸
+                    resolve: {
+                        model: function () { return { list: ids, periodType: type } },
+                    }
+                });
+                modal.result.then(function (response) {
+                    vm.init();
+                })
+            }
+            vm.export = function () {
+                $rootScope.notify.show("导出成功", "success");
+            }
+
             ///机构树
             vm.organizationTree = {
                 $tree: null,
@@ -198,6 +221,7 @@
 
 
             vm.init = function () {
+                vm.table.checkModel = {};
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
                 vm.filter.orgId = vm.organizationTree.selectedOu.id;

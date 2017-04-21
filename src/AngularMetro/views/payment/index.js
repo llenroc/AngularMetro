@@ -1,27 +1,36 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.payment.index',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal',
-        function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
+        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal','$rootScope',
+    function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal,$rootScope) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
             });
             var vm = this;
-            vm.option = { wechat:false,pay:false };
+       
             vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
 
             vm.bind = {};
-
             vm.show = function (type) {
-                if (type==1) {
-                    vm.option.wechat = !vm.option.wechat;
-                    vm.option.pay = false;
-                } else {
-                    vm.option.pay = !vm.option.pay;
-                    vm.option.wechat = false;
+                var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length <= 0) {
+                    $rootScope.notify.show("请选择要绑定的对象", "warning");
+                    return;
                 }
-              
+                var modal = $uibModal.open({
+                    templateUrl: '/views/payment/modal.html',
+                    controller: 'views.payment.modal as vm',
+                  //  backdrop: 'static',
+                    size: 'sm',//模态框的大小尺寸
+                    resolve: {
+                        model: function () { return { list: ids,type:type } },
+                    }
+                });
+                modal.result.then(function (response) {
+                    vm.init();
+                })
             }
+        
             vm.filter = {};
             vm.count = { settingTotal: 0, alreadyCount:0};
             //页面属性
@@ -218,6 +227,7 @@
             };
             //获取用户数据集，并且添加配置项
             vm.init = function () {
+                vm.table.checkModel = {};
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
                 vm.filter.orgId = vm.organizationTree.selectedOu.id;
