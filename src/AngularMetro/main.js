@@ -393,7 +393,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 }]);
 
 //启动
-MetronicApp.run(["$rootScope", "settings", "$state", 'notify', function ($rootScope, settings, $state, notify) {
+MetronicApp.run(["$rootScope", "settings", "$state", 'notify', '$templateCache', function ($rootScope, settings, $state, notify, $templateCache) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
     //提示信息服务
@@ -408,4 +408,16 @@ MetronicApp.run(["$rootScope", "settings", "$state", 'notify', function ($rootSc
             this.$apply(fn);
         }
     };
+    $templateCache.put("template/modal/confirm.html",
+   '<div class="m-c">\n' +
+   '  <div class="modal-header">\n' +
+   '    <h4 class="modal-title">{{title}}</h4>\n' +
+   '  </div>\n' +
+   '  <div class="modal-body">{{content}}</div>\n' +
+   '  <div class="modal-footer" style="text-align: center;">\n' +
+   '    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>\n' +
+   '    <button type="button" class="btn btn-warning" ng-click="cancel()">取消</button>\n' +
+   '  </div>\n' +
+   '</div>\n' +
+   "");
 }]);

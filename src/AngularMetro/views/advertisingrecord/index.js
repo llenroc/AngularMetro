@@ -63,7 +63,7 @@
                     $rootScope.notify.show("请选择一个操作对象", "warning");
                     return;
                 }
-                dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
+                dataFactory.action("api/resource/updateState", "", null, { list: id, state: 0 }).then(function (res) {
                     $rootScope.notify.show("下线成功", "success");
                     vm.init();
                 });
@@ -75,7 +75,7 @@
                     $rootScope.notify.show("请选择一个操作对象", "warning");
                     return;
                 }
-                dataFactory.action("api/resource/updateState", "", null, { list: ids, state: 1 }).then(function (res) {
+                dataFactory.action("api/resource/updateState", "", null, { list: id, state: 1 }).then(function (res) {
                     $rootScope.notify.show("发放成功", "success");
                     vm.init();
                 });

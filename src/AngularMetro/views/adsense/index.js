@@ -95,6 +95,9 @@
                 })
             }
             vm.delete = function () {
+                //dataFactory.confirm("确定删除?", "要删除这个么").then(function () {
+
+                //});
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (ids.length <= 0) {
                     $rootScope.notify.show("请选择要删除的对象", "warning");
