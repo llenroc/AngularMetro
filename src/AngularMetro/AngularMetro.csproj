@@ -477,6 +477,7 @@
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.eot" />
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <None Include="Properties\PublishProfiles\settings.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
