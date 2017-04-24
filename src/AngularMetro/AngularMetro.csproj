@@ -226,6 +226,7 @@
     <Content Include="assets\global\plugins\object-table.js" />
     <Content Include="assets\global\plugins\plupload\angular-local-storage.js" />
     <Content Include="assets\global\plugins\plupload\qupload.js" />
+    <Content Include="assets\global\plugins\qrcode.js" />
     <Content Include="assets\global\plugins\select2\css\select2-bootstrap.min.css" />
     <Content Include="assets\global\plugins\select2\css\select2.css" />
     <Content Include="assets\global\plugins\select2\css\select2.min.css" />
@@ -477,6 +478,8 @@
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.eot" />
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.ttf" />
     <Content Include="assets\global\plugins\simple-line-icons\fonts\Simple-Line-Icons.woff" />
+    <Content Include="wechat\wechat.html" />
+    <Content Include="wechat\wechat.js" />
     <None Include="Properties\PublishProfiles\settings.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

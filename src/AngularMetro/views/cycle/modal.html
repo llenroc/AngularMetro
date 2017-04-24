@@ -11,7 +11,9 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-4 control-label">T+N打款</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" placeholder="请输入数字(0-100)" ng-class="{'edited':vm.model.periodTime}"  ng-model="vm.model.periodTime">
+                        <input type="number" class="form-control" ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                               placeholder="请输入数字(0-100)" ng-class="{'edited':vm.model.periodTime}"
+                                 ng-model="vm.model.periodTime">
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
@@ -20,7 +22,7 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-4 control-label">每月几号打款</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" placeholder="请输入数字(0-31)" ng-class="{'edited':vm.model.periodTime}"  ng-model="vm.model.periodTime">
+                        <input type="number" class="form-control" ng-pattern="/^((0?[1-9])|((1|2)[0-9])|30|31)$/" placeholder="请输入数字(0-31)" ng-class="{'edited':vm.model.periodTime}"  ng-model="vm.model.periodTime">
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
