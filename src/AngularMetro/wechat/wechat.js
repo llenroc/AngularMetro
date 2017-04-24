@@ -19,7 +19,7 @@
                   //  data: { code: access_code },
                     dataType: 'json',
                     success: function (result) {
-                        $("#openId").val(result.openid)
+                        $("#openId").text(result.openid)
                     }
                 });
             }
