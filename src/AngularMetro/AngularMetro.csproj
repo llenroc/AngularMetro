@@ -409,6 +409,7 @@
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="js\abp.js" />
+    <Content Include="js\abp.ng.js" />
     <Content Include="js\factorys\dataFactory.js" />
     <Content Include="views\adsensepack\modal.html" />
     <Content Include="views\adsensepack\modal.js" />

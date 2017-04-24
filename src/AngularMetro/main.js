@@ -11,6 +11,7 @@ var MetronicApp = angular.module("MetronicApp", [
       'objectTable',//table表格
     'objPagination',//分页
     'angularFileUpload',//文件上传
+    'abp'
 ]);
 
 //懒加载
@@ -362,7 +363,6 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                                 '/views/scale/modal.js'
                             ]
                         }]
-
                         );
                 }]
             }
@@ -409,16 +409,5 @@ MetronicApp.run(["$rootScope", "settings", "$state", 'notify', '$templateCache',
             this.$apply(fn);
         }
     };
-    $templateCache.put("template/modal/confirm.html",
-   '<div class="m-c">\n' +
-   '  <div class="modal-header">\n' +
-   '    <h4 class="modal-title">{{title}}</h4>\n' +
-   '  </div>\n' +
-   '  <div class="modal-body">{{content}}</div>\n' +
-   '  <div class="modal-footer" style="text-align: center;">\n' +
-   '    <button type="button" class="btn btn-primary" ng-click="ok()">确定</button>\n' +
-   '    <button type="button" class="btn btn-warning" ng-click="cancel()">取消</button>\n' +
-   '  </div>\n' +
-   '</div>\n' +
-   "");
+
 }]);
