@@ -7,6 +7,20 @@
             });
             var vm = this;
             vm.model = model;
+            vm.changea = function () {
+                if (vm.model.wxthirdScale) {
+                    vm.model.alithirdScale = 100 - vm.model.wxthirdScale;
+                    return;
+                }
+              
+            }
+            vm.changeb = function () {
+              
+                if (vm.model.alithirdScale) {
+                    vm.model.wxthirdScale = 100 - vm.model.alithirdScale;
+                    return;
+                }
+            }
             vm.save = function () {
                 if (!vm.model.list && (!vm.model.wxAccount || !vm.model.aliAccount)) {
                     $rootScope.notify.show("请输入要绑定的账号", "warning");

@@ -216,7 +216,7 @@
                 vm.filter.isSetting = null;
             }
 
-            dataFactory.action("api/orgsetting/selectOrgAccountSetting", "", null, vm.filter)
+            dataFactory.action("api/product/selectProductList", "", null, vm.filter)
                 .then(function (res) {
                     if (res.result == "1") {
                         vm.table.pageConfig.totalItems = res.total;
@@ -235,13 +235,18 @@
                 $rootScope.notify.show("请选择要编辑的对象", "warning");
                 return;
             }
+            var temp = [];
+            for (var o in vm.table.checkModel) {
+                temp.push({ orgId: 1, productId: 1 });
+            }
+
             var modal = $uibModal.open({
                 templateUrl: '/views/scale/modal.html',
                 controller: 'views.scale.modal as vm',
                 //  backdrop: 'static',
               //  size: 'sm',//模态框的大小尺寸
                 resolve: {
-                    model: function () { return { list: ids } },
+                    model: function () { return { list: temp } },
                 }
             });
             modal.result.then(function (response) {
