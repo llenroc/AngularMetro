@@ -256,11 +256,25 @@
          //   vm.init();
           
             //解绑微信
-            vm.unbindwechat = function () { }
-            //解绑支付宝
-            vm.unbindpay = function () { }
-
-
+            vm.unbind = function (type) {
+                var ids = Object.getOwnPropertyNames(vm.table.checkModel);
+                if (ids.length <= 0) {
+                    $rootScope.notify.show("请选择要绑定的对象", "warning");
+                    return;
+                }
+                var model = { list: ids, type: type };
+                if (type == 1)
+                    model.wxAccount = '';
+                else model.aliAccount = '';
+                dataFactory.action('api/orgsetting/bindOrgAccount', "", null, model).then(function (res) {
+                    if (res.result == "1") {
+                        $rootScope.notify.show("解绑成功", "error");
+                        vm.init();
+                    } else {
+                        $rootScope.notify.show("保存失败,请重试", "error");
+                    }
+                });
+            }
             vm.organizationTree.init();
         }])
 })();
