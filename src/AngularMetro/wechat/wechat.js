@@ -12,20 +12,14 @@
             else {
                 $.ajax({
                     type: 'get',
-                    url: ApiUrl + '/index.php?act=payment&op=getopenid',
+                    url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxae73861a343f7fd6&secret=***&code=' + access_code +
+                        '&grant_type=authorization_code',
                     async: false,
                     cache: false,
-                    data: { code: access_code },
+                  //  data: { code: access_code },
                     dataType: 'json',
                     success: function (result) {
-                        if (result != null && result.hasOwnProperty('openid') && result.openid != "") {
-                            addcookie('wxopenid', result.openid, 360000);
-                            getlogininfo(result.openid);
-                        }
-                        else {
-                            alert('微信身份识别失败 \n ' + result);
-                            location.href = fromurl;
-                        }
+                        $("#openId").val(result.openid)
                     }
                 });
             }

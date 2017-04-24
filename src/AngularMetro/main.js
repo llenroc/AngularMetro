@@ -358,7 +358,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/scale/index.js'
+                                '/views/scale/index.js',
+                                '/views/scale/modal.js'
                             ]
                         }]
 
