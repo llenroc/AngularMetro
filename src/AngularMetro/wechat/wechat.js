@@ -23,34 +23,13 @@
                     }
                 });
             }
-        } else {
-            if (key == '' && wxopenid != '')
-                getlogininfo(wxopenid);
-        }
+        } 
 
         function GetQueryString(name) {
             var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
             var r = window.location.search.substr(1).match(reg);
             if (r != null) return unescape(r[2]); return null;
         }
-        function getlogininfo(wxopenid) {
-            $.ajax({
-                type: 'get',
-                url: ApiUrl + '/index.php?act=login&op=autologininfo',
-                data: { wxopenid: wxopenid },
-                dataType: 'json',
-                async: false,
-                cache: false,
-                success: function (result) {
-                    if (result.return_code == 'OK') {
-                        addcookie('key', result.memberinfo.key);
-                        addcookie('username', result.memberinfo.username);
-                    } else {
-                        alert(result.return_msg);
-                        location.href = WapSiteUrl + '/tmpl/member/login.html';
-                    }
-                }
-            });
-        }
+    
     }
 });

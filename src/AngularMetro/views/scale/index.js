@@ -62,7 +62,7 @@
                 var displayName = ou.name;
                 displayName = displayName.length > 10 ? (displayName.substring(0, 10) + "...") : displayName;
                 var itemClass = ' ou-text-no-members';
-                return '<span  class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '  <i class="fa fa-caret-down text-muted"></i></span>';
+                return '<span  class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '</span>';
             },
             incrementMemberCount: function (ouId, incrementAmount) {
                 var treeNode = vm.organizationTree.$tree.jstree('get_node', ouId);

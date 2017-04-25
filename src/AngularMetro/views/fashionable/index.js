@@ -88,7 +88,7 @@
                     var displayName = ou.name;
                     displayName = displayName.length > 10 ? (displayName.substring(0, 10) + "...") : displayName;
                     var itemClass = ' ou-text-no-members';
-                    return '<span  class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '  <i class="fa fa-caret-down text-muted"></i></span>';
+                    return '<span  class="ou-text' + itemClass + '" data-ou-id="' + ou.id + '">' + displayName + '</span>';
                 },
                 incrementMemberCount: function (ouId, incrementAmount) {
                     var treeNode = vm.organizationTree.$tree.jstree('get_node', ouId);
@@ -109,21 +109,13 @@
                                 displayName: item.name,
                                 text: vm.organizationTree.generateTextOnTree(item),
                                 state: {
-                                    opened: item.parent_id ? true : false
+                                    opened: item.parent_id<=0 ? true : false
                                 }
                             };
                         });
                         callback(treeData);
                     });
-                    //var list = [
-                    //    { id: 1, parentId: 0, displayName: "A机构" },
-                    //    { id: 2, parentId: 1, displayName: "A子机构" },
-                    //    { id: 3, parentId: 0, displayName: "B机构" },
-                    //    { id: 4, parentId: 3, displayName: "B子机构" },
-                    //];
-
-                  
-
+               
                 },
                 init: function (type) {
                     vm.organizationTree.getTreeDataFromServer(function (treeData) {
