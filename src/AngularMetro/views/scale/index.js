@@ -237,7 +237,7 @@
             }
             var temp = [];
             for (var o in vm.table.checkModel) {
-                temp.push({ orgId: 1, productId: 1 });
+                temp.push({ orgId: vm.table.checkModel[o].orgId, productId: vm.table.checkModel[o].productId });
             }
 
             var modal = $uibModal.open({

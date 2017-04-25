@@ -23,9 +23,9 @@
                     <label class="col-md-4 control-label">三方(微信)比例</label>
                     <div class="col-md-8 input-group left-addon right-addon">
                       <!--  <span class="input-group-addon">%</span>-->
-                        <input type="text" class="form-control"
+                        <input type="number" class="form-control"
                                ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
-                                ng-class="{'edited':vm.model.wxthirdScale}"
+                                ng-class="{'edited':vm.model.wxthirdScale}" required
                                 ng-blur="vm.changea()"  ng-model="vm.model.wxthirdScale">
                         <span class="input-group-addon">%</span>
                     </div>
@@ -46,7 +46,7 @@
                     <label class="col-md-4 control-label">三方(支付宝)比例</label>
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
-                        <input type="text" class="form-control"
+                        <input type="number" class="form-control" required
                                ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
                                 ng-class="{'edited':vm.model.alithirdScale}"
                                 ng-blur="vm.changeb()" ng-model="vm.model.alithirdScale">

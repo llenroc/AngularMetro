@@ -12,7 +12,7 @@
             else {
                 $.ajax({
                     type: 'get',
-                    url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxae73861a343f7fd6&secret=***&code=' + access_code +
+                    url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxae73861a343f7fd6&secret=8b2fbb7b931ab6830626e65b2586b74a&code=' + access_code +
                         '&grant_type=authorization_code',
                     async: false,
                     cache: false,
