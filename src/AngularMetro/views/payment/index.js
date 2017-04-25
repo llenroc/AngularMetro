@@ -8,7 +8,7 @@
             });
             var vm = this;
        
-            vm.model = { name: "xxxx商贸有限责任公司", wechat: "123xxx789", pay: "123xxx789" };
+            vm.model = { name: "xxxx商贸有限责任公司", wechat: "133xxx27156", pay: "133xxx27156" };
 
             vm.bind = {};
             vm.show = function (type) {

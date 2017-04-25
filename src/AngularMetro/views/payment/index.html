@@ -30,43 +30,29 @@
                 <div class="portlet light">
                     <div class="portlet-title">
                         <div class="row">
-                            <div class="col-xs-8">
-                                <div class="form-group form-md-line-input">
-                                    <label class="col-md-3 control-label">公司名称</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control"
-                                               ng-class="{'edited':vm.model.name}" readonly required ng-model="vm.model.name">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
+                            <div class="col-xs-4">
+                                <label>公司名称</label>
+                                <div class="form-group form-md-line-input has-info">
+                                    <input type="text" class="form-control" readonly ng-model="vm.model.name">
                                 </div>
+                           
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <div class="form-group form-md-line-input">
-                                    <label class="col-md-3 control-label">微信</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control"
-                                               ng-class="{'edited':vm.model.wechat}" readonly ng-model="vm.model.wechat">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-8">
-                                <div class="form-group form-md-line-input">
-                                    <label class="col-md-3 control-label">支付宝</label>
-                                    <div class="col-md-9">
-                                        <input type="text" class="form-control"
-                                               ng-class="{'edited':vm.model.pay}" readonly required ng-model="vm.model.pay">
-                                        <div class="form-control-focus"> </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="col-xs-4">
+                                <label>微信</label>
 
-                        </div>
+                                <div class="form-group form-md-line-input has-info">
+                                    <input type="text" class="form-control" readonly ng-model="vm.model.wechat">
+                                </div>
+                              
+                            </div>
+                            <div class="col-xs-4">
+                                <label>支付宝</label>
 
+                                <div class="form-group form-md-line-input has-info">
+                                    <input type="text" class="form-control" readonly ng-model="vm.model.pay">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="portlet-body">
                         <div class="row">
