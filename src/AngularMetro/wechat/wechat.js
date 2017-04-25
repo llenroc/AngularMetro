@@ -5,21 +5,20 @@
         if (wxopenid == '') {
             if (access_code == null) {
                 var fromurl = location.href;
-          //      var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxae73861a343f7fd6&redirect_uri=www.baidu.com&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
-                var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxae73861a343f7fd6&redirect_uri=' + encodeURIComponent(fromurl) + '&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
+                var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxae73861a343f7fd6&redirect_uri=http://gaoxq.efanyun.com/wechat/wechat.html&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
+              //  var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxae73861a343f7fd6&redirect_uri=' + encodeURIComponent(fromurl) + '&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
                 location.href = url;
             }
             else {
                 $.ajax({
-                    type: 'get',
-                    url: 'https://api.weixin.qq.com/sns/oauth2/access_token?appid=wxae73861a343f7fd6&secret=8b2fbb7b931ab6830626e65b2586b74a&code=' + access_code +
-                        '&grant_type=authorization_code',
+                    type: 'post',
+                    url: 'http://101.200.238.155:8080/api/efan/getWxToken',
                     async: false,
                     cache: false,
-                  //  data: { code: access_code },
+                    data: { code: access_code },
                     dataType: 'json',
                     success: function (result) {
-                        $("#openId").text(result.openid)
+                        $("#openid").text(result.openid)
                     }
                 });
             }

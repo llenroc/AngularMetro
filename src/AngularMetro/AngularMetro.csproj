@@ -130,6 +130,7 @@
     <Content Include="assets\global\img\portlet-remove-icon-white.png" />
     <Content Include="assets\global\img\portlet-remove-icon.png" />
     <Content Include="assets\global\img\remove-icon-small.png" />
+    <Content Include="assets\global\img\social\qcode.png" />
     <Content Include="assets\global\img\syncfusion-icons-white.png" />
     <Content Include="assets\global\img\syncfusion-icons.png" />
     <Content Include="assets\global\plugins\angular-file-upload\angular-file-upload.min.js" />
@@ -520,7 +521,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="assets\global\img\social\" />
     <Folder Include="assets\global\plugins\angularjs\plugins\angular-file-upload\uploads\" />
   </ItemGroup>
   <PropertyGroup>

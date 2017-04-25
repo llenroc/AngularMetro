@@ -8,14 +8,23 @@
         </div>
         <div class="modal-body">
             <div ng-if="vm.model.type==1" class="row">
-                <img src="/assets/global/img/portfolio/400x300/1.jpg" style="width:250px;height:250px;"/>
+                <img src="/assets/global/img/social/qcode.png" style="width:250px;height:250px;"/>
                 <div class="form-group form-md-line-input">
                     <label class="col-md-4 control-label">openId</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" placeholder="扫码获取openId,写在这里" ng-class="{'edited':vm.model.wxAccount}"  ng-model="vm.model.wxAccount">
+                        <input type="text" class="form-control" placeholder="扫码获取openId,写在这里"
+                                ng-class="{'edited':vm.model.wxAccount}"  ng-model="vm.model.wxAccount">
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
+                <!--<div class="form-group form-md-line-input">
+                    <label class="col-md-4 control-label">openId</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" placeholder="确认微信openId" 
+                               ng-class="{'edited':vm.model.rwxAccount}" ng-model="vm.model.rwxAccount">
+                        <div class="form-control-focus"> </div>
+                    </div>
+                </div>-->
             </div>
             <div ng-if="vm.model.type==2" class="row">
                 <div class="form-group form-md-line-input">

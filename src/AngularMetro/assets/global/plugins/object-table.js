@@ -123,10 +123,10 @@ angular.module("objectTable").controller("objectTableCtrl",
             this._init = function () {
 
                 //检测window高度变化
-                window.onresize = function () {
-                    e.display = (e.display>15 && e.display) ||(angular.element(window).height() >= 900 && 15) || (angular.element(window).height() >= 700 && 10) || 5;
-                    e.$apply();
-                }
+                //window.onresize = function () {
+                //    e.display = (e.display>15 && e.display) ||(angular.element(window).height() >= 900 && 15) || (angular.element(window).height() >= 700 && 10) || 5;
+                //    e.$apply();
+                //}
 
                 e.headers = [], e.fields = [], e.display = e.display || 5,
                   e.paging = angular.isDefined(e.paging) ? e.paging : !0,
