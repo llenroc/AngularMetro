@@ -109,7 +109,6 @@
     <Content Include="assets\global\img\ajax-loading.gif" />
     <Content Include="assets\global\img\ajax-modal-loading.gif" />
     <Content Include="assets\global\img\datatable-row-openclose.png" />
-    <Content Include="assets\global\img\erweima.jpg" />
     <Content Include="assets\global\img\input-spinner.gif" />
     <Content Include="assets\global\img\loading-spinner-blue.gif" />
     <Content Include="assets\global\img\loading-spinner-default.gif" />

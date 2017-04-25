@@ -12,7 +12,7 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-4 control-label">openId</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" placeholder="扫码获取openId,写在这里"
+                        <input type="text" class="form-control" required placeholder="扫码获取openId,写在这里"
                                 ng-class="{'edited':vm.model.wxAccount}"  ng-model="vm.model.wxAccount">
                         <div class="form-control-focus"> </div>
                     </div>
@@ -30,7 +30,7 @@
                 <div class="form-group form-md-line-input">
                     <label class="col-md-4 control-label">支付宝账号</label>
                     <div class="col-md-8">
-                        <input type="text" class="form-control" placeholder="请输入支付宝账号" ng-class="{'edited':vm.model.aliAccount}"  ng-model="vm.model.aliAccount">
+                        <input type="text" class="form-control" required placeholder="请输入支付宝账号" ng-class="{'edited':vm.model.aliAccount}"  ng-model="vm.model.aliAccount">
                         <div class="form-control-focus"> </div>
                     </div>
                 </div>
