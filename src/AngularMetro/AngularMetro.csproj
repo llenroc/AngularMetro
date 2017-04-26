@@ -117,9 +117,6 @@
     <Content Include="assets\global\img\loading-spinner-grey.gif" />
     <Content Include="assets\global\img\loading.gif" />
     <Content Include="assets\global\img\overlay-icon.png" />
-    <Content Include="assets\global\img\portfolio\400x300\1.jpg" />
-    <Content Include="assets\global\img\portfolio\400x300\2.jpg" />
-    <Content Include="assets\global\img\portfolio\400x300\3.jpg" />
     <Content Include="assets\global\img\portlet-collapse-icon-white.png" />
     <Content Include="assets\global\img\portlet-collapse-icon.png" />
     <Content Include="assets\global\img\portlet-config-icon-white.png" />

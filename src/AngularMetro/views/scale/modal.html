@@ -12,7 +12,9 @@
                     <label class="col-md-4 control-label">xxx商贸(微信)比例</label>
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
-                        <input type="text" class="form-control" value="30" readonly>
+                        <input type="number" class="form-control" 
+                                ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                                ng-class="{'edited':vm.model.wxScale}"  ng-model="vm.model.wxScale" readonly>
                         <span class="input-group-addon">%</span>
                     </div>
                 </div>
@@ -36,7 +38,8 @@
                     <label class="col-md-4 control-label">xxx商贸(支付宝)比例</label>
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
-                        <input type="text" class="form-control" value="70" readonly>
+                        <input type="text" class="form-control"   ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                                ng-class="{'edited':vm.model.aliScale}"  ng-model="vm.model.aliScale" readonly>
                         <span class="input-group-addon">%</span>
                     </div>
                 </div>

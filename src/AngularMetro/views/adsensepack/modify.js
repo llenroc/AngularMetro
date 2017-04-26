@@ -40,7 +40,7 @@
             var url=vm.pack.id&&vm.pack.id>0?"api/package/update":"api/package/add";
             dataFactory.action(url, "", null, vm.pack).then(function (res) {
                 if (res.result == "1") {
-                    abp.notify.warn("成功");
+                    abp.notify.success("成功");
                     $state.go("adsensepack");
                 } else {
                     abp.notify.error(res.errorMsg);
@@ -70,11 +70,10 @@
                     var arr = [];
                     for (var i in response) {
                         response[i].order = y++;
-                        arr.push(response[i]);
+                        vm.checktable.push(response[i]);
                     }
-                    vm.checktable = arr;
+                  //  vm.checktable = arr;
                 }
-             
             })
         }
         vm.sort = function (row, num) {

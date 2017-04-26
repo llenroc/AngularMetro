@@ -8,9 +8,9 @@
 (function () {
     var angularQFileUpload = angular.module('angularQFileUpload', ['LocalStorageModule']);
 
-    angularQFileUpload.service('$qupload', ['$http', '$q', 'localStorageService','$rootScope',
+    angularQFileUpload.service('$qupload', ['$http', '$q', 'localStorageService',
 
-		function ($http, $q, localStorageService, $rootScope) {
+		function ($http, $q, localStorageService) {
 
 		    function utf16to8(str) {
 		        var out, i, len, c;
@@ -114,7 +114,7 @@
 
 		        var type = file.name.substr(point).toLowerCase();
 		        if (type != ".jpg" && type != ".png" && type != ".bmp" && type != ".avi" && type != ".mp4" && type != "rmvb") {
-		            $rootScope.notify.show("上传文件格式错误", "warning");
+		            abp.notify.warn("上传文件格式错误");
 		            return null;
 		        }
 

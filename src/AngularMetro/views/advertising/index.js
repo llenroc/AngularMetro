@@ -64,5 +64,6 @@
                 }
                 $state.go("putadsense", { resourse: ids[0] });
             }
+      
         }])
 })();

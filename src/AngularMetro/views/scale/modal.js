@@ -9,7 +9,7 @@
             vm.model = model;
             vm.changea = function () {
                 if (vm.model.wxthirdScale) {
-                    vm.model.alithirdScale = 100 - vm.model.wxthirdScale;
+                    vm.model.aliScale = 100 - vm.model.wxthirdScale;
                     return;
                 }
               
@@ -17,7 +17,7 @@
             vm.changeb = function () {
               
                 if (vm.model.alithirdScale) {
-                    vm.model.wxthirdScale = 100 - vm.model.alithirdScale;
+                    vm.model.wxScale = 100 - vm.model.alithirdScale;
                     return;
                 }
             }
