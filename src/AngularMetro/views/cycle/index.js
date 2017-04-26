@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.cycle.index',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal',
-        function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
+        ['$scope', 'settings', "$stateParams", '$state', 'dataFactory', '$uibModal',
+        function ($scope, settings, $stateParams, $state, dataFactory, $uibModal) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -25,7 +25,7 @@
             vm.daily = function (type) {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (ids.length <= 0) {
-                    $rootScope.notify.show("请选择要编辑的对象", "warning");
+                    abp.notify.warn("请选择要编辑的对象");
                     return;
                 }
                 var modal = $uibModal.open({
@@ -42,7 +42,7 @@
                 })
             }
             vm.export = function () {
-                $rootScope.notify.show("导出成功", "success");
+                abp.notify.success("导出成功");
             }
 
             ///机构树

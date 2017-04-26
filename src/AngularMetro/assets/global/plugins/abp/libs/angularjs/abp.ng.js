@@ -168,5 +168,15 @@
         return str.indexOf(suffix, str.length - suffix.length) !== -1;
     }
 
+    abp.event.on('abp.dynamicScriptsInitialized', function () {
+        abp.ng.http.defaultError.message = abp.localization.abpWeb('DefaultError');
+        abp.ng.http.defaultError.details = abp.localization.abpWeb('DefaultErrorDetail');
+        abp.ng.http.defaultError401.message = abp.localization.abpWeb('DefaultError401');
+        abp.ng.http.defaultError401.details = abp.localization.abpWeb('DefaultErrorDetail401');
+        abp.ng.http.defaultError403.message = abp.localization.abpWeb('DefaultError403');
+        abp.ng.http.defaultError403.details = abp.localization.abpWeb('DefaultErrorDetail403');
+        abp.ng.http.defaultError404.message = abp.localization.abpWeb('DefaultError404');
+        abp.ng.http.defaultError404.details = abp.localization.abpWeb('DefaultErrorDetail404');
+    });
 
 })((abp || (abp = {})), (angular || undefined));

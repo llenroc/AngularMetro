@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.advertising.putadsense',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory','$uibModal',
-        function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
+        ['$scope', 'settings', "$stateParams", '$state', 'dataFactory','$uibModal',
+        function ($scope, settings, $stateParams, $state, dataFactory, $uibModal) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -9,7 +9,7 @@
             var vm = this;
             vm.resourse = $stateParams.resourse;
             if (!vm.resourse) {
-                $rootScope.notify.show("资源包不存在", "error");
+                abp.notify.error("资源包不存在");
                 $state.go("advertising");
             }
             vm.filter = {};
@@ -46,20 +46,6 @@
                     totalItems: 0//总数据
                 }
             }
-           var devicelist = [
-              { id:1, devicename: "标题1", devicenote: "描述1", orgId: 1 },
-              { id: 2, devicename: "标题a2", devicenote: "描述2", orgId: 2 },
-              { id: 3, devicename: "标题a3", devicenote: "描述3", orgId: 3 },
-              { id: 4, devicename: "标题a4", devicenote: "描述4", orgId: 4 },
-                { id: 5, devicename: "标题11", devicenote: "描述11", orgId: 1 },
-              { id:6, devicename: "标题a22", devicenote: "描述22", orgId: 2 },
-              { id: 7, devicename: "标题a33", devicenote: "描述33", orgId: 3 },
-              { id:8, devicename: "标题a44", devicenote: "描述44", orgId: 4 },
-                  { id: 9, devicename: "标题111", devicenote: "描述111", orgId: 1 },
-              { id: 10, devicename: "标题a222", devicenote: "描述222", orgId: 2 },
-              { id: 11, devicename: "标题a333", devicenote: "描述333", orgId: 3 },
-              { id: 12, devicename: "标题a444", devicenote: "描述444", orgId: 4 },
-            ]
 
             //获取用户数据集，并且添加配置项
             vm.init = function () {
@@ -265,8 +251,8 @@
 
             vm.allow = function () {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-                if (ids.length<=0) {
-                    $rootScope.notify.show("请选择要分发的设备", "warning");
+                if (ids.length <= 0) {
+                    abp.notify.warn("请选择要分发的设备");
                     return;
                 }
                 var modal = $uibModal.open({

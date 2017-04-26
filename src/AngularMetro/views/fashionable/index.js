@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.fashionable.index',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal',
-        function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
+        ['$scope', 'settings', "$stateParams", '$state', 'dataFactory', '$uibModal',
+        function ($scope, settings, $stateParams, $state, dataFactory, $uibModal) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();

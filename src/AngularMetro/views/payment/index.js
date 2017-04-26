@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.payment.index',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal','$rootScope',
-    function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal,$rootScope) {
+        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal',
+    function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -14,7 +14,7 @@
             vm.show = function (type) {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (ids.length <= 0) {
-                    $rootScope.notify.show("请选择要绑定的对象", "warning");
+                    abp.notify.warn("请选择要绑定的对象");
                     return;
                 }
                 var modal = $uibModal.open({
@@ -258,7 +258,7 @@
             vm.unbind = function (type) {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (ids.length <= 0) {
-                    $rootScope.notify.show("请选择要绑定的对象", "warning");
+                    abp.notify.warn("请选择要绑定的对象");
                     return;
                 }
                 var model = { list: ids, type: type };
@@ -267,10 +267,10 @@
                 else model.aliAccount = '';
                 dataFactory.action('api/orgsetting/bindOrgAccount', "", null, model).then(function (res) {
                     if (res.result == "1") {
-                        $rootScope.notify.show("解绑成功", "error");
+                        abp.notify.success("解绑成功");
                         vm.init();
                     } else {
-                        $rootScope.notify.show("保存失败,请重试", "error");
+                        abp.notify.error("保存失败,请重试");
                     }
                 });
             }

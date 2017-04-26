@@ -31,16 +31,16 @@
             vm.save = function () {
                 if (!vm.model.atonce) {
                     if (!vm.model.startTime || !vm.model.endTime) {
-                        $rootScope.notify.show("请选择分发时间段", "error");
+                        abp.notify.warn("请选择分发时间段");
                         return;
                     }
                 }
                 dataFactory.action("api/distribution/add", "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
-                        $rootScope.notify.show("分发成功", "success");
+                        abp.notify.success("分发成功");
                         $uibModalInstance.close();
                     } else {
-                        $rootScope.notify.show("保存失败,请重试", "error");
+                        abp.notify.error("保存失败,请重试");
                     }
                 });
             };

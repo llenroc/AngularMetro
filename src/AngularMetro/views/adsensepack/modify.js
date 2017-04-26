@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.adsensepack.modify',
-        ['$scope', 'settings', '$uibModal','$state','$stateParams','dataFactory','$rootScope',
-        function ($scope, settings, $uibModal, $state, $stateParams, dataFactory, $rootScope) {
+        ['$scope', 'settings', '$uibModal','$state','$stateParams','dataFactory',
+        function ($scope, settings, $uibModal, $state, $stateParams, dataFactory) {
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initAjax();
@@ -31,7 +31,7 @@
             //保存
         vm.save = function () {
             if (vm.checktable.length <= 0) {
-                $rootScope.notify.show("请选择资源", "warning");
+                abp.notify.warn("请选择资源");
                 return;
             }
             vm.pack.resourceIds = _.map(vm.checktable, function (item) {
@@ -40,7 +40,7 @@
             var url=vm.pack.id&&vm.pack.id>0?"api/package/update":"api/package/add";
             dataFactory.action(url, "", null, vm.pack).then(function (res) {
                 if (res.result == "1") {
-                    $rootScope.notify.show("成功", "success");
+                    abp.notify.warn("成功");
                     $state.go("adsensepack");
                 } else {
                     $rootScope.notify.show(res.errorMsg, "error");

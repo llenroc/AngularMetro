@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.adsense.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'FileUploader', 'dataFactory', '$qupload','$rootScope',
-        function ($scope, settings, $uibModalInstance, model, fileUploader, dataFactory, $qupload, $rootScope) {
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'FileUploader', 'dataFactory', '$qupload',
+        function ($scope, settings, $uibModalInstance, model, fileUploader, dataFactory, $qupload) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -28,15 +28,15 @@
             var url = 'http://up-z1.qiniu.com/';
             vm.uploadresult = false;
             vm.save = function () {
-                if (!vm.model.id&&(!vm.model.address||vm.model.address==undefined||vm.model.address==null)) {
-                    $rootScope.notify.show("请先上传资源", "warning");
+                if (!vm.model.id && (!vm.model.address || vm.model.address == undefined || vm.model.address == null)) {
+                    abp.notify.warn("请先上传资源");
                     return;
                 }
                 dataFactory.action(vm.url, "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $uibModalInstance.close();
                     } else {
-                        $rootScope.notify.show("保存失败,请重试", "error");
+                        abp.notify.error("保存失败,请重试");
                     }
                 });
             };
@@ -59,7 +59,7 @@
                     vm.model.title = vm.selectFiles[index].file.name;
                     vm.uploadresult = true;
                 }, function (response) {
-                    $rootScope.notify.show("上传失败,请重试", "warning");
+                    abp.notify.error("上传失败,请重试");
                 }, function (evt) {
                     // progress
                     vm.selectFiles[index].progress.p = Math.floor(100 * evt.loaded / evt.totalSize);

@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.scale.index',
-        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal', '$rootScope',
-    function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal, $rootScope) {
+        ['$scope', 'settings', "$stateParams", '$state', '$rootScope', 'dataFactory', '$uibModal',
+    function ($scope, settings, $stateParams, $state, $rootScope, dataFactory, $uibModal) {
         // ajax初始化
         $scope.$on('$viewContentLoaded', function () {
             App.initAjax();
@@ -232,7 +232,7 @@
         vm.edit = function () {
             var ids = Object.getOwnPropertyNames(vm.table.checkModel);
             if (ids.length <= 0) {
-                $rootScope.notify.show("请选择要编辑的对象", "warning");
+                abp.notify.warn("请选择要编辑的对象");
                 return;
             }
             var temp = [];

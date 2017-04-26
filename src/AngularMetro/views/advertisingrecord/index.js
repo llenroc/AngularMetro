@@ -1,7 +1,7 @@
 ﻿
 (function () {
-    angular.module('MetronicApp').controller('views.advertisingrecord.index', ['$scope', 'settings', "dataFactory", '$rootScope',
-        function ($scope, settings, dataFactory,$rootScope) {
+    angular.module('MetronicApp').controller('views.advertisingrecord.index', ['$scope', 'settings', "dataFactory",
+        function ($scope, settings, dataFactory) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -59,12 +59,12 @@
             //下线
             vm.offline = function () {
                 var id = Object.getOwnPropertyNames(vm.table.checkModel);
-                if (id.length <=0) {
-                    $rootScope.notify.show("请选择一个操作对象", "warning");
+                if (id.length <= 0) {
+                    abp.notify.warn("请选择一个操作对象");
                     return;
                 }
                 dataFactory.action("api/resource/updateState", "", null, { list: id, state: 0 }).then(function (res) {
-                    $rootScope.notify.show("下线成功", "success");
+                    abp.notify.success("下线成功");
                     vm.init();
                 });
             }
@@ -72,11 +72,11 @@
             vm.distribute = function () {
                 var id = Object.getOwnPropertyNames(vm.table.checkModel);
                 if (id.length <= 0) {
-                    $rootScope.notify.show("请选择一个操作对象", "warning");
+                    abp.notify.warn("请选择一个操作对象");
                     return;
                 }
                 dataFactory.action("api/resource/updateState", "", null, { list: id, state: 1 }).then(function (res) {
-                    $rootScope.notify.show("发放成功", "success");
+                    abp.notify.success("发放成功");
                     vm.init();
                 });
             }

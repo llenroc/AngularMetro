@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory','$rootScope',
-        function ($scope, settings, $state, dataFactory, $rootScope) {
+    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory',
+        function ($scope, settings, $state, dataFactory) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -58,8 +58,8 @@
             //发布
             vm.put = function () {
                 var ids = Object.getOwnPropertyNames(vm.table.checkModel);
-                if (ids.length !=1) {
-                    $rootScope.notify.show("一次只能分配一个资源包", "warning");
+                if (ids.length != 1) {
+                    abp.notify.warn("一次只能分配一个资源包");
                     return;
                 }
                 $state.go("putadsense", { resourse: ids[0] });
