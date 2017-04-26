@@ -43,7 +43,7 @@
                     abp.notify.warn("成功");
                     $state.go("adsensepack");
                 } else {
-                    $rootScope.notify.show(res.errorMsg, "error");
+                    abp.notify.error(res.errorMsg);
                 }
             })
         }

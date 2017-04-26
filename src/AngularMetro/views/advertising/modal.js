@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.advertising.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory','$rootScope',
-        function ($scope, settings, $uibModalInstance, model, dataFactory,$rootScope) {
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory',
+        function ($scope, settings, $uibModalInstance, model, dataFactory) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 

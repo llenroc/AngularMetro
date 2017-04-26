@@ -267,8 +267,6 @@
                 modal.result.then(function (response) {
                     vm.init();
                 })
-
-            //    $rootScope.notify.show("分发成功", "success");
             }
 
             vm.back = function () {

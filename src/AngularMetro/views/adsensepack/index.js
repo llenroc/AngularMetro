@@ -81,7 +81,7 @@
             }
             for (var i in vm.table.checkModel) {
                 if (vm.table.checkModel[i].state == 1) {
-                    $rootScope.notify.show("已发布对象不允许操作", "warning");
+                    abp.notify.warn("已发布对象不允许操作");
                     return;
                 }
             }
