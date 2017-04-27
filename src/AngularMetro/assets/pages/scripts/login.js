@@ -1,60 +1,26 @@
-﻿var Login = function() {
+﻿var Login = function () {
+    var o = {
+        show: function (text) {
+            $("#text").text(text);
+            $("#show").show();
+        },
+        hide: function () {
+            $("#show").hide();
+        }
+    };
 
-    var handleLogin = function() {
-        $('.login-form').validate({
-            errorElement: 'span', //default input error message container
-            errorClass: 'help-block', // default input error message class
-            focusInvalid: false, // do not focus the last invalid input
-            rules: {
-                username: {
-                    required: true
-                },
-                password: {
-                    required: true
-                },
-                remember: {
-                    required: false
-                }
-            },
 
-            messages: {
-                username: {
-                    required: "Username is required."
-                },
-                password: {
-                    required: "Password is required."
-                }
-            },
-
-            invalidHandler: function(event, validator) { //display error alert on form submit   
-                $('.alert-danger', $('.login-form')).show();
-            },
-
-            highlight: function(element) { // hightlight error inputs
-                $(element)
-                    .closest('.form-group').addClass('has-error'); // set error class to the control group
-            },
-
-            success: function(label) {
-                label.closest('.form-group').removeClass('has-error');
-                label.remove();
-            },
-
-            errorPlacement: function(error, element) {
-                error.insertAfter(element.closest('.input-icon'));
-            },
-
-            submitHandler: function(form) {
-                form.submit(); // form validation success, call ajax form submit
-            }
-        });
-
-        $('.login-form input').keypress(function(e) {
+    var handleLogin = function () {
+        $('.form-horizontal input').keypress(function (e) {
             if (e.which == 13) {
-                if ($('.login-form').validate().form()) {
+                if ($('.form-horizontal').validate().form()) {
                     var url = "http://101.200.238.155:8080/api/efan/login";
-                    var username = $("#username").val();
-                    var password = $("#password").val();
+                    var username = $("#userName").val();
+                    var password = $("#pw").val();
+                    if (!username || !password) {
+                        o.show("请输入用户名或密码");
+                        return;
+                    }
                     var md5pw = md5(password);
                     var data = { "user_name": username, "pw": md5pw };
                     $.ajax({
@@ -73,6 +39,8 @@
                                     secure: false //true,cookie的传输会要求一个安全协议,否则反之
                                 });
                                 window.location.href = "/views/layout/layout.html";
+                            } else {
+                                han
                             }
                         }
                     });
@@ -80,22 +48,18 @@
                 return false;
             }
         });
-        $("#btn").click(function () {
-            //var val = { username: '王中王', orgid: 1, orgName: 'abc' };
-            //var temp = JSON.stringify(val);
-            //$.cookie("metroResult", temp, {
-            //    expires: 1,//有效日期
-            //    path: "/",//cookie的路 径
-            //    secure: false //true,cookie的传输会要求一个安全协议,否则反之
-            //});
-
-            if ($('.login-form').validate().form()) {
+        $("#loginSubmit").click(function () {
+          
+            if ($('.form-horizontal').validate().form()) {
                 var url = "http://101.200.238.155:8080/api/efan/login";
-                var username = $("#username").val();
-                var password = $("#password").val();
-                var md5pw=md5(password);
+                var username = $("#userName").val();
+                var password = $("#pw").val();
+                var md5pw = md5(password);
                 var data = { "userName": username, "pw": md5pw };
-
+                if (!username||!password) {
+                    o.show("请输入用户名或密码");
+                    return;
+                }
                 $.ajax({
                     type: "Post",
                     url: url,
@@ -112,6 +76,8 @@
                                 secure: false //true,cookie的传输会要求一个安全协议,否则反之
                             });
                             window.location.href = "/views/layout/layout.html";
+                        } else {
+                            o.show(res.message);
                         }
                     }
                 });
@@ -133,6 +99,6 @@
     };
 }();
 
-jQuery(document).ready(function() {
+jQuery(document).ready(function () {
     Login.init();
 });

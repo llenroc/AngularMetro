@@ -128,6 +128,8 @@
     <Content Include="assets\global\img\portlet-remove-icon-white.png" />
     <Content Include="assets\global\img\portlet-remove-icon.png" />
     <Content Include="assets\global\img\remove-icon-small.png" />
+    <Content Include="assets\global\img\social\bj.jpg" />
+    <Content Include="assets\global\img\social\efanlogo.png" />
     <Content Include="assets\global\img\social\qcode.png" />
     <Content Include="assets\global\img\syncfusion-icons-white.png" />
     <Content Include="assets\global\img\syncfusion-icons.png" />
@@ -430,6 +432,7 @@
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
     <Content Include="js\factorys\dataFactory.js" />
+    <Content Include="index.html" />
     <Content Include="views\adsensepack\modal.html" />
     <Content Include="views\adsensepack\modal.js" />
     <Content Include="views\adsensepack\modify.html" />
@@ -515,7 +518,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="index.html" />
     <Content Include="views\adsensepack\index.html" />
     <Content Include="views\adsense\index.html" />
     <Content Include="views\advertisingrecord\index.html" />
