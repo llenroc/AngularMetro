@@ -49,27 +49,19 @@
 
             //获取用户数据集，并且添加配置项
             vm.init = function () {
-                var orgId = vm.organizationTree.selectedOu.id;
-                    var arr = [];
-                    angular.forEach(devicelist, function (val, index) {
-                        if (val.orgId==orgId) {
-                            arr.push(val);
+                
+                vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                dataFactory.action("api/distribution/getMachineList", "", null, vm.filter).then(function (res) {
+                    if (res.result == "1") {
+                        vm.table.pageConfig.totalItems = res.total;
+                        vm.table.data = res.list;
+                        vm.table.pageConfig.onChange = function () {
+                            vm.init();
                         }
-                    })
-                    vm.table.data = arr;
-                    vm.table.pageConfig.totalItems = vm.table.data.length;
-                //vm.filter.pageNum = vm.table.pageConfig.currentPage;
-                //vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                //vm.filter.orgId = orgId;
-                //dataFactory.action("api/device/all", "", null, vm.filter).then(function (res) {
-                //    if (res.result == "1") {
-                //        vm.table.pageConfig.totalItems = res.total;
-                //        vm.table.data = res.list;
-                //        vm.table.pageConfig.onChange = function () {
-                //            vm.init();
-                //        }
-                //    }
-                //});
+                    }
+                });
             };
             ///机构树
             vm.organizationTree = {
@@ -271,7 +263,7 @@
                     }
                 });
                 modal.result.then(function (response) {
-                    vm.init();
+                    $state.go("advertising");
                 })
             }
 

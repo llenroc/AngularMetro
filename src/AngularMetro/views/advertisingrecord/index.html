@@ -83,7 +83,10 @@
                         <td show-td item="item" name="resourceName"></td>
                         <td show-td item="item" name="deviceName"></td>
                         <td show-td item="item" name="deviceOrg"></td>
-                        <td show-td item="item" name="state"></td>
+                        <td >
+                            <span ng-show="item.state==0">发放中</span>
+                            <span ng-show="item.state==1">发放成功</span>
+                        </td>
                    
                     </tr>
                 </tbody>
