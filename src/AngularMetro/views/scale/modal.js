@@ -26,7 +26,7 @@
                     abp.notify.warn("请输入要绑定的账号");
                     return;
                 }
-                dataFactory.action('api/orgsetting/bindOrgAccount', "", null, vm.model).then(function (res) {
+                dataFactory.action('api/product/setScale', "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $uibModalInstance.close();
                     } else {
