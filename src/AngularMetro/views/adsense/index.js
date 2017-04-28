@@ -10,7 +10,6 @@
             vm.date = {
                 leftopen: false,
                 rightopen: false,
-
                 inlineOptions: {
                     showWeeks: false
                 },

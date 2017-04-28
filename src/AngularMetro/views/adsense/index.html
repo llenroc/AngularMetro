@@ -15,12 +15,13 @@
                     <div class="input-icon right">
                         <p class="input-group">
                             <input type="text" class="form-control" placeholder="开始时间"
-                                   uib-datepicker-popup readonly
+                                   uib-datepicker-popup="yyyy/MM/dd" readonly
                                    ng-model="vm.filter.startTime"
                                    is-open="vm.date.leftopen"
                                    datepicker-options="vm.date.dateOptions"
                                    ng-required="true"
                                    current-text="今天"
+                                
                                    clear-text="清除"
                                    close-text="关闭" />
                             <span class="input-group-btn">
@@ -36,7 +37,7 @@
                     <div class="input-icon right">
                         <p class="input-group">
                             <input type="text" class="form-control" placeholder="结束时间"
-                                   uib-datepicker-popup readonly ng-model="vm.filter.endTime"
+                                   uib-datepicker-popup="yyyy/MM/dd" readonly ng-model="vm.filter.endTime"
                                    is-open="vm.date.rightopen"
                                    datepicker-options="vm.date.dateOptions"
                                    ng-required="true"

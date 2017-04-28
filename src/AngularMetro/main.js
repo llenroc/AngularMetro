@@ -11,7 +11,7 @@ var MetronicApp = angular.module("MetronicApp", [
       'objectTable',//table表格
     'objPagination',//分页
     'angularFileUpload',//文件上传
-    'abp'
+    'abp', 'ngLocale'
 ]);
 
 //懒加载
