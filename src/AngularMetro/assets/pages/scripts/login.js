@@ -93,7 +93,7 @@
             var cookie = $.cookie("metroResult");
             if (cookie != "" && cookie != undefined) {
                 try {
-                    var cook = JSON.stringify(cookie);
+                    var cook = $.parseJSON(cookie);
                     if (cook.username) {
                         window.location.href = "/views/layout/layout.html";
 
