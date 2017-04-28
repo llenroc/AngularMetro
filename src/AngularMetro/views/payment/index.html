@@ -58,14 +58,12 @@
                         <div class="row">
                             <div class="page-bar">
                                 <div class="col-xs-6">
-                                    <ul class="page-breadcrumb" >
-                                        <li>
-                                            <a href="#">电影派</a>
+                                    <ul ng-if="vm.selectList.length!=0" class="page-breadcrumb" >
+                                        <li ng-repeat="row in vm.selectList">
+                                            <a href="#">{{row.name}}</a>
                                             <i class="fa fa-angle-right"></i>
                                         </li>
-                                        <li>
-                                            <span>北京</span>
-                                        </li>
+                                      
                                     </ul>
                                 </div>
                                 <div class="col-xs-6">
@@ -78,8 +76,6 @@
                                         </li>
                                     </ul>
                                 </div>
-
-
                             </div>
 
                         </div>
