@@ -348,7 +348,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
 }]);
 
 //启动
-MetronicApp.run(["$rootScope", "settings", "$state", '$templateCache', function ($rootScope, settings, $state, $templateCache) {
+MetronicApp.run(["$rootScope", "settings", "$state", function ($rootScope, settings, $state) {
     $rootScope.$state = $state; // state to be accessed from view
     $rootScope.$settings = settings; // state to be accessed from view
     $rootScope.safeApply = function (fn) {

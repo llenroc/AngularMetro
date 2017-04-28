@@ -32,6 +32,7 @@
                     abp.notify.warn("请先上传资源");
                     return;
                 }
+                vm.model.state = vm.model.state ? 1 : 0;
                 dataFactory.action(vm.url, "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $uibModalInstance.close();
