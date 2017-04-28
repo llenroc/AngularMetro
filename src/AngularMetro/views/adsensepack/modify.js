@@ -37,7 +37,8 @@
             vm.pack.resourceIds = _.map(vm.checktable, function (item) {
                 return item.id
             });
-            var url=vm.pack.id&&vm.pack.id>0?"api/package/update":"api/package/add";
+            var url = vm.pack.id && vm.pack.id > 0 ? "api/package/update" : "api/package/add";
+            vm.pack.state = vm.pack.state ? 1 : 0;
             dataFactory.action(url, "", null, vm.pack).then(function (res) {
                 if (res.result == "1") {
                     abp.notify.success("成功");

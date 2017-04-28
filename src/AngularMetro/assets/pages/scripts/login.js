@@ -92,7 +92,16 @@
         init: function () {
             var cookie = $.cookie("metroResult");
             if (cookie != "" && cookie != undefined) {
-                window.location.href = "/views/layout/layout.html";
+                try {
+                    var cook = JSON.stringify(cookie);
+                    if (cook.username) {
+                        window.location.href = "/views/layout/layout.html";
+
+                    }
+
+                } catch (e) {
+                    handleLogin();
+                }
             }
             handleLogin();
         }

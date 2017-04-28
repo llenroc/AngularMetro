@@ -79,7 +79,8 @@ MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($s
     vm = this;
     vm.user = appSession;
     vm.out = function () {
-        $.cookie("metroResult", null);
+        $.cookie("metroResult", null, { path: "/" });
+        location.href = "/index.html";
     }
 }]);
 
