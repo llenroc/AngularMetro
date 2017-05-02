@@ -254,6 +254,15 @@
             })
         }
 
+        vm.export = function () {
+            if (!vm.organizationTree.selectedOu.id) {
+                abp.notify.warn("请先选择机构");
+                return;
+            }
+            var url = "http://101.200.238.155:8080/excel/product?pageNum=1" + "&pageSize=" + vm.table.pageConfig.totalItems + "&orgId=" +
+                 vm.organizationTree.selectedOu.id
+            window.location.href = url;
+        }
 
         vm.organizationTree.init();
     }])
