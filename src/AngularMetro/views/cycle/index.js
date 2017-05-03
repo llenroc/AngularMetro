@@ -49,6 +49,7 @@
             vm.organizationTree = {
                 $tree: null,
                 unitCount: 0,
+                treeList: [],
                 setUnitCount: function (unitCount) {
                     $scope.safeApply(function () {
                         vm.organizationTree.unitCount = unitCount;
@@ -68,19 +69,41 @@
                             vm.organizationTree.selectedOu.code = null;
                             vm.organizationTree.selectedOu.type = 1;
                         } else {
+
                             vm.organizationTree.selectedOu.id = ouInTree.id;
                             vm.organizationTree.selectedOu.displayName = ouInTree.original.displayName;
                             vm.organizationTree.selectedOu.code = ouInTree.original.code;
                             vm.organizationTree.selectedOu.type = ouInTree.original.type;
+                            vm.organizationTree.genderTreeNode(ouInTree);
                         }
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
                         }
-                         vm.init();
+                        vm.init();
                         $("a.list-group-item:first-child").css("background-color", "transparent");
                     }
                 },
+                genderTreeNode: function (ouInTree) {
+                    vm.selectList = [];
+                    if (vm.organizationTree.treeList.length == 0) {
+                        return;
+                    }
+                    angular.forEach(ouInTree.parents, function (aa, bb) {
+                        angular.forEach(vm.organizationTree.treeList, function (a, b) {
+                            if (aa == "#") {
+                                aa = 0;
+                            }
+                            if (a.id == Number(aa)) {
+                                vm.selectList.push({ order: aa, name: a.name });
+                            }
+                        });
 
+
+                    });
+                    vm.selectList.push({ order: 9999, name: ouInTree.original.displayName });
+
+                    vm.selectList = vm.selectList.sort(function (a, b) { return a.order - b.order });
+                },
 
                 generateTextOnTree: function (ou) {
                     var displayName = ou.name;
@@ -100,6 +123,7 @@
                     dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
                         list = res.respBody;
                         list.push({ id: 1, name: "易饭科技", parent_id: 0 });
+                        vm.organizationTree.treeList = list;
                         var treeData = _.map(list, function (item) {
                             return {
                                 id: item.id,
@@ -111,8 +135,17 @@
                                 }
                             };
                         });
+
                         callback(treeData);
                     });
+                    //var list = [
+                    //    { id: 1, parentId: 0, displayName: "A机构" },
+                    //    { id: 2, parentId: 1, displayName: "A子机构" },
+                    //    { id: 3, parentId: 0, displayName: "B机构" },
+                    //    { id: 4, parentId: 3, displayName: "B子机构" },
+                    //];
+
+
 
                 },
                 init: function (type) {
@@ -218,7 +251,6 @@
                     }, 1);
                 }
             };
-
 
             vm.init = function () {
                 vm.table.checkModel = {};
