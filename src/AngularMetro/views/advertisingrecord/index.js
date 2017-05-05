@@ -63,7 +63,12 @@
                     abp.notify.warn("请选择一个操作对象");
                     return;
                 }
-                dataFactory.action("api/resource/updateState", "", null, { list: id, state: 0 }).then(function (res) {
+                var li = [];
+                for (var i in vm.table.checkModel) {
+                    li.push(vm.table.checkModel[i].deviceId);
+                }
+
+                dataFactory.action("api/distribution/updateState", "", null, { list: li, state: 0 }).then(function (res) {
                     abp.notify.success("下线成功");
                     vm.init();
                 });
@@ -75,7 +80,11 @@
                     abp.notify.warn("请选择一个操作对象");
                     return;
                 }
-                dataFactory.action("api/resource/updateState", "", null, { list: id, state: 1 }).then(function (res) {
+                var li = [];
+                for (var i in vm.table.checkModel) {
+                    li.push(vm.table.checkModel[i].deviceId);
+                }
+                dataFactory.action("api/distribution/updateState", "", null, { list: li, state: 1 }).then(function (res) {
                     abp.notify.success("发放成功");
                     vm.init();
                 });
