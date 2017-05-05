@@ -68,10 +68,11 @@
                     li.push(vm.table.checkModel[i].deviceId);
                 }
 
-                dataFactory.action("api/distribution/updateState", "", null, { list: li, state: 0 }).then(function (res) {
+                dataFactory.action("api/efan/mqtt", "", null, { list: li }).then(function (res) {
                     abp.notify.success("下线成功");
                     vm.init();
                 });
+
             }
             //重新发放
             vm.distribute = function () {
