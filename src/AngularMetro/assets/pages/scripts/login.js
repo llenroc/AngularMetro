@@ -14,7 +14,7 @@
         $('.form-horizontal input').keypress(function (e) {
             if (e.which == 13) {
                 if ($('.form-horizontal').validate().form()) {
-                    var url = "http://101.200.238.155:8080/api/efan/login";
+                    var url = "http://101.201.53.25:10001/api/efan/login";
                     var username = $("#userName").val();
                     var password = $("#pw").val();
                     if (!username || !password) {
@@ -51,7 +51,7 @@
         $("#loginSubmit").click(function () {
           
             if ($('.form-horizontal').validate().form()) {
-                var url = "http://101.200.238.155:8080/api/efan/login";
+                var url = "http://101.201.53.25:10001/api/efan/login";
                 var username = $("#userName").val();
                 var password = $("#pw").val();
                 var md5pw = md5(password);

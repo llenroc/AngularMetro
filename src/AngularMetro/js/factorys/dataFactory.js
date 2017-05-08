@@ -5,7 +5,7 @@
             if (method=="") {
                 method = "POST";
             }
-            var u = "http://101.200.238.155:8080/";
+            var u = "http://101.201.53.25:10001/";
             url = u + url;
             if (!headers) {
                 headers = { 'Content-Type': 'application/json' };
