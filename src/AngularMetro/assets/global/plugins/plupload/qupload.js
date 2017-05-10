@@ -239,7 +239,7 @@ angular.module('angularQFileUpload').directive('ngFileSelect', ['$parse', '$time
 	    return function (scope, elem, attr) {
 	        var fn = $parse(attr['ngFileSelect']);
 	        if (elem[0].tagName.toLowerCase() !== 'input' || (elem.attr('type') && elem.attr('type').toLowerCase()) !== 'file') {
-	            var fileElem = angular.element('<input type="file">');
+	            var fileElem = angular.element('<input type="file"  accept="image/png,video/mp4">');
 	            for (var i = 0; i < elem[0].attributes.length; i++) {
 	                fileElem.attr(elem[0].attributes[i].name, elem[0].attributes[i].value);
 	            }

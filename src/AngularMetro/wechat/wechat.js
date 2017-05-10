@@ -12,7 +12,7 @@
             else {
                 $.ajax({
                     type: 'post',
-                    url: 'http://101.200.238.155:8080/api/efan/getWxToken',
+                    url: 'http://101.201.53.25:10001/api/efan/getWxToken',
                     async: false,
                     cache: false,
                     data: { code: access_code },
