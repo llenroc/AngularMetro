@@ -9,14 +9,29 @@
             var vm = this;
          
             vm.filter = {};
-            vm.action = {
-                current: 1,
-                action: function (num) {
-                    vm.action.current = num;
+          
+            //页面属性
+            vm.tablea = {
+                data: [],               //数据集
+                checkModel: {},         //选择的集合
+                filter: "",//条件搜索
+                pageConfig: {           //分页配置
+                    currentPage: 1,//当前页
+                    itemsPerPage: 10,//页容量
+                    totalItems: 0//总数据
                 }
             }
-            //页面属性
-            vm.table = {
+            vm.tableb = {
+                data: [],               //数据集
+                checkModel: {},         //选择的集合
+                filter: "",//条件搜索
+                pageConfig: {           //分页配置
+                    currentPage: 1,//当前页
+                    itemsPerPage: 10,//页容量
+                    totalItems: 0//总数据
+                }
+            }
+            vm.tablec = {
                 data: [],               //数据集
                 checkModel: {},         //选择的集合
                 filter: "",//条件搜索
@@ -47,10 +62,10 @@
                     vm.date.rightopen = !vm.date.rightopen;
                 }
             }
-            ///机构树
             vm.organizationTree = {
                 $tree: null,
                 unitCount: 0,
+                treeList: [],
                 setUnitCount: function (unitCount) {
                     $scope.safeApply(function () {
                         vm.organizationTree.unitCount = unitCount;
@@ -70,19 +85,50 @@
                             vm.organizationTree.selectedOu.code = null;
                             vm.organizationTree.selectedOu.type = 1;
                         } else {
+
                             vm.organizationTree.selectedOu.id = ouInTree.id;
                             vm.organizationTree.selectedOu.displayName = ouInTree.original.displayName;
                             vm.organizationTree.selectedOu.code = ouInTree.original.code;
                             vm.organizationTree.selectedOu.type = ouInTree.original.type;
+                           // vm.organizationTree.genderTreeNode(ouInTree);
                         }
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
                         }
-                        // vm.init();
+                        if (vm.action.current==1) {
+                            vm.inita();
+
+                        }
+                        if (vm.action.current == 2) {
+                            vm.initb();
+
+                        }
+                        if (vm.action.current == 3) {
+                            vm.initc();
+
+                        }
                         $("a.list-group-item:first-child").css("background-color", "transparent");
                     }
                 },
+                genderTreeNode: function (ouInTree) {
+                    vm.selectList = [];
+                    if (vm.organizationTree.treeList.length == 0) {
+                        return;
+                    }
+                    angular.forEach(ouInTree.parents, function (aa, bb) {
+                        angular.forEach(vm.organizationTree.treeList, function (a, b) {
+                            if (aa == "#") {
+                                aa = 0;
+                            }
+                            if (a.id == Number(aa)) {
+                                vm.selectList.push({ order: aa, name: a.name });
+                            }
+                        });
+                    });
+                    vm.selectList.push({ order: 9999, name: ouInTree.original.displayName });
 
+                    vm.selectList = vm.selectList.sort(function (a, b) { return a.order - b.order });
+                },
 
                 generateTextOnTree: function (ou) {
                     var displayName = ou.name;
@@ -101,7 +147,8 @@
                     var list = [];
                     dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
                         list = res.respBody;
-                        list.push({ id: 1, name: "易饭科技",parent_id:0 });
+                        list.push({ id: 1, name: "易饭科技", parent_id: 0 });
+                        vm.organizationTree.treeList = list;
                         var treeData = _.map(list, function (item) {
                             return {
                                 id: item.id,
@@ -109,13 +156,14 @@
                                 displayName: item.name,
                                 text: vm.organizationTree.generateTextOnTree(item),
                                 state: {
-                                    opened: item.parent_id<=0 ? true : false
+                                    opened: item.parent_id <= 0 ? true : false
                                 }
                             };
                         });
+
                         callback(treeData);
                     });
-               
+
                 },
                 init: function (type) {
                     vm.organizationTree.getTreeDataFromServer(function (treeData) {
@@ -221,5 +269,96 @@
                 }
             };
             vm.organizationTree.init();
+            vm.inita = function () {
+              //  vm.table.checkModel = {};
+                vm.filter.pageNum = vm.tablea.pageConfig.currentPage;
+                vm.filter.pageSize = vm.tablea.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                dataFactory.action("api/manager/getAccountList", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result == "1") {
+                            vm.tablea.pageConfig.totalItems = res.total;
+                            vm.tablea.data = res.list;
+                            vm.tablea.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                    });
+            }
+            vm.initb = function () {
+                //  vm.table.checkModel = {};
+                vm.filter.pageNum = vm.tableb.pageConfig.currentPage;
+                vm.filter.pageSize = vm.tableb.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                dataFactory.action("api/manager/getProductList", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result == "1") {
+                            vm.tableb.pageConfig.totalItems = res.total;
+                            vm.tableb.data = res.list;
+                            vm.tableb.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                    });
+            }
+            vm.initc = function () {
+                //  vm.table.checkModel = {};
+                vm.filter.pageNum = vm.tablec.pageConfig.currentPage;
+                vm.filter.pageSize = vm.tablec.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                dataFactory.action("api/manager/getOrderList", "", null, vm.filter)
+                    .then(function (res) {
+                        if (res.result == "1") {
+                            vm.tablec.pageConfig.totalItems = res.total;
+                            vm.tablec.data = res.list;
+                            vm.tablec.pageConfig.onChange = function () {
+                                vm.init();
+                            }
+                        }
+                    });
+            }
+
+
+            vm.action = {
+                current: 1,
+                action: function (num) {
+                    if (num == 1) {
+                        vm.inita();
+                    }
+                    if (num == 2) {
+                        vm.initb();
+                    }
+                    if (num == 3) {
+                        vm.initc();
+                    }
+                    vm.action.current = num;
+                    //  vm.init();
+                }
+            }
+            vm.inita();
+            vm.initb();
+            vm.initc();
+         
+            vm.handlearound = function () {
+                var id = Object.getOwnPropertyNames(vm.tablea.checkModel);
+                if (id.length != 1) {
+                    abp.notify.warn("请选择一个操作对象");
+                    return;
+                }
+                if (vm.tablea.checkModel[id].transferType==1) {
+                    abp.notify.warn("当前对象为自动转账");
+                    return;
+                }
+                var model = { account: vm.tablea.checkModel[id].account, payChannel: vm.tablea.checkModel[id].payChannel };
+                dataFactory.action("api/manager/manualTransfer", "", null, model)
+                           .then(function (res) {
+                               if (res.result == "1") {
+                                   abp.notify.success("手动转账成功");
+                                   vm.inita();
+                               }
+                           });
+             
+            }
+
         }])
 })();

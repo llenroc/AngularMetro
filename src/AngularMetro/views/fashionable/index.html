@@ -93,76 +93,105 @@
                                 </li>
                             </ul>
                             <div class="tab-content">
-                                <div class="tab-pane active" ng-if="vm.action.current==1">
+                                <div  ng-if="vm.action.current==1">
+                                   <div class="row">
+                                       <div class="col-xs-4 right">
+                                           <button  class="btn btn-primary blue" ng-click="vm.handlearound()"><i class="fa fa-plus"></i> 手动转账</button>
+                                       </div>
+                                   </div>
                                     <!-- 账户 -->
                                     <table object-table
-                                           data="vm.table.data"
-                                           check-model="vm.table.checkModel"
-                                           display="vm.table.pageConfig.itemsPerPage"
-                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
-                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                           data="vm.tablea.data"
+                                           check-model="vm.tablea.checkModel"
+                                           display="vm.tablea.pageConfig.itemsPerPage"
+                                           headers="账户,是否为自动账户,微信or支付宝,待转入金额,账户余额"
+                                           fields="account,transferType,payChannel,overage,amount">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
                                                     <input type="checkbox" ng-model="::item.checked"
+                                                            ng-show="::item.state==1"
                                                            ng-click="$event.stopPropagation(); checkOne(item)" />
                                                 </td>
-                                                <td show-td item="item" name="devicename"></td>
-                                                <td show-td item="item" name="devicenote"></td>
+                                                <td show-td item="item" name="account"></td>
+                                                <td>
+                                                    <span ng-show="item.transferType==1">自动转账</span>
+                                                    <span ng-show="item.transferType==0">手动转账</span>
+                                                </td>
+                                                <td>
+                                                    <span ng-show="item.payChannel==3">支付宝</span>
+                                                    <span ng-show="item.payChannel==2">微信</span>
+                                                </td>
+                                                <td show-td item="item" name="overage"></td>
+                                                <td show-td item="item" name="amount"></td>
+                                          
                                             </tr>
                                         </tbody>
                                     </table>
                                     <!--分页-->
                                     <nav class="paging">
-                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                        <obj-pagination conf="vm.tablea.pageConfig"></obj-pagination>
                                     </nav>
                                 </div>
-                                <div class="tab-pane" ng-if="vm.action.current==1">
-                                    <!-- 账户 -->
+                                <div  ng-if="vm.action.current==2">
+                                    <!-- 商品 -->
                                     <table object-table
-                                           data="vm.table.data"
-                                           check-model="vm.table.checkModel"
-                                           display="vm.table.pageConfig.itemsPerPage"
-                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
-                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                           data="vm.tableb.data"
+                                           check-model="vm.tableb.checkModel"
+                                           display="vm.tableb.pageConfig.itemsPerPage"
+                                           headers="商品名,点位数,机器数,支付宝账户,支付宝待转入,微信账户,微信待转入"
+                                           fields="productName,boxCount,machineCount,aliAmount,aliOverage,wxAmount,wxOverage">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
                                                     <input type="checkbox" ng-model="::item.checked"
                                                            ng-click="$event.stopPropagation(); checkOne(item)" />
                                                 </td>
-                                                <td show-td item="item" name="devicename"></td>
-                                                <td show-td item="item" name="devicenote"></td>
+                                                <td show-td item="item" name="productName"></td>
+                                                <td show-td item="item" name="boxCount"></td>
+                                                <td show-td item="item" name="machineCount"></td>
+                                                <td show-td item="item" name="aliAmount"></td>
+                                                <td show-td item="item" name="aliOverage"></td>
+                                                <td show-td item="item" name="wxAmount"></td>
+                                                <td show-td item="item" name="wxOverage"></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <!--分页-->
                                     <nav class="paging">
-                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                        <obj-pagination conf="vm.tableb.pageConfig"></obj-pagination>
                                     </nav>
                                 </div>
-                                <div class="tab-pane" ng-if="vm.action.current==1">
+                                <div  ng-if="vm.action.current==3">
                                     <!-- 账户 -->
                                     <table object-table
-                                           data="vm.table.data"
-                                           check-model="vm.table.checkModel"
-                                           display="vm.table.pageConfig.itemsPerPage"
-                                           headers="一级,二级,三级,累计销售金额(元),当日销售金额"
-                                           fields="object,allowwechat，allowpay,fenwechat,fenpay">
+                                           data="vm.tablec.data"
+                                           check-model="vm.tablec.checkModel"
+                                           display="vm.tablec.pageConfig.itemsPerPage"
+                                           headers="产品名,机器名,机器码,支付宝余额,支付宝待转,支付宝比例,微信余额,微信待转,微信比例"
+                                           fields="productName,machineName,machineCode,aliAmount,aliOverage,aliScale,wxAmount,wxOverage,wxScale">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
                                                     <input type="checkbox" ng-model="::item.checked"
                                                            ng-click="$event.stopPropagation(); checkOne(item)" />
                                                 </td>
-                                                <td show-td item="item" name="devicename"></td>
-                                                <td show-td item="item" name="devicenote"></td>
+                                                <!--<td show-td item="item" name="orderId"></td>-->
+                                                <td show-td item="item" name="productName"></td>
+                                                <td show-td item="item" name="machineName"></td>
+                                                <td show-td item="item" name="machineCode"></td>
+                                                <td show-td item="item" name="aliAmount"></td>
+                                                <td show-td item="item" name="aliOverage"></td>
+                                                <td show-td item="item" name="aliScale"></td>
+                                                <td show-td item="item" name="wxAmount"></td>
+                                                <td show-td item="item" name="wxOverage"></td>
+                                                <td show-td item="item" name="wxScale"></td>
                                             </tr>
                                         </tbody>
                                     </table>
                                     <!--分页-->
                                     <nav class="paging">
-                                        <obj-pagination conf="vm.table.pageConfig"></obj-pagination>
+                                        <obj-pagination conf="vm.tablec.pageConfig"></obj-pagination>
                                     </nav>
                                 </div>
                             </div>

@@ -56,7 +56,7 @@
                 });
                 vm.selectFiles[index].upload.then(function (response) {
                     //  vm.model.address = response.address;
-                    vm.model.address = "http://oo9wxmbu7.bkt.clouddn.com/" + response.key;
+                    vm.model.address = "http://7niu.efanyun.com/" + response.key;
                     vm.model.title = vm.selectFiles[index].file.name;
                     vm.uploadresult = true;
                 }, function (response) {
