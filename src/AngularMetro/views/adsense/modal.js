@@ -6,7 +6,7 @@
 
             });
             var vm = this;
-            vm.type = [{ id: 1, name: '视频' }, { id: 2, name: '图片' }]
+            vm.type = [{ id: 1, name: '图片' }, { id: 2, name: '视频' }]
             vm.model = {};
             vm.url = "api/resource/add";
             if (model.id && model.id > 0) {
