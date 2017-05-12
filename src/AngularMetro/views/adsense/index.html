@@ -21,7 +21,7 @@
                                    datepicker-options="vm.date.dateOptions"
                                    ng-required="true"
                                    current-text="今天"
-                                
+                                  datetimepicker-neutral-timezone
                                    clear-text="清除"
                                    close-text="关闭" />
                             <span class="input-group-btn">
@@ -40,6 +40,7 @@
                                    uib-datepicker-popup="yyyy/MM/dd" readonly ng-model="vm.filter.endTime"
                                    is-open="vm.date.rightopen"
                                    datepicker-options="vm.date.dateOptions"
+                                   datetimepicker-neutral-timezone
                                    ng-required="true"
                                    current-text="今天"
                                    clear-text="清除"
@@ -83,8 +84,8 @@
                       </td>
                       <td show-td item="item" name="name"></td>
                       <td >
-                          <span ng-show="item.type==1">视频</span>
-                          <span ng-show="item.type==2">图片</span>
+                          <span ng-show="item.type==1">图片</span>
+                          <span ng-show="item.type==2">视频</span>
                       </td>
                       <td show-td item="item" name="createTime" format="yyyy-MM-dd HH:mm"></td>
                       <td show-td item="item" name="note"></td>
