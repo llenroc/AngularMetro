@@ -76,7 +76,7 @@
                     <tbody>
                         <tr ng-repeat="row in vm.checktable | orderBy:row.order:false">
                             <td>{{row.name}}</td>
-                            <td>{{row.type==1?'视频':'图片'}}</td>
+                            <td>{{row.type==1?'图片':'视频'}}</td>
                             <td>{{row.note}}</td>
                             <td>{{row.time}}</td>
                             <td><i ng-click="vm.sort(row,1)" class="fa fa-toggle-up" ></i> &nbsp;
