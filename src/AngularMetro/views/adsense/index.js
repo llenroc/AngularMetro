@@ -16,6 +16,8 @@
                 dateOptions: {
                     //dateDisabled: disabled,
                     formatYear: 'yyyy',
+                    formatMonth: 'MM',
+                    formatDay: 'dd',
                     maxDate: new Date(5000, 1, 1),
                     minDate: new Date(1900, 1, 1),
                     startingDay: 1
