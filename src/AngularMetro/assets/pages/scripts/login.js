@@ -38,7 +38,7 @@
                                     path: "/",//cookie的路 径
                                     secure: false //true,cookie的传输会要求一个安全协议,否则反之
                                 });
-                                window.location.href = "/views/layout/layout.html";
+                                window.location.href = "layout.html";
                             } else {
                                 han
                             }
@@ -49,7 +49,6 @@
             }
         });
         $("#loginSubmit").click(function () {
-          
             if ($('.form-horizontal').validate().form()) {
                 var url = "http://101.201.53.25:10001/api/efan/login";
                 var username = $("#userName").val();
@@ -75,7 +74,7 @@
                                 path: "/",//cookie的路 径
                                 secure: false //true,cookie的传输会要求一个安全协议,否则反之
                             });
-                            window.location.href = "/views/layout/layout.html";
+                            window.location.href = "layout.html";
                         } else {
                             o.show(res.message);
                         }
@@ -95,7 +94,7 @@
                 try {
                     var cook = $.parseJSON(cookie);
                     if (cook.username) {
-                        window.location.href = "/views/layout/layout.html";
+                        window.location.href = "layout.html";
 
                     }
 

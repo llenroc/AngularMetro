@@ -532,10 +532,10 @@
     <Content Include="views\cycle\modal.js" />
     <Content Include="views\fashionable\index.html" />
     <Content Include="views\fashionable\index.js" />
-    <Content Include="views\layout\footer.html" />
-    <Content Include="views\layout\header.html" />
-    <Content Include="views\layout\layout.html" />
-    <Content Include="views\layout\sidebar.html" />
+    <Content Include="footer.html" />
+    <Content Include="header.html" />
+    <Content Include="layout.html" />
+    <Content Include="sidebar.html" />
     <Content Include="views\payment\index.html" />
     <Content Include="views\payment\index.js" />
     <Content Include="views\payment\modal.html" />
