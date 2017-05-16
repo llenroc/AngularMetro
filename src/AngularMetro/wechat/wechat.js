@@ -5,8 +5,8 @@
         if (wxopenid == '') {
             if (access_code == null) {
                 var fromurl = location.href;
-                var appId = "wxae73861a343f7fd6";
-                var returnurl = "http://gaoxq.efanyun.com/wechat/wechat.html";
+                var appId = "wxdbd212236685877b";
+                var returnurl = "http://wx.efanyun.com/wechat/wechat.html";
                 var url = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' +appId
                     + '&redirect_uri=' + returnurl
                     +'&response_type=code&scope=snsapi_base&state=STATE%23wechat_redirect&connect_redirect=1#wechat_redirect';
