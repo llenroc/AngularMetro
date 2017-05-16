@@ -266,7 +266,7 @@
             }
 
             var modal = $uibModal.open({
-                templateUrl: '/views/scale/modal.html',
+                templateUrl: 'views/scale/modal.html',
                 controller: 'views.scale.modal as vm',
                 //  backdrop: 'static',
               //  size: 'sm',//模态框的大小尺寸

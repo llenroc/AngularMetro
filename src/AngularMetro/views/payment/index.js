@@ -18,7 +18,7 @@
                 return;
             }
             var modal = $uibModal.open({
-                templateUrl: '/views/payment/modal.html',
+                templateUrl: 'views/payment/modal.html',
                 controller: 'views.payment.modal as vm',
                 //  backdrop: 'static',
                 size: 'sm',//模态框的大小尺寸

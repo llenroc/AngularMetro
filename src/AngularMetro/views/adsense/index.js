@@ -59,7 +59,7 @@
             vm.init();
             vm.add = function () {
                 var modal = $uibModal.open({
-                    templateUrl: '/views/adsense/modal.html',
+                    templateUrl: 'views/adsense/modal.html',
                     controller: 'views.adsense.modal as vm',
                     backdrop: 'static',
                     size: 'lg',//模态框的大小尺寸
@@ -84,7 +84,7 @@
                     }
                 }
                 var modal = $uibModal.open({
-                    templateUrl: '/views/adsense/modal.html',
+                    templateUrl: 'views/adsense/modal.html',
                     controller: 'views.adsense.modal as vm',
                     backdrop: 'static',
                     size: 'lg',//模态框的大小尺寸

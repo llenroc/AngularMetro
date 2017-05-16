@@ -29,7 +29,7 @@
                     return;
                 }
                 var modal = $uibModal.open({
-                    templateUrl: '/views/cycle/modal.html',
+                    templateUrl: 'views/cycle/modal.html',
                     controller: 'views.cycle.modal as vm',
                     //  backdrop: 'static',
                     size: 'sm',//模态框的大小尺寸

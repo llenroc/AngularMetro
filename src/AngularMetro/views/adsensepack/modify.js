@@ -57,7 +57,7 @@
                 }
             }
             var modal = $uibModal.open({
-                templateUrl: '/views/adsensepack/modal.html',
+                templateUrl: 'views/adsensepack/modal.html',
                 controller: 'views.adsensepack.modal as vm',
                 backdrop: 'static',
                 size: 'lg',//模态框的大小尺寸
