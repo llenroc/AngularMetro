@@ -93,10 +93,10 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
     });
     vm.list = [
       //广告资源管理
-      { url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
-      { url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
-      { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
-      { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
+      //{ url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
+      //{ url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
+      //{ url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
+      //{ url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
       {
           url: "", title: "分帐系统", icon: "fa fa-chain-broken", child: [
               { url: "fashionable", title: "分账管理", icon: "fa fa-industry" },
