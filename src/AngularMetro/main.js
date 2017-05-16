@@ -51,9 +51,9 @@ MetronicApp.factory('settings', ['$rootScope', function ($rootScope) {
             pageBodySolid: false, // solid body color state
             pageAutoScrollOnLoad: 1000 // auto scroll to top on page load
         },
-        assetsPath: '/assets',
-        globalPath: '/assets/global',
-        layoutPath: '/assets/layouts/layout',
+        assetsPath: 'assets',
+        globalPath: 'assets/global',
+        layoutPath: 'assets/layouts/layout',
     };
 
     $rootScope.settings = settings;
@@ -71,7 +71,7 @@ MetronicApp.controller('AppController', ['$scope', '$rootScope', function ($scop
 /* Setup Layout Part - Header */
 MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($scope, appSession) {
     if (!appSession) {
-        window.location.href = "/index.html";
+        window.location.href = "index.html";
     }
     $scope.$on('$includeContentLoaded', function () {
         Layout.initHeader(); // init header
@@ -80,7 +80,7 @@ MetronicApp.controller('HeaderController', ['$scope', "appSession", function ($s
     vm.user = appSession;
     vm.out = function () {
         $.cookie("metroResult", null, { path: "/" });
-        location.href = "/index.html";
+        location.href = "index.html";
     }
 }]);
 
@@ -126,7 +126,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         //广告资源管理
         .state("adsense", {
             url: "/adsense.html",
-            templateUrl: "/views/adsense/index.html",
+            templateUrl: "views/adsense/index.html",
             data: { pageTitle: '广告资源管理' },
         //    controller: "views.adsense.index",
             resolve: {
@@ -136,21 +136,21 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'QiNiu',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/assets/global/plugins/plupload/angular-local-storage.js',
-                                '/assets/global/plugins/plupload/qupload.js',
+                                'assets/global/plugins/plupload/angular-local-storage.js',
+                                'assets/global/plugins/plupload/qupload.js',
                             ]
                         }, {
                             name: 'Modal',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/adsense/modal.js'
+                                'views/adsense/modal.js'
                             ]
                         },
                         {
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/adsense/index.js'
+                                'views/adsense/index.js'
                             ]
                         }]
 
@@ -161,7 +161,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
          //广告资源包管理
         .state("adsensepack", {
             url: "/adsensepack.html",
-            templateUrl: "/views/adsensepack/index.html",
+            templateUrl: "views/adsensepack/index.html",
             data: { pageTitle: '广告资源包管理' },
         //    controller: "views.adsensepack.index",
             resolve: {
@@ -170,7 +170,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/views/adsensepack/index.js'
+                            'views/adsensepack/index.js'
                         ]
                     });
                 }]
@@ -179,7 +179,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
          .state("adsensepackmodify", {
              url: "/modify.html",
              params: { "id": null },
-             templateUrl: "/views/adsensepack/modify.html",
+             templateUrl: "views/adsensepack/modify.html",
              data: { pageTitle: '广告资源包操作' },
         //     controller: "views.adsensepack.modify",
              resolve: {
@@ -188,8 +188,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                          name: 'MetronicApp',
                          insertBefore: '#ng_load_plugins_before',
                          files: [
-                             '/views/adsensepack/modify.js',
-                             '/views/adsensepack/modal.js'
+                             'views/adsensepack/modify.js',
+                             'views/adsensepack/modal.js'
                          ]
                      });
                  }]
@@ -198,7 +198,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
            //广告投放管理
         .state("advertising", {
             url: "/advertising.html",
-            templateUrl: "/views/advertising/index.html",
+            templateUrl: "views/advertising/index.html",
             data: { pageTitle: '广告投放管理' },
        //     controller: "views.advertising.index",
             resolve: {
@@ -207,7 +207,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before',
                         files: [
-                            '/views/advertising/index.js'
+                            'views/advertising/index.js'
                         ]
                     });
                 }]
@@ -216,7 +216,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
          .state("putadsense", {
              url: "/putadsense.html",
              params:{"resourse":null },
-             templateUrl: "/views/advertising/putadsense.html",
+             templateUrl: "views/advertising/putadsense.html",
              data: { pageTitle: '广告投放' },
          //    controller: "views.advertising.putadsense",
              resolve: {
@@ -226,15 +226,15 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                          insertBefore: '#ng_load_plugins_before',
                          files: [
 
-                             '/views/advertising/putadsense.js',
-                             '/views/advertising/modal.js'
+                             'views/advertising/putadsense.js',
+                             'views/advertising/modal.js'
                          ]
                      }, {
                          name: 'jstreeneed',
                          insertBefore: '#ng_load_plugins_before',
                          files: [
-                             '/assets/global/plugins/jstree/dist/jstree.min.js',
-                             '/assets/global/plugins/jstree/dist/themes/default/style.min.css',
+                             'assets/global/plugins/jstree/dist/jstree.min.js',
+                             'assets/global/plugins/jstree/dist/themes/default/style.min.css',
                          ]
                      }]);
                  }]
@@ -243,7 +243,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
              //广告投放记录管理
         .state("advertisingrecord", {
             url: "/advertisingrecord.html",
-            templateUrl: "/views/advertisingrecord/index.html",
+            templateUrl: "views/advertisingrecord/index.html",
             data: { pageTitle: '广告投放记录管理' },
        //     controller: "views.advertisingrecord.index",
             resolve: {
@@ -252,7 +252,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                         name: 'MetronicApp',
                         insertBefore: '#ng_load_plugins_before', 
                         files: [
-                            '/views/advertisingrecord/index.js'
+                            'views/advertisingrecord/index.js'
                         ]
                     });
                 }]
@@ -262,7 +262,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     $stateProvider
          .state("fashionable", {
              url: "/fashionable.html",
-             templateUrl: "/views/fashionable/index.html",
+             templateUrl: "views/fashionable/index.html",
              data: { pageTitle: '收款账户管理' },
          //    controller: "views.fashionable.index",
              resolve: {
@@ -272,7 +272,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                              name: 'MetronicApp',
                              insertBefore: '#ng_load_plugins_before',
                              files: [
-                                 '/views/fashionable/index.js',
+                                 'views/fashionable/index.js',
                              ]
                          }]
 
@@ -282,7 +282,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
          })
       .state("transfer", {
           url: "/transfer.html",
-          templateUrl: "/views/transfer/index.html",
+          templateUrl: "views/transfer/index.html",
           data: { pageTitle: '转账管理' },
           //    controller: "views.payment.index",
           resolve: {
@@ -292,7 +292,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                           name: 'MetronicApp',
                           insertBefore: '#ng_load_plugins_before',
                           files: [
-                              '/views/transfer/index.js',
+                              'views/transfer/index.js',
                           ]
                       }]
 
@@ -303,7 +303,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
     
         .state("payment", {
             url: "/payment.html",
-            templateUrl: "/views/payment/index.html",
+            templateUrl: "views/payment/index.html",
             data: { pageTitle: '收款账户管理' },
         //    controller: "views.payment.index",
             resolve: {
@@ -313,9 +313,9 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/payment/index.js',
-                                '/views/payment/payment.css',
-                                '/views/payment/modal.js'
+                                'views/payment/index.js',
+                                'views/payment/payment.css',
+                                'views/payment/modal.js'
                             ]
                         }]
 
@@ -325,7 +325,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         })
         .state("scale", {
             url: "/scale.html",
-            templateUrl: "/views/scale/index.html",
+            templateUrl: "views/scale/index.html",
             data: { pageTitle: '收款比例管理' },
         //    controller: "views.scale.index",
             resolve: {
@@ -335,8 +335,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/scale/index.js',
-                                '/views/scale/modal.js'
+                                'views/scale/index.js',
+                                'views/scale/modal.js'
                             ]
                         }]
                         );
@@ -345,7 +345,7 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
         })
         .state("cycle", {
             url: "/cycle.html",
-            templateUrl: "/views/cycle/index.html",
+            templateUrl: "views/cycle/index.html",
             data: { pageTitle: '收款周期管理' },
         //    controller: "views.cycle.index",
             resolve: {
@@ -355,8 +355,8 @@ MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProv
                             name: 'MetronicApp',
                             insertBefore: '#ng_load_plugins_before',
                             files: [
-                                '/views/cycle/index.js',
-                                '/views/cycle/modal.js'
+                                'views/cycle/index.js',
+                                'views/cycle/modal.js'
                             ]
                         }]
 
