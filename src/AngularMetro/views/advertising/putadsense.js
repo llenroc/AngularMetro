@@ -254,7 +254,7 @@
                     return;
                 }
                 var modal = $uibModal.open({
-                    templateUrl: 'views/advertising/modal.html',
+                    templateUrl: '/views/advertising/modal.html',
                     controller: 'views.advertising.modal as vm',
                     backdrop: 'static',
                  //   size: 'lg',//模态框的大小尺寸
