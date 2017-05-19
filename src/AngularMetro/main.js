@@ -106,7 +106,6 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', function ($stat
               { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
           ]
       },
-
     ];
 
 }]);
