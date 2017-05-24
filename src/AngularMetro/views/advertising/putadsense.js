@@ -13,7 +13,7 @@
                 $state.go("advertising");
             }
             vm.filter = {};
-          
+            vm.userorg =  $.parseJSON(abp.utils.getCookieValue("metroResult")).orgid;
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -80,12 +80,16 @@
                     displayName: null,
                     code: null,
                     set: function (ouInTree) {
+                      
                         if (!ouInTree) {
                             vm.organizationTree.selectedOu.id = null;
                             vm.organizationTree.selectedOu.displayName = null;
                             vm.organizationTree.selectedOu.code = null;
                             vm.organizationTree.selectedOu.type = 1;
                         } else {
+                            if (ouInTree.original.displayName == "组织机构") {
+                                return;
+                            }
                             vm.organizationTree.selectedOu.id = ouInTree.id;
                             vm.organizationTree.selectedOu.displayName = ouInTree.original.displayName;
                             vm.organizationTree.selectedOu.code = ouInTree.original.code;
@@ -115,9 +119,18 @@
                 },
                 getTreeDataFromServer: function (callback, type) {
                     var list = [];
-                    dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
+                    dataFactory.action("api/efan/getOrgList?orgId=" + (vm.userorg==""?"1":vm.userorg), "", null, {}).then(function (res) {
                         list = res.respBody;
-                        list.push({ id: 1, name: "易饭科技", parent_id: 0 });
+                        if (list.length != 0) {
+                            list.sort(function (x, y) {
+                                return x.parent_id - y.parent_id
+                            });
+                            var temp = list[0];
+                            list.push({ id: temp.parent_id,  name:"组织机构" , parent_id: 0 });
+                        }
+                        //else {
+                        //    list.push({ id: 1, name: "易饭科技", parent_id: 0 });
+                        //}
                         var treeData = _.map(list, function (item) {
                             return {
                                 id: item.id,
