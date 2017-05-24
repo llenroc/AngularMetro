@@ -23,9 +23,9 @@
         }
         ///机构树
         vm.organizationTree = {
+            current: $.parseJSON(abp.utils.getCookieValue("metroResult")).orgid,
             $tree: null,
             unitCount: 0,
-            treeList: [],
             setUnitCount: function (unitCount) {
                 $scope.safeApply(function () {
                     vm.organizationTree.unitCount = unitCount;
@@ -39,18 +39,20 @@
                 displayName: null,
                 code: null,
                 set: function (ouInTree) {
+
                     if (!ouInTree) {
                         vm.organizationTree.selectedOu.id = null;
                         vm.organizationTree.selectedOu.displayName = null;
                         vm.organizationTree.selectedOu.code = null;
                         vm.organizationTree.selectedOu.type = 1;
                     } else {
-
+                        if (ouInTree.original.displayName == "组织机构") {
+                            return;
+                        }
                         vm.organizationTree.selectedOu.id = ouInTree.id;
                         vm.organizationTree.selectedOu.displayName = ouInTree.original.displayName;
                         vm.organizationTree.selectedOu.code = ouInTree.original.code;
                         vm.organizationTree.selectedOu.type = ouInTree.original.type;
-                        vm.organizationTree.genderTreeNode(ouInTree);
                     }
                     if (vm.organizationTree.selectedOu.id == null) {
                         return;
@@ -59,27 +61,7 @@
                     $("a.list-group-item:first-child").css("background-color", "transparent");
                 }
             },
-            genderTreeNode: function (ouInTree) {
-                vm.selectList = [];
-                if (vm.organizationTree.treeList.length == 0) {
-                    return;
-                }
-                angular.forEach(ouInTree.parents, function (aa, bb) {
-                    angular.forEach(vm.organizationTree.treeList, function (a, b) {
-                        if (aa == "#") {
-                            aa = 0;
-                        }
-                        if (a.id == Number(aa)) {
-                            vm.selectList.push({ order: aa, name: a.name });
-                        }
-                    });
 
-
-                });
-                vm.selectList.push({ order: 9999, name: ouInTree.original.displayName });
-
-                vm.selectList = vm.selectList.sort(function (a, b) { return a.order - b.order });
-            },
 
             generateTextOnTree: function (ou) {
                 var displayName = ou.name;
@@ -96,10 +78,18 @@
             },
             getTreeDataFromServer: function (callback, type) {
                 var list = [];
-                dataFactory.action("api/efan/getOrgList?orgId=1", "", null, {}).then(function (res) {
+                dataFactory.action("api/efan/getOrgList?orgId=" + (vm.organizationTree.current == "" ? "1" : vm.organizationTree.current), "", null, {}).then(function (res) {
                     list = res.respBody;
-                    list.push({ id: 1, name: "易饭科技", parent_id: 0 });
-                    vm.organizationTree.treeList = list;
+                    if (list.length != 0) {
+                        list.sort(function (x, y) {
+                            return x.parent_id - y.parent_id
+                        });
+                        var temp = list[0];
+                        list.push({ id: temp.parent_id, name: "组织机构", parent_id: 0 });
+                    }
+                    //else {
+                    //    list.push({ id: 1, name: "易饭科技", parent_id: 0 });
+                    //}
                     var treeData = _.map(list, function (item) {
                         return {
                             id: item.id,
@@ -111,7 +101,6 @@
                             }
                         };
                     });
-
                     callback(treeData);
                 });
                 //var list = [

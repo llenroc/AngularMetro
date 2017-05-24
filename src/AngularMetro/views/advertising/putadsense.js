@@ -13,7 +13,6 @@
                 $state.go("advertising");
             }
             vm.filter = {};
-            vm.userorg =  $.parseJSON(abp.utils.getCookieValue("metroResult")).orgid;
             vm.date = {
                 leftopen: false,
                 rightopen: false,
@@ -65,6 +64,7 @@
             };
             ///机构树
             vm.organizationTree = {
+                current:$.parseJSON(abp.utils.getCookieValue("metroResult")).orgid,
                 $tree: null,
                 unitCount: 0,
                 setUnitCount: function (unitCount) {
@@ -119,7 +119,7 @@
                 },
                 getTreeDataFromServer: function (callback, type) {
                     var list = [];
-                    dataFactory.action("api/efan/getOrgList?orgId=" + (vm.userorg==""?"1":vm.userorg), "", null, {}).then(function (res) {
+                    dataFactory.action("api/efan/getOrgList?orgId=" + (vm.organizationTree.current == "" ? "1" : vm.organizationTree.current), "", null, {}).then(function (res) {
                         list = res.respBody;
                         if (list.length != 0) {
                             list.sort(function (x, y) {
