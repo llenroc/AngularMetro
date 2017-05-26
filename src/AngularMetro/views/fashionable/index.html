@@ -112,13 +112,13 @@
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
                                                     <input type="checkbox" ng-model="::item.checked"
-                                                            ng-show="::item.state==1"
+                                                           
                                                            ng-click="$event.stopPropagation(); checkOne(item)" />
                                                 </td>
                                                 <td show-td item="item" name="account"></td>
                                                 <td>
-                                                    <span ng-show="item.transferType==1">自动转账</span>
-                                                    <span ng-show="item.transferType==0">手动转账</span>
+                                                    <span ng-show="item.transferType==0">自动转账</span>
+                                                    <span ng-show="item.transferType==1">手动转账</span>
                                                 </td>
                                                 <td>
                                                     <span ng-show="item.payChannel==3">支付宝</span>
