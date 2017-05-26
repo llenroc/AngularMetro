@@ -335,7 +335,7 @@
                     abp.notify.warn("请选择一个操作对象");
                     return;
                 }
-                if (vm.tablea.checkModel[id].transferType==1) {
+                if (vm.tablea.checkModel[id].transferType==0) {
                     abp.notify.warn("当前对象为自动转账");
                     return;
                 }
@@ -345,6 +345,8 @@
                                if (res.result == "1") {
                                    abp.notify.success("手动转账成功");
                                    vm.inita();
+                               } else {
+                                   abp.notify.error(res.errorMsg);
                                }
                            });
              
