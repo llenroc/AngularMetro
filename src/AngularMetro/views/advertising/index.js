@@ -1,6 +1,6 @@
 ﻿(function () {
-    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory',
-        function ($scope, settings, $state, dataFactory) {
+    angular.module('MetronicApp').controller('views.advertising.index', ['$scope', 'settings','$state','dataFactory','appSession',
+        function ($scope, settings, $state, dataFactory, appSession) {
             // ajax初始化
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
@@ -43,6 +43,7 @@
             vm.init = function () {
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                vm.filter.orgId = appSession.orgid;
                 dataFactory.action("api/package/selectPublish", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {

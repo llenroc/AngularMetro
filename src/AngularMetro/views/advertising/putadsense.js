@@ -51,7 +51,7 @@
                 
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+            
                 dataFactory.action("api/distribution/getMachineList", "", null, vm.filter).then(function (res) {
                     if (res.result == "1") {
                         vm.table.pageConfig.totalItems = res.total;

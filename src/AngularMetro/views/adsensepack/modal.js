@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.adsensepack.modal',
-    ['$scope', 'settings', '$uibModalInstance','dataFactory','model',
-        function ($scope, settings, $uibModalInstance, dataFactory, model) {
+    ['$scope', 'settings', '$uibModalInstance','dataFactory','model','appSession',
+        function ($scope, settings, $uibModalInstance, dataFactory, model, appSession) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -46,6 +46,7 @@
                 vm.filter.pageNum = vm.table.pageConfig.currentPage;
                 vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
                 vm.filter.passIds = model;
+                vm.filter.orgId = appSession.orgid;
                 dataFactory.action("api/resource/selectPublish", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {

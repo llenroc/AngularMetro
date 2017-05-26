@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.adsensepack.modify',
-        ['$scope', 'settings', '$uibModal','$state','$stateParams','dataFactory',
-        function ($scope, settings, $uibModal, $state, $stateParams, dataFactory) {
+        ['$scope', 'settings', '$uibModal','$state','$stateParams','dataFactory','appSession',
+        function ($scope, settings, $uibModal, $state, $stateParams, dataFactory, appSession) {
         $scope.$on('$viewContentLoaded', function () {
             // initialize core components
             App.initAjax();
@@ -37,6 +37,7 @@
             vm.pack.resourceIds = _.map(vm.checktable, function (item) {
                 return item.id
             });
+            vm.pack.orgId = appSession.orgid;
             var url = vm.pack.id && vm.pack.id > 0 ? "api/package/update" : "api/package/add";
             vm.pack.state = vm.pack.state ? 1 : 0;
             dataFactory.action(url, "", null, vm.pack).then(function (res) {

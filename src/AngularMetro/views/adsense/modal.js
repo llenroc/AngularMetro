@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.adsense.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'FileUploader', 'dataFactory', '$qupload',
-        function ($scope, settings, $uibModalInstance, model, fileUploader, dataFactory, $qupload) {
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'FileUploader', 'dataFactory', '$qupload','appSession',
+        function ($scope, settings, $uibModalInstance, model, fileUploader, dataFactory, $qupload, appSession) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -33,6 +33,7 @@
                     return;
                 }
                 vm.model.state = vm.model.state ? 1 : 0;
+                vm.model.orgId = appSession.orgid;
                 dataFactory.action(vm.url, "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
                         $uibModalInstance.close();

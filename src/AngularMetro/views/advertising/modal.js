@@ -1,6 +1,6 @@
 ﻿angular.module('MetronicApp').controller('views.advertising.modal',
-    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory','$filter',
-        function ($scope, settings, $uibModalInstance, model, dataFactory,$filter) {
+    ['$scope', 'settings', '$uibModalInstance', 'model', 'dataFactory','$filter','appSession',
+        function ($scope, settings, $uibModalInstance, model, dataFactory, $filter, appSession) {
             $scope.$on('$viewContentLoaded', function () {
                 App.initAjax();
 
@@ -46,7 +46,7 @@
                         vm.model.endTime = $filter('date')(vm.model.endTime, "yyyy-MM-dd");
                     }
                 }
-
+                vm.model.orgId = appSession.orgId;
 
                 dataFactory.action("api/distribution/add", "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
