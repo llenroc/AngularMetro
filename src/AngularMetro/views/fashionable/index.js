@@ -99,7 +99,7 @@
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
                         }
-                        vm.init();
+                        vm.action.action(vm.action.current);
                         $("a.list-group-item:first-child").css("background-color", "transparent");
                     }
                 },
@@ -326,8 +326,8 @@
                 }
             }
             vm.inita();
-            vm.initb();
-            vm.initc();
+            //vm.initb();
+            //vm.initc();
          
             vm.handlearound = function () {
                 var id = Object.getOwnPropertyNames(vm.tablea.checkModel);

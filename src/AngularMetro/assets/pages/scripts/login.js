@@ -28,10 +28,11 @@
                         url: url,
                         data: data,
                         async: false,
-                        dataType: "json",
+                        dataType: "JSON",
                         success: function (res) {
+                         
                             if (res.code == 200) {
-                                var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                                var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name,role:res.roles };
                                 var temp = JSON.stringify(val);
                                 $.cookie("metroResult", temp, {
                                     expires: 1,//有效日期
@@ -64,10 +65,10 @@
                     url: url,
                     data: data,
                     async: false,
-                    dataType: "json",
+                    dataType: "JSON",
                     success: function (res) {
                         if (res.code == 200) {
-                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name };
+                            var val = { username: res.user_name, orgid: res.org_id, orgName: res.org_name, role: res.roles };
                             var temp = JSON.stringify(val);
                             $.cookie("metroResult", temp, {
                                 expires: 1,//有效日期
