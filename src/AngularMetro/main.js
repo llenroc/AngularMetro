@@ -95,27 +95,27 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'appSession', f
         Layout.initSidebar($state); // init sidebar
     });
     vm.list = [];
-    if ($.inArray("1",appSession.roles)>-1) {
-        vm.list = [
-     //广告资源管理
-     { url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
-     { url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
-     { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
-     { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
-        ];
-    }
-    if ($.inArray("2", appSession.roles) > -1) {
-        var temp = {
-            url: "", title: "分帐系统", icon: "fa fa-chain-broken", child: [
-                { url: "fashionable", title: "分账管理", icon: "fa fa-industry" },
-           { url: "transfer", title: "转账管理", icon: "fa fa-industry" },
-           { url: "payment", title: "收款账户管理", icon: "fa fa-jpy" },
-           { url: "cycle", title: "分账周期管理", icon: "fa fa-cc-visa" },
-           { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
-            ]
-        };
-        vm.list.push(temp);
-    }
+    //  if ($.inArray("1",appSession.roles)>-1) {
+    vm.list = [
+ //广告资源管理
+ { url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
+ { url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
+ { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
+ { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
+    ];
+    //  }
+    // if ($.inArray("2", appSession.roles) > -1) {
+    var temp = {
+        url: "", title: "分帐系统", icon: "fa fa-chain-broken", child: [
+            { url: "fashionable", title: "分账管理", icon: "fa fa-industry" },
+       { url: "transfer", title: "转账管理", icon: "fa fa-industry" },
+       { url: "payment", title: "收款账户管理", icon: "fa fa-jpy" },
+       { url: "cycle", title: "分账周期管理", icon: "fa fa-cc-visa" },
+       { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
+        ]
+    };
+  //  vm.list.push(temp);
+    //  }
 
 
 
@@ -130,10 +130,22 @@ MetronicApp.controller('FooterController', ['$scope', function ($scope) {
 //路由设置
 MetronicApp.config(['$stateProvider', '$urlRouterProvider', function ($stateProvider, $urlRouterProvider) {
     // Redirect any unmatched url
-    //  $urlRouterProvider.otherwise("/adsense.html");
-    $urlRouterProvider.otherwise("/fashionable.html");
-
-    var abp = abp;
+      $urlRouterProvider.otherwise("/adsense.html");
+    //  $urlRouterProvider.otherwise("/fashionable.html");
+    //var _session = null;
+    //var cookie = $.cookie("metroResult");
+    //if (cookie != "" && cookie != undefined) {
+    //    _session = $.parseJSON(cookie);
+    //    if (_session.role) {
+    //        var arr = _session.role.split(',');
+    //        _session.roles = arr;
+    //    }
+    //}
+    //if ($.inArray("1", _session.roles) > -1) {
+    //    $urlRouterProvider.otherwise("/adsense.html");
+    //} else {
+    //    $urlRouterProvider.otherwise("/fashionable.html");
+    //}
     $stateProvider
         //广告资源管理
         .state("adsense", {
