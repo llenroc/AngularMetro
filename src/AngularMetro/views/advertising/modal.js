@@ -46,7 +46,7 @@
                         vm.model.endTime = $filter('date')(vm.model.endTime, "yyyy-MM-dd");
                     }
                 }
-                vm.model.orgId = appSession.orgId;
+                vm.model.orgId = appSession.orgid;
 
                 dataFactory.action("api/distribution/add", "", null, vm.model).then(function (res) {
                     if (res.result == "1") {
