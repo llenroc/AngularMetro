@@ -42,6 +42,11 @@
                     }
                 });
             };
+            vm.blur = function () {
+                if (vm.model.time<0) {
+                    vm.model.time = 0;
+                }
+            }
             vm.cancel = function () {
                 $uibModalInstance.dismiss();
             };

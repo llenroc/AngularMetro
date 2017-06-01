@@ -45,26 +45,9 @@
                     totalItems: 0//总数据
                 }
             }
-
-            //获取用户数据集，并且添加配置项
-            vm.init = function () {
-                
-                vm.filter.pageNum = vm.table.pageConfig.currentPage;
-                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
-            
-                dataFactory.action("api/distribution/getMachineList", "", null, vm.filter).then(function (res) {
-                    if (res.result == "1") {
-                        vm.table.pageConfig.totalItems = res.total;
-                        vm.table.data = res.list;
-                        vm.table.pageConfig.onChange = function () {
-                            vm.init();
-                        }
-                    }
-                });
-            };
             ///机构树
             vm.organizationTree = {
-                current:$.parseJSON(abp.utils.getCookieValue("metroResult")).orgid,
+                current: $.parseJSON(abp.utils.getCookieValue("metroResult")).orgid,
                 $tree: null,
                 unitCount: 0,
                 setUnitCount: function (unitCount) {
@@ -80,7 +63,7 @@
                     displayName: null,
                     code: null,
                     set: function (ouInTree) {
-                      
+
                         if (!ouInTree) {
                             vm.organizationTree.selectedOu.id = null;
                             vm.organizationTree.selectedOu.displayName = null;
@@ -126,7 +109,7 @@
                                 return x.parent_id - y.parent_id
                             });
                             var temp = list[0];
-                            list.push({ id: temp.parent_id,  name:"组织机构" , parent_id: 0 });
+                            list.push({ id: temp.parent_id, name: "组织机构", parent_id: 0 });
                         }
                         //else {
                         //    list.push({ id: 1, name: "易饭科技", parent_id: 0 });
@@ -258,6 +241,24 @@
                 }
             };
             vm.organizationTree.init();
+            //获取用户数据集，并且添加配置项
+            vm.init = function () {
+                
+                vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+            
+                dataFactory.action("api/distribution/getMachineList", "", null, vm.filter).then(function (res) {
+                    if (res.result == "1") {
+                        vm.table.pageConfig.totalItems = res.total;
+                        vm.table.data = res.list;
+                        vm.table.pageConfig.onChange = function () {
+                            vm.init();
+                        }
+                    }
+                });
+            };
+        
       
 
             vm.allow = function () {
