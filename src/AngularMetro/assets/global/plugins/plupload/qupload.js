@@ -113,7 +113,7 @@
 		        var point = file.name.lastIndexOf(".");
 
 		        var type = file.name.substr(point).toLowerCase();
-		        if (type != ".png" && type != ".jpg" && type != ".jpeg" && type != ".mp4") {
+		        if (type != ".png" && type != ".jpg" && type != ".mp4") {
 		            abp.notify.warn("上传文件格式错误");
 		            return null;
 		        }
@@ -239,7 +239,7 @@ angular.module('angularQFileUpload').directive('ngFileSelect', ['$parse', '$time
 	    return function (scope, elem, attr) {
 	        var fn = $parse(attr['ngFileSelect']);
 	        if (elem[0].tagName.toLowerCase() !== 'input' || (elem.attr('type') && elem.attr('type').toLowerCase()) !== 'file') {
-	            var fileElem = angular.element('<input type="file"  accept="image/png,video/mp4">');
+	            var fileElem = angular.element('<input type="file"  accept="image/png,image/jpg,video/mp4">');
 	            for (var i = 0; i < elem[0].attributes.length; i++) {
 	                fileElem.attr(elem[0].attributes[i].name, elem[0].attributes[i].value);
 	            }
