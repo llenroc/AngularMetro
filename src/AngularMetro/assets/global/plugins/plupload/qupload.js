@@ -113,7 +113,7 @@
 		        var point = file.name.lastIndexOf(".");
 
 		        var type = file.name.substr(point).toLowerCase();
-		        if ((type != ".png" || type != ".jpg"|| type != ".jepg") && type != ".mp4") {
+		        if (type != ".png" && type != ".jpg" && type != ".jpeg" && type != ".mp4") {
 		            abp.notify.warn("上传文件格式错误");
 		            return null;
 		        }
