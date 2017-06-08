@@ -96,13 +96,13 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'appSession', f
     });
     vm.list = [];
     //  if ($.inArray("1",appSession.roles)>-1) {
-    vm.list = [
- //广告资源管理
- { url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
- { url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
- { url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
- { url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
-    ];
+ //   vm.list = [
+ ////广告资源管理
+ //{ url: "adsense", title: "广告资源管理", icon: "fa fa-clipboard" },
+ //{ url: "adsensepack", title: "广告资源包", icon: "fa fa-suitcase" },
+ //{ url: "advertising", title: "广告投放", icon: "fa fa-cogs" },
+ //{ url: "advertisingrecord", title: "广告发放记录", icon: "fa fa-bar-chart" },
+ //   ];
     //  }
     // if ($.inArray("2", appSession.roles) > -1) {
     var temp = {
@@ -114,7 +114,7 @@ MetronicApp.controller('SidebarController', ['$state', '$scope', 'appSession', f
        { url: "scale", title: "分账比例管理", icon: "fa fa-gg-circle" },
         ]
     };
-  //  vm.list.push(temp);
+    vm.list.push(temp);
     //  }
 
 
