@@ -42,6 +42,11 @@
                 })
             }
             vm.export = function () {
+                vm.filter.pageNum = vm.table.pageConfig.currentPage;
+                vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
+                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                window.location.href = "http://101.201.53.25:10001/excel/period?pageNum=" + vm.filter.pageNum +
+                    "&pageSize=" + vm.filter.pageSize + "0&orgId=" + vm.filter.orgId;
                 abp.notify.success("导出成功");
             }
 

@@ -1,7 +1,7 @@
 ﻿(function () {
     angular.module('MetronicApp').controller('views.payment.index',
-        ['$scope', 'settings', "$stateParams", '$state', 'dataFactory', '$uibModal',
-    function ($scope, settings, $stateParams, $state, dataFactory, $uibModal) {
+        ['$scope', 'settings', "$stateParams", '$state', 'dataFactory', '$uibModal','appSession',
+    function ($scope, settings, $stateParams, $state, dataFactory, $uibModal,appSession) {
         // ajax初始化
         $scope.$on('$viewContentLoaded', function () {
             App.initAjax();
@@ -276,11 +276,9 @@
                 abp.notify.warn("请选择要绑定的对象");
                 return;
             }
-            var model = { list: ids, type: type };
-            if (type == 1)
-                model.wxAccount = '';
-            else model.aliAccount = '';
-            dataFactory.action('api/orgsetting/bindOrgAccount', "", null, model).then(function (res) {
+            var url = type == 1 ? "api/orgsetting/unbindWeixin" : "api/orgsetting/unbindAli"
+            var model = { list: ids, createOne: appSession.username };
+            dataFactory.action(url, "", null, model).then(function (res) {
                 if (res.result == "1") {
                     abp.notify.success("解绑成功");
                     vm.init();

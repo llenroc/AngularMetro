@@ -270,7 +270,7 @@
                             vm.tablea.pageConfig.totalItems = res.total;
                             vm.tablea.data = res.list;
                             vm.tablea.pageConfig.onChange = function () {
-                                vm.init();
+                                vm.inita();
                             }
                         }
                     });
@@ -286,7 +286,7 @@
                             vm.tableb.pageConfig.totalItems = res.total;
                             vm.tableb.data = res.list;
                             vm.tableb.pageConfig.onChange = function () {
-                                vm.init();
+                                vm.initb();
                             }
                         }
                     });
@@ -302,7 +302,7 @@
                             vm.tablec.pageConfig.totalItems = res.total;
                             vm.tablec.data = res.list;
                             vm.tablec.pageConfig.onChange = function () {
-                                vm.init();
+                                vm.initc();
                             }
                         }
                     });
