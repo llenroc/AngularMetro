@@ -253,12 +253,16 @@
                 vm.filter.orgId = vm.organizationTree.selectedOu.id;
                 if (vm.filter.check) {
                     vm.filter.isSetting = 1;
-                } else if (vm.filter.uncheck) {
+                } 
+		 if (vm.filter.uncheck) {
                     vm.filter.isSetting = 0;
-                } else {
+                } 
+		if(vm.filter.check&&vm.filter.uncheck)
+		{
                     vm.filter.isSetting = null;
                 }
-
+		if(!vm.filter.check&&!vm.filter.uncheck){  vm.filter.isSetting = null;
+}
                 dataFactory.action("api/orgsetting/selectOrgPeriodSetting", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {

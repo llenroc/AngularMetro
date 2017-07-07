@@ -12,7 +12,7 @@
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
                         <input type="number" class="form-control" 
-                                ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                                ng-pattern="/^(\d{1,2}(\.\d+)?|100|NA)$/"
                                 ng-class="{'edited':vm.model.wxScale}"  ng-model="vm.model.wxScale" readonly>
                         <span class="input-group-addon">%</span>
                     </div>
@@ -24,7 +24,7 @@
                     <div class="col-md-8 input-group left-addon right-addon">
                       <!--  <span class="input-group-addon">%</span>-->
                         <input type="number" class="form-control"
-                               ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                             ng-pattern="/^(\d{1,2}(\.\d+)?|100|NA)$/"
                                 ng-class="{'edited':vm.model.wxthirdScale}" required
                                 ng-blur="vm.changea()"  ng-model="vm.model.wxthirdScale">
                         <span class="input-group-addon">%</span>
@@ -36,7 +36,7 @@
                     <label class="col-md-4 control-label">xxx商贸(支付宝)比例</label>
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
-                        <input type="text" class="form-control"   ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                        <input type="number" class="form-control"    ng-pattern="/^(\d{1,2}(\.\d+)?|100|NA)$/"
                                 ng-class="{'edited':vm.model.aliScale}"  ng-model="vm.model.aliScale" readonly>
                         <span class="input-group-addon">%</span>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="col-md-8 input-group left-addon right-addon">
                         <!--  <span class="input-group-addon">%</span>-->
                         <input type="number" class="form-control" required
-                               ng-pattern="/(^[1-9][0-9]$)|(^100&)|(^[1-9]$)$/" 
+                               ng-pattern="/^(\d{1,2}(\.\d+)?|100|NA)$/"
                                 ng-class="{'edited':vm.model.alithirdScale}"
                                 ng-blur="vm.changeb()" ng-model="vm.model.alithirdScale">
                         <span class="input-group-addon">%</span>

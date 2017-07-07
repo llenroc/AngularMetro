@@ -38,8 +38,8 @@
                           <input type="checkbox" ng-model="::item.checked"  
                                  ng-click="$event.stopPropagation(); checkOne(item)" />
                       </td>
-                      <td show-td item="item" name="id"></td>
-                      <td ><span>{item.account}</span></td>
+                      <td >{{$index+1}}</td>
+                      <td ><span>{{item.account}}</span></td>
                       <td >
                           <span ng-show="item.payChannel==2">微信</span>
                           <span ng-show="item.payChannel==3">支付宝</span>

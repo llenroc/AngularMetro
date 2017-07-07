@@ -71,13 +71,12 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="input-icon right">
-                                    <i ng-click="vm.init()" class="fa fa-search"></i>
+                                    <i ng-click="vm.action.action(vm.action.current)" class="fa fa-search"></i>
                                     <input type="text" class="form-control input-circle" placeholder="按条件搜索" ng-model="vm.filter.name">
                                 </div>
                             </div>
                         </div>
                         <div class="col-xs-2 text-right">
-                         
                             <button class="btn btn-primary blue" ng-click="vm.export()"><i class="fa fa-times"></i> 导出</button>
                         </div>
                     </div>
@@ -107,7 +106,7 @@
                                            check-model="vm.tablea.checkModel"
                                            display="vm.tablea.pageConfig.itemsPerPage"
                                            headers="账户,是否为自动账户,微信or支付宝,待转入金额,账户余额"
-                                           fields="account,transferType,payChannel,overage,amount">
+                                           fields="account,transferType,payChannel,amount,overage">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
@@ -124,8 +123,8 @@
                                                     <span ng-show="item.payChannel==3">支付宝</span>
                                                     <span ng-show="item.payChannel==2">微信</span>
                                                 </td>
-                                                <td show-td item="item" name="overage"></td>
                                                 <td show-td item="item" name="amount"></td>
+                                                <td show-td item="item" name="overage"></td>
                                           
                                             </tr>
                                         </tbody>
@@ -142,7 +141,7 @@
                                            check-model="vm.tableb.checkModel"
                                            display="vm.tableb.pageConfig.itemsPerPage"
                                            headers="商品名,点位数,机器数,支付宝账户,支付宝待转入,微信账户,微信待转入"
-                                           fields="productName,boxCount,machineCount,aliAmount,aliOverage,wxAmount,wxOverage">
+                                           fields="productName,boxCount,machineCount,aliOverage,aliAmount,wxOverage,wxAmount">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
                                                 <td>
@@ -152,10 +151,10 @@
                                                 <td show-td item="item" name="productName"></td>
                                                 <td show-td item="item" name="boxCount"></td>
                                                 <td show-td item="item" name="machineCount"></td>
-                                                <td show-td item="item" name="aliAmount"></td>
                                                 <td show-td item="item" name="aliOverage"></td>
-                                                <td show-td item="item" name="wxAmount"></td>
+                                                <td show-td item="item" name="aliAmount"></td>
                                                 <td show-td item="item" name="wxOverage"></td>
+                                                <td show-td item="item" name="wxAmount"></td>
                                             </tr>
                                         </tbody>
                                     </table>

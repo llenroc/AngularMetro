@@ -247,12 +247,18 @@
             vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
             vm.filter.orgId = vm.organizationTree.selectedOu.id;
             if (vm.filter.check) {
-                vm.filter.isSetting = 1;
-            } else if (vm.filter.uncheck) {
-                vm.filter.isSetting = 0;
-            } else {
-                vm.filter.isSetting = null;
-            }
+                    vm.filter.isSetting = 1;
+                } 
+		 if (vm.filter.uncheck) {
+                    vm.filter.isSetting = 0;
+                } 
+		if(vm.filter.check&&vm.filter.uncheck)
+		{
+                    vm.filter.isSetting = null;
+                }
+		if(!vm.filter.check&&!vm.filter.uncheck){  vm.filter.isSetting = null;
+}
+
 
             dataFactory.action("api/orgsetting/selectOrgAccountSetting", "", null, vm.filter)
                 .then(function (res) {

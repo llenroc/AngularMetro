@@ -95,6 +95,7 @@
                             vm.organizationTree.selectedOu.displayName = ouInTree.original.displayName;
                             vm.organizationTree.selectedOu.code = ouInTree.original.code;
                             vm.organizationTree.selectedOu.type = ouInTree.original.type;
+				vm.organizationTree.current=ouInTree.id;
                         }
                         if (vm.organizationTree.selectedOu.id == null) {
                             return;
@@ -263,7 +264,7 @@
               //  vm.table.checkModel = {};
                 vm.filter.pageNum = vm.tablea.pageConfig.currentPage;
                 vm.filter.pageSize = vm.tablea.pageConfig.itemsPerPage;
-                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                vm.filter.orgId = vm.organizationTree.current;
                 dataFactory.action("api/manager/getAccountList", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {
@@ -279,7 +280,7 @@
                 //  vm.table.checkModel = {};
                 vm.filter.pageNum = vm.tableb.pageConfig.currentPage;
                 vm.filter.pageSize = vm.tableb.pageConfig.itemsPerPage;
-                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                vm.filter.orgId = vm.organizationTree.current;
                 dataFactory.action("api/manager/getProductList", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {
@@ -295,7 +296,7 @@
                 //  vm.table.checkModel = {};
                 vm.filter.pageNum = vm.tablec.pageConfig.currentPage;
                 vm.filter.pageSize = vm.tablec.pageConfig.itemsPerPage;
-                vm.filter.orgId = vm.organizationTree.selectedOu.id;
+                vm.filter.orgId = vm.organizationTree.current;
                 dataFactory.action("api/manager/getOrderList", "", null, vm.filter)
                     .then(function (res) {
                         if (res.result == "1") {
@@ -324,6 +325,38 @@
                     vm.action.current = num;
                     //  vm.init();
                 }
+            }
+            vm.export = function () {
+                if (!vm.organizationTree.selectedOu.id) {
+                    abp.notify.warn("请先选择机构");
+                    return;
+                }
+                var url = "";
+                if (vm.action.current == 1) {
+                    url = "http://101.201.53.25:10001/excel/m_account?pageNum=1" +
+                        "&pageSize=" + vm.tablea.pageConfig.totalItems + "&orgId=" +
+                     vm.organizationTree.selectedOu.id
+                }else if (vm.action.current == 2) {
+                    url = "http://101.201.53.25:10001/excel/m_product?pageNum=1" +
+                        "&pageSize=" +
+                        vm.tableb.pageConfig.totalItems +
+                        "&orgId=" +
+                        vm.organizationTree.selectedOu.id
+                } else {
+                    url = "http://101.201.53.25:10001/excel/m_order?pageNum=1" +
+                          "&pageSize=" + vm.tablec.pageConfig.totalItems + "&orgId=" +
+                       vm.organizationTree.selectedOu.id
+                }
+                if (vm.filter.name) {
+                    url += "&name=" + vm.filter.name;
+                }
+                if (vm.filter.startTime) {
+                    url += "&starttime=" + vm.filter.startTime;
+                }
+                if (vm.filter.endTime) {
+                    url += "&endTime=" + vm.filter.endTime;
+                }
+                window.location.href = url;
             }
             vm.inita();
             //vm.initb();

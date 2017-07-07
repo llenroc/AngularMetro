@@ -9,7 +9,7 @@
         var vm = this;
 
         vm.filter = {};
-        vm.count = { settingTotal: 0, alreadyCount: 0 };
+        vm.count = { settingTotal: 0, alreadyCount: 0,deviceCount:0 };
         //页面属性
         vm.table = {
             data: [],               //数据集
@@ -222,13 +222,19 @@
             vm.filter.pageNum = vm.table.pageConfig.currentPage;
             vm.filter.pageSize = vm.table.pageConfig.itemsPerPage;
             vm.filter.orgId = vm.organizationTree.selectedOu.id;
-            if (vm.filter.check) {
-                vm.filter.isSetting = 1;
-            } else if (vm.filter.uncheck) {
-                vm.filter.isSetting = 0;
-            } else {
-                vm.filter.isSetting = null;
-            }
+             if (vm.filter.check) {
+                    vm.filter.isSetting = 1;
+                } 
+		 if (vm.filter.uncheck) {
+                    vm.filter.isSetting = 2;
+                } 
+		if(vm.filter.check&&vm.filter.uncheck)
+		{
+                    vm.filter.isSetting = null;
+                }
+		if(!vm.filter.check&&!vm.filter.uncheck){  vm.filter.isSetting = null;
+}
+
 
             dataFactory.action("api/product/selectProductList", "", null, vm.filter)
                 .then(function (res) {
@@ -237,6 +243,7 @@
                         vm.table.data = res.list;
                         vm.count.settingTotal = res.settingTotal;
                         vm.count.alreadyCount = res.alreadyCount;
+ 			vm.count.deviceCount= res.machineCount;
                         vm.table.pageConfig.onChange = function () {
                             vm.init();
                         }
@@ -273,7 +280,7 @@
                 abp.notify.warn("请先选择机构");
                 return;
             }
-            var url = "http://101.200.238.155:8080/excel/product?pageNum=1" + "&pageSize=" + vm.table.pageConfig.totalItems + "&orgId=" +
+            var url = "http://101.200.238.155:10001/excel/product?pageNum=1" + "&pageSize=" + vm.table.pageConfig.totalItems + "&orgId=" +
                  vm.organizationTree.selectedOu.id
             window.location.href = url;
         }
