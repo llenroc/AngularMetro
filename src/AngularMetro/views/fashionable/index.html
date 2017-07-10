@@ -1,4 +1,5 @@
-﻿<div ng-controller="views.fashionable.index as vm">
+﻿
+<div ng-controller="views.fashionable.index as vm">
     <div class="page-bar">
         <ul class="page-breadcrumb">
             <li>
@@ -87,10 +88,10 @@
                                     <a href="#" ng-click="vm.action.action(1)" data-toggle="tab" aria-expanded="true"> 账户 </a>
                                 </li>
                                 <li ng-class="{ 'active' : vm.action.current ==2 }">
-                                    <a href="#" ng-click="vm.action.action(2)" data-toggle="tab" aria-expanded="false"> 商品 </a>
+                                    <a href="#" ng-click="vm.action.action(2)" data-toggle="tab" aria-expanded="false"> 待转账订单 </a>
                                 </li>
                                 <li ng-class="{ 'active' : vm.action.current == 3 }">
-                                    <a href="#" ng-click="vm.action.action(3)" data-toggle="tab" aria-expanded="false"> 订单 </a>
+                                    <a href="#" ng-click="vm.action.action(3)" data-toggle="tab" aria-expanded="false"> 已转账订单 </a>
                                 </li>
                             </ul>
                             <div class="tab-content">
@@ -105,7 +106,7 @@
                                            data="vm.tablea.data"
                                            check-model="vm.tablea.checkModel"
                                            display="vm.tablea.pageConfig.itemsPerPage"
-                                           headers="账户,是否为自动账户,微信or支付宝,待转入金额,账户余额"
+                                           headers="账户,是否为自动账户,微信or支付宝,待转入金额,累计转入金额"
                                            fields="account,transferType,payChannel,amount,overage">
                                         <tbody>
                                             <tr ng-click="$owner.showeditinfo(item);setSelected(item)">
