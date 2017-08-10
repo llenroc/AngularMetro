@@ -433,6 +433,7 @@
     <Content Include="assets\pages\scripts\login.js" />
     <Content Include="assets\pages\scripts\login.min.js" />
     <Content Include="favicon.ico" />
+    <Content Include="js\directives\guid.js" />
     <Content Include="js\factorys\dataFactory.js" />
     <Content Include="index.html" />
     <Content Include="views\adsensepack\modal.html" />

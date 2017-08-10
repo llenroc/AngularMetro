@@ -22,7 +22,7 @@
                         return;
                     }
                     var md5pw = md5(password);
-                    var data = { "user_name": username, "pw": md5pw,systemid:2 };
+                    var data = { "user_name": username, "pw": md5pw,systemid:1 };
                     $.ajax({
                         type: "Post",
                         url: url,
@@ -55,7 +55,7 @@
                 var username = $("#userName").val();
                 var password = $("#pw").val();
                 var md5pw = md5(password);
-                var data = { "userName": username, "pw": md5pw,systemid:2 };
+                var data = { "userName": username, "pw": md5pw,systemid:1 };
                 if (!username||!password) {
                     o.show("请输入用户名或密码");
                     return;
